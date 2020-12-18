@@ -1,0 +1,975 @@
+Saving  mask (task#:0)
+Task: 0 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.018015
+Task: 0 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.001630
+Task: 0 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.001486
+
+Task: 0   Test set: Avg. loss: 0.0002, Accuracy: 9445/10000(94%)
+
+Task: 0 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.001325
+Task: 0 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.001348
+Task: 0 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.000957
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9601/10000(96%)
+
+Task: 0 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.001278
+Task: 0 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.000907
+Task: 0 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.000942
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9678/10000(97%)
+
+Task: 0 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.000754
+Task: 0 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.000640
+Task: 0 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.000524
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9723/10000(97%)
+
+Task: 0 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.000291
+Task: 0 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.000728
+Task: 0 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.000310
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9736/10000(97%)
+
+Task: 0 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.000170
+Task: 0 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.000496
+Task: 0 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.000444
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9760/10000(98%)
+
+Task: 0 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.000249
+Task: 0 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.000042
+Task: 0 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.000450
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9781/10000(98%)
+
+Task: 0 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.000366
+Task: 0 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.000318
+Task: 0 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.000162
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9808/10000(98%)
+
+Task: 0 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.000310
+Task: 0 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.000120
+Task: 0 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.000156
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9793/10000(98%)
+
+Task: 0 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.000131
+Task: 0 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.000141
+Task: 0 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.000233
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9798/10000(98%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9798/10000(98%)
+
+Trained Task:0, Loaded task:0, Accuracy:97.97999572753906
+Layer        : fc1.weight
+Max Fisher   : 0.01618695631623268
+Max Omega    : 0.371747225522995
+Max Relevance: 0.01586764119565487
+Layer        : fc2.weight
+Max Fisher   : 0.0044469949789345264
+Max Omega    : 0.14330647885799408
+Max Relevance: 0.0037824807222932577
+Saving  mask (task#:1)
+Task: 1 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.019142
+Task: 1 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.002375
+Task: 1 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.001593
+
+Task: 1   Test set: Avg. loss: 0.0002, Accuracy: 9548/10000(95%)
+
+Task: 1 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.001760
+Task: 1 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.001411
+Task: 1 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.001098
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9656/10000(97%)
+
+Task: 1 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.002087
+Task: 1 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.001061
+Task: 1 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.001122
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9680/10000(97%)
+
+Task: 1 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.001162
+Task: 1 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.001259
+Task: 1 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.001589
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9711/10000(97%)
+
+Task: 1 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.001010
+Task: 1 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.000936
+Task: 1 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.001090
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9731/10000(97%)
+
+Task: 1 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.001340
+Task: 1 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.001072
+Task: 1 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.001095
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9747/10000(97%)
+
+Task: 1 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.001082
+Task: 1 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.001237
+Task: 1 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.000738
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9742/10000(97%)
+
+Task: 1 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.000883
+Task: 1 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.001265
+Task: 1 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.001221
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9730/10000(97%)
+
+Task: 1 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.000740
+Task: 1 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.000946
+Task: 1 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.000941
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9748/10000(97%)
+
+Task: 1 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.001091
+Task: 1 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.000803
+Task: 1 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.001351
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9759/10000(98%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9764/10000(98%)
+
+Trained Task:1, Loaded task:0, Accuracy:97.63999938964844
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9759/10000(98%)
+
+Trained Task:1, Loaded task:1, Accuracy:97.58999633789062
+Layer        : fc1.weight
+Max Fisher   : 0.024337880313396454
+Max Omega    : 0.3760905861854553
+Max Relevance: 0.021617470309138298
+Layer        : fc2.weight
+Max Fisher   : 0.009307491593062878
+Max Omega    : 0.14656497538089752
+Max Relevance: 0.00873885303735733
+Saving  mask (task#:2)
+Task: 2 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.019387
+Task: 2 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.002367
+Task: 2 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002139
+
+Task: 2   Test set: Avg. loss: 0.0002, Accuracy: 9485/10000(95%)
+
+Task: 2 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.001980
+Task: 2 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.001843
+Task: 2 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.002318
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9615/10000(96%)
+
+Task: 2 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.001943
+Task: 2 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.001852
+Task: 2 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.001982
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9620/10000(96%)
+
+Task: 2 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.001670
+Task: 2 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.001319
+Task: 2 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.001508
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9661/10000(97%)
+
+Task: 2 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.001526
+Task: 2 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.001372
+Task: 2 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.001433
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9641/10000(96%)
+
+Task: 2 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.001496
+Task: 2 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.001585
+Task: 2 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.001096
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9661/10000(97%)
+
+Task: 2 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.001174
+Task: 2 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.001163
+Task: 2 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.001314
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9701/10000(97%)
+
+Task: 2 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.001377
+Task: 2 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.001610
+Task: 2 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.001454
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9679/10000(97%)
+
+Task: 2 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.001309
+Task: 2 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.001307
+Task: 2 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.001579
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9711/10000(97%)
+
+Task: 2 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.001737
+Task: 2 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.001749
+Task: 2 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.001133
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9713/10000(97%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9681/10000(97%)
+
+Trained Task:2, Loaded task:0, Accuracy:96.80999755859375
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9731/10000(97%)
+
+Trained Task:2, Loaded task:1, Accuracy:97.30999755859375
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9713/10000(97%)
+
+Trained Task:2, Loaded task:2, Accuracy:97.12999725341797
+Layer        : fc1.weight
+Max Fisher   : 0.028180021792650223
+Max Omega    : 0.37914806604385376
+Max Relevance: 0.024030866101384163
+Layer        : fc2.weight
+Max Fisher   : 0.013138022273778915
+Max Omega    : 0.14979884028434753
+Max Relevance: 0.013124373741447926
+Saving  mask (task#:3)
+Task: 3 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.018704
+Task: 3 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.002297
+Task: 3 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.001887
+
+Task: 3   Test set: Avg. loss: 0.0002, Accuracy: 9487/10000(95%)
+
+Task: 3 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.001963
+Task: 3 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.002786
+Task: 3 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.001587
+
+Task: 3   Test set: Avg. loss: 0.0002, Accuracy: 9596/10000(96%)
+
+Task: 3 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.001686
+Task: 3 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.002202
+Task: 3 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.001516
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9629/10000(96%)
+
+Task: 3 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.001860
+Task: 3 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.001646
+Task: 3 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.002101
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9618/10000(96%)
+
+Task: 3 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.001761
+Task: 3 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.001815
+Task: 3 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.001698
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9640/10000(96%)
+
+Task: 3 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.001606
+Task: 3 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.002385
+Task: 3 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.001496
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9645/10000(96%)
+
+Task: 3 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.001285
+Task: 3 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.001800
+Task: 3 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.001603
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9661/10000(97%)
+
+Task: 3 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.001469
+Task: 3 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.001216
+Task: 3 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.001558
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9662/10000(97%)
+
+Task: 3 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.001933
+Task: 3 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.001598
+Task: 3 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.001611
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9640/10000(96%)
+
+Task: 3 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.001732
+Task: 3 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.001844
+Task: 3 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.001693
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9681/10000(97%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9573/10000(96%)
+
+Trained Task:3, Loaded task:0, Accuracy:95.72999572753906
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9704/10000(97%)
+
+Trained Task:3, Loaded task:1, Accuracy:97.04000091552734
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9707/10000(97%)
+
+Trained Task:3, Loaded task:2, Accuracy:97.06999969482422
+Loading head (task#:3)
+Loading mask (task#:3)
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9681/10000(97%)
+
+Trained Task:3, Loaded task:3, Accuracy:96.80999755859375
+Layer        : fc1.weight
+Max Fisher   : 0.0266816895455122
+Max Omega    : 0.40014100074768066
+Max Relevance: 0.02183433622121811
+Layer        : fc2.weight
+Max Fisher   : 0.011298061348497868
+Max Omega    : 0.15081577003002167
+Max Relevance: 0.009665077552199364
+Saving  mask (task#:4)
+Task: 4 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.019417
+Task: 4 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.002476
+Task: 4 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002187
+
+Task: 4   Test set: Avg. loss: 0.0002, Accuracy: 9471/10000(95%)
+
+Task: 4 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.002738
+Task: 4 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.001797
+Task: 4 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.001639
+
+Task: 4   Test set: Avg. loss: 0.0002, Accuracy: 9566/10000(96%)
+
+Task: 4 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.001774
+Task: 4 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.001460
+Task: 4 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.001727
+
+Task: 4   Test set: Avg. loss: 0.0002, Accuracy: 9605/10000(96%)
+
+Task: 4 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.002662
+Task: 4 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.002079
+Task: 4 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.001731
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9622/10000(96%)
+
+Task: 4 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.001975
+Task: 4 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.002073
+Task: 4 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.002095
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9606/10000(96%)
+
+Task: 4 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.002542
+Task: 4 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.001494
+Task: 4 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.002324
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9623/10000(96%)
+
+Task: 4 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.002737
+Task: 4 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.001979
+Task: 4 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.002106
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9636/10000(96%)
+
+Task: 4 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.002322
+Task: 4 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.001995
+Task: 4 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.002055
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9635/10000(96%)
+
+Task: 4 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.001412
+Task: 4 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.002539
+Task: 4 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.001918
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9632/10000(96%)
+
+Task: 4 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.002251
+Task: 4 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.001804
+Task: 4 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.002297
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9650/10000(96%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0001, Accuracy: 9576/10000(96%)
+
+Trained Task:4, Loaded task:0, Accuracy:95.75999450683594
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9703/10000(97%)
+
+Trained Task:4, Loaded task:1, Accuracy:97.02999877929688
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9689/10000(97%)
+
+Trained Task:4, Loaded task:2, Accuracy:96.88999938964844
+Loading head (task#:3)
+Loading mask (task#:3)
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9655/10000(97%)
+
+Trained Task:4, Loaded task:3, Accuracy:96.54999542236328
+Loading head (task#:4)
+Loading mask (task#:4)
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9650/10000(96%)
+
+Trained Task:4, Loaded task:4, Accuracy:96.5
+Layer        : fc1.weight
+Max Fisher   : 0.024918023496866226
+Max Omega    : 0.4016464352607727
+Max Relevance: 0.0213040579110384
+Layer        : fc2.weight
+Max Fisher   : 0.016800833866000175
+Max Omega    : 0.1511663943529129
+Max Relevance: 0.015812288969755173
+Saving  mask (task#:5)
+Task: 5 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.020717
+Task: 5 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.003076
+Task: 5 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002631
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9479/10000(95%)
+
+Task: 5 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.002260
+Task: 5 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.001656
+Task: 5 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.002132
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9563/10000(96%)
+
+Task: 5 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.001912
+Task: 5 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.002249
+Task: 5 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.001818
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9581/10000(96%)
+
+Task: 5 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.002008
+Task: 5 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.001951
+Task: 5 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.001956
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9603/10000(96%)
+
+Task: 5 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.002069
+Task: 5 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.002258
+Task: 5 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.002146
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9586/10000(96%)
+
+Task: 5 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.002326
+Task: 5 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.002117
+Task: 5 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.002062
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9599/10000(96%)
+
+Task: 5 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.002275
+Task: 5 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.001657
+Task: 5 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.001562
+
+Task: 5   Test set: Avg. loss: 0.0001, Accuracy: 9615/10000(96%)
+
+Task: 5 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.001836
+Task: 5 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.002707
+Task: 5 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.002567
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9622/10000(96%)
+
+Task: 5 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.002290
+Task: 5 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.001883
+Task: 5 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.002709
+
+Task: 5   Test set: Avg. loss: 0.0001, Accuracy: 9610/10000(96%)
+
+Task: 5 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.001792
+Task: 5 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.002386
+Task: 5 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.002547
+
+Task: 5   Test set: Avg. loss: 0.0001, Accuracy: 9644/10000(96%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0002, Accuracy: 9462/10000(95%)
+
+Trained Task:5, Loaded task:0, Accuracy:94.6199951171875
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9658/10000(97%)
+
+Trained Task:5, Loaded task:1, Accuracy:96.57999420166016
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9681/10000(97%)
+
+Trained Task:5, Loaded task:2, Accuracy:96.80999755859375
+Loading head (task#:3)
+Loading mask (task#:3)
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9646/10000(96%)
+
+Trained Task:5, Loaded task:3, Accuracy:96.45999908447266
+Loading head (task#:4)
+Loading mask (task#:4)
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9642/10000(96%)
+
+Trained Task:5, Loaded task:4, Accuracy:96.41999816894531
+Loading head (task#:5)
+Loading mask (task#:5)
+
+Task: 5   Test set: Avg. loss: 0.0001, Accuracy: 9644/10000(96%)
+
+Trained Task:5, Loaded task:5, Accuracy:96.43999481201172
+Layer        : fc1.weight
+Max Fisher   : 0.030865643173456192
+Max Omega    : 0.43516606092453003
+Max Relevance: 0.02489648200571537
+Layer        : fc2.weight
+Max Fisher   : 0.011243420653045177
+Max Omega    : 0.1523618847131729
+Max Relevance: 0.00958822201937437
+Saving  mask (task#:6)
+Task: 6 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.018916
+Task: 6 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.001984
+Task: 6 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002022
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9445/10000(94%)
+
+Task: 6 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.001679
+Task: 6 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.003090
+Task: 6 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.002729
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9460/10000(95%)
+
+Task: 6 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.002585
+Task: 6 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.002641
+Task: 6 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.001826
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9537/10000(95%)
+
+Task: 6 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.001985
+Task: 6 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.002709
+Task: 6 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.002200
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9566/10000(96%)
+
+Task: 6 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.002197
+Task: 6 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.002000
+Task: 6 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.002670
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9576/10000(96%)
+
+Task: 6 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.002261
+Task: 6 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.002589
+Task: 6 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.002575
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9575/10000(96%)
+
+Task: 6 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.002283
+Task: 6 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.002323
+Task: 6 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.002747
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9571/10000(96%)
+
+Task: 6 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.002419
+Task: 6 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.002418
+Task: 6 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.001908
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9593/10000(96%)
+
+Task: 6 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.002204
+Task: 6 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.001946
+Task: 6 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.002816
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9577/10000(96%)
+
+Task: 6 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.002440
+Task: 6 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.002486
+Task: 6 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.001793
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9536/10000(95%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0002, Accuracy: 9275/10000(93%)
+
+Trained Task:6, Loaded task:0, Accuracy:92.75
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9633/10000(96%)
+
+Trained Task:6, Loaded task:1, Accuracy:96.32999420166016
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9666/10000(97%)
+
+Trained Task:6, Loaded task:2, Accuracy:96.65999603271484
+Loading head (task#:3)
+Loading mask (task#:3)
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9640/10000(96%)
+
+Trained Task:6, Loaded task:3, Accuracy:96.39999389648438
+Loading head (task#:4)
+Loading mask (task#:4)
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9619/10000(96%)
+
+Trained Task:6, Loaded task:4, Accuracy:96.18999481201172
+Loading head (task#:5)
+Loading mask (task#:5)
+
+Task: 5   Test set: Avg. loss: 0.0001, Accuracy: 9628/10000(96%)
+
+Trained Task:6, Loaded task:5, Accuracy:96.27999877929688
+Loading head (task#:6)
+Loading mask (task#:6)
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9536/10000(95%)
+
+Trained Task:6, Loaded task:6, Accuracy:95.36000061035156
+Layer        : fc1.weight
+Max Fisher   : 0.03184954449534416
+Max Omega    : 0.43933889269828796
+Max Relevance: 0.026631254702806473
+Layer        : fc2.weight
+Max Fisher   : 0.017353389412164688
+Max Omega    : 0.16569235920906067
+Max Relevance: 0.015050729736685753
+Saving  mask (task#:7)
+Task: 7 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.021081
+Task: 7 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.004007
+Task: 7 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002782
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9419/10000(94%)
+
+Task: 7 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.002667
+Task: 7 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.003491
+Task: 7 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.002913
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9465/10000(95%)
+
+Task: 7 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.002424
+Task: 7 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.002461
+Task: 7 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.002833
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9527/10000(95%)
+
+Task: 7 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.002230
+Task: 7 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.002155
+Task: 7 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.002469
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9495/10000(95%)
+
+Task: 7 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.002596
+Task: 7 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.002333
+Task: 7 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.002983
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9529/10000(95%)
+
+Task: 7 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.002386
+Task: 7 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.002344
+Task: 7 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.002615
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9549/10000(95%)
+
+Task: 7 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.002173
+Task: 7 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.002241
+Task: 7 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.002083
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9548/10000(95%)
+
+Task: 7 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.002694
+Task: 7 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.002204
+Task: 7 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.002738
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9568/10000(96%)
+
+Task: 7 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.002068
+Task: 7 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.002121
+Task: 7 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.002454
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9574/10000(96%)
+
+Task: 7 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.002782
+Task: 7 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.002144
+Task: 7 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.002691
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9492/10000(95%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0002, Accuracy: 9345/10000(93%)
+
+Trained Task:7, Loaded task:0, Accuracy:93.44999694824219
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9625/10000(96%)
+
+Trained Task:7, Loaded task:1, Accuracy:96.25
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9654/10000(97%)
+
+Trained Task:7, Loaded task:2, Accuracy:96.54000091552734
+Loading head (task#:3)
+Loading mask (task#:3)
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9606/10000(96%)
+
+Trained Task:7, Loaded task:3, Accuracy:96.05999755859375
+Loading head (task#:4)
+Loading mask (task#:4)
+
+Task: 4   Test set: Avg. loss: 0.0001, Accuracy: 9628/10000(96%)
+
+Trained Task:7, Loaded task:4, Accuracy:96.27999877929688
+Loading head (task#:5)
+Loading mask (task#:5)
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9627/10000(96%)
+
+Trained Task:7, Loaded task:5, Accuracy:96.2699966430664
+Loading head (task#:6)
+Loading mask (task#:6)
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9558/10000(96%)
+
+Trained Task:7, Loaded task:6, Accuracy:95.57999420166016
+Loading head (task#:7)
+Loading mask (task#:7)
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9492/10000(95%)
+
+Trained Task:7, Loaded task:7, Accuracy:94.91999816894531
+Layer        : fc1.weight
+Max Fisher   : 0.037629347294569016
+Max Omega    : 0.44110217690467834
+Max Relevance: 0.030781162902712822
+Layer        : fc2.weight
+Max Fisher   : 0.015179930254817009
+Max Omega    : 0.1874116063117981
+Max Relevance: 0.011237569153308868
+Saving  mask (task#:8)
+Task: 8 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.019960
+Task: 8 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.003343
+Task: 8 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002760
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9418/10000(94%)
+
+Task: 8 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.003149
+Task: 8 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.002267
+Task: 8 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.002635
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9464/10000(95%)
+
+Task: 8 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.002900
+Task: 8 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.002537
+Task: 8 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.002634
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9500/10000(95%)
+
+Task: 8 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.003479
+Task: 8 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.002629
+Task: 8 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.002445
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9521/10000(95%)
+
+Task: 8 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.002516
+Task: 8 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.002507
+Task: 8 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.002325
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9520/10000(95%)
+
+Task: 8 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.002445
+Task: 8 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.002926
+Task: 8 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.003305
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9532/10000(95%)
+
+Task: 8 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.002421
+Task: 8 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.002291
+Task: 8 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.002865
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9530/10000(95%)
+
+Task: 8 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.002443
+Task: 8 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.002368
+Task: 8 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.002577
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9531/10000(95%)
+
+Task: 8 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.002806
+Task: 8 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.002948
+Task: 8 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.002188
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9513/10000(95%)
+
+Task: 8 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.002891
+Task: 8 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.002419
+Task: 8 Train Epoch: 9 [51200/60000 (85%)]	Loss: 0.002396
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9546/10000(95%)
+
+Saving head
+Computing MAS
+Task analysis
+Loading head (task#:0)
+Loading mask (task#:0)
+
+Task: 0   Test set: Avg. loss: 0.0002, Accuracy: 9296/10000(93%)
+
+Trained Task:8, Loaded task:0, Accuracy:92.95999908447266
+Loading head (task#:1)
+Loading mask (task#:1)
+
+Task: 1   Test set: Avg. loss: 0.0001, Accuracy: 9611/10000(96%)
+
+Trained Task:8, Loaded task:1, Accuracy:96.11000061035156
+Loading head (task#:2)
+Loading mask (task#:2)
+
+Task: 2   Test set: Avg. loss: 0.0001, Accuracy: 9633/10000(96%)
+
+Trained Task:8, Loaded task:2, Accuracy:96.32999420166016
+Loading head (task#:3)
+Loading mask (task#:3)
+
+Task: 3   Test set: Avg. loss: 0.0001, Accuracy: 9614/10000(96%)
+
+Trained Task:8, Loaded task:3, Accuracy:96.13999938964844
+Loading head (task#:4)
+Loading mask (task#:4)
+
+Task: 4   Test set: Avg. loss: 0.0002, Accuracy: 9618/10000(96%)
+
+Trained Task:8, Loaded task:4, Accuracy:96.18000030517578
+Loading head (task#:5)
+Loading mask (task#:5)
+
+Task: 5   Test set: Avg. loss: 0.0002, Accuracy: 9605/10000(96%)
+
+Trained Task:8, Loaded task:5, Accuracy:96.04999542236328
+Loading head (task#:6)
+Loading mask (task#:6)
+
+Task: 6   Test set: Avg. loss: 0.0002, Accuracy: 9545/10000(95%)
+
+Trained Task:8, Loaded task:6, Accuracy:95.44999694824219
+Loading head (task#:7)
+Loading mask (task#:7)
+
+Task: 7   Test set: Avg. loss: 0.0002, Accuracy: 9482/10000(95%)
+
+Trained Task:8, Loaded task:7, Accuracy:94.81999969482422
+Loading head (task#:8)
+Loading mask (task#:8)
+
+Task: 8   Test set: Avg. loss: 0.0002, Accuracy: 9546/10000(95%)
+
+Trained Task:8, Loaded task:8, Accuracy:95.45999908447266
+Layer        : fc1.weight
+Max Fisher   : 0.0357719287276268
+Max Omega    : 0.45348039269447327
+Max Relevance: 0.026901550590991974
+Layer        : fc2.weight
+Max Fisher   : 0.01249715220183134
+Max Omega    : 0.1880573332309723
+Max Relevance: 0.00832692813128233
+Saving  mask (task#:9)
+Task: 9 Train Epoch: 0 [0/60000 (0%)]	Loss: 0.020660
+Task: 9 Train Epoch: 0 [25600/60000 (43%)]	Loss: 0.003034
+Task: 9 Train Epoch: 0 [51200/60000 (85%)]	Loss: 0.002871
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9386/10000(94%)
+
+Task: 9 Train Epoch: 1 [0/60000 (0%)]	Loss: 0.002805
+Task: 9 Train Epoch: 1 [25600/60000 (43%)]	Loss: 0.003344
+Task: 9 Train Epoch: 1 [51200/60000 (85%)]	Loss: 0.002656
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9442/10000(94%)
+
+Task: 9 Train Epoch: 2 [0/60000 (0%)]	Loss: 0.002529
+Task: 9 Train Epoch: 2 [25600/60000 (43%)]	Loss: 0.002657
+Task: 9 Train Epoch: 2 [51200/60000 (85%)]	Loss: 0.003236
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9487/10000(95%)
+
+Task: 9 Train Epoch: 3 [0/60000 (0%)]	Loss: 0.003003
+Task: 9 Train Epoch: 3 [25600/60000 (43%)]	Loss: 0.002713
+Task: 9 Train Epoch: 3 [51200/60000 (85%)]	Loss: 0.002170
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9469/10000(95%)
+
+Task: 9 Train Epoch: 4 [0/60000 (0%)]	Loss: 0.002174
+Task: 9 Train Epoch: 4 [25600/60000 (43%)]	Loss: 0.002817
+Task: 9 Train Epoch: 4 [51200/60000 (85%)]	Loss: 0.002663
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9474/10000(95%)
+
+Task: 9 Train Epoch: 5 [0/60000 (0%)]	Loss: 0.002379
+Task: 9 Train Epoch: 5 [25600/60000 (43%)]	Loss: 0.002599
+Task: 9 Train Epoch: 5 [51200/60000 (85%)]	Loss: 0.003396
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9509/10000(95%)
+
+Task: 9 Train Epoch: 6 [0/60000 (0%)]	Loss: 0.002631
+Task: 9 Train Epoch: 6 [25600/60000 (43%)]	Loss: 0.003110
+Task: 9 Train Epoch: 6 [51200/60000 (85%)]	Loss: 0.002759
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9504/10000(95%)
+
+Task: 9 Train Epoch: 7 [0/60000 (0%)]	Loss: 0.002728
+Task: 9 Train Epoch: 7 [25600/60000 (43%)]	Loss: 0.002080
+Task: 9 Train Epoch: 7 [51200/60000 (85%)]	Loss: 0.002994
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9532/10000(95%)
+
+Task: 9 Train Epoch: 8 [0/60000 (0%)]	Loss: 0.002362
+Task: 9 Train Epoch: 8 [25600/60000 (43%)]	Loss: 0.003214
+Task: 9 Train Epoch: 8 [51200/60000 (85%)]	Loss: 0.002169
+
+Task: 9   Test set: Avg. loss: 0.0002, Accuracy: 9496/10000(95%)
+
+Task: 9 Train Epoch: 9 [0/60000 (0%)]	Loss: 0.002953
+Task: 9 Train Epoch: 9 [25600/60000 (43%)]	Loss: 0.003029

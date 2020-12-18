@@ -1,0 +1,81 @@
+****************************
+QUESTIONS
+****************************
+  - should bias go thru the l_2 penalty? (optimizer_utils.py/continual_SGD)
+  - Should we  apply mask to bias?
+  - model_utils.py/model_init (lines 66, 67):
+    -Should final head layer bias and parameters reinitialized? No, it will create discrepancy between the previously learned knowledge 
+    in the shared parameters and the newly initialized head. We keep the head parameters from previous task.
+  - train_utils.py/train_MAS
+    -Should omega update occur only in activated parameters using intelligent_gating? Probably no if we are faithful to MAS algorithm.
+  -apply mask to the omega decay? only the selected mask will experience decay.
+  -mask applied to param_diff in continual_SGD
+
+****************************
+Daily Logs
+****************************
+#### 9/17 ####
+  - Figured out we NEED to apply mask to gradients.
+  - We have applied mask to the error gradient, but NOT the l_2 penalty decay
+  - Sort of implemented EWC
+  - EWC should follow MAS closely
+
+
+#### 9/22 ####
+Todo:
+  -reg_utils.py/init_reg_params_across_tasks 
+    - [x] Can we ensure that group iteration "for p in group['params']" occurs in order? perhaps then we can use enumerate func.
+    - [x] reg_params[param] = param_dict   <-- tensor "param" is being used as the 'key' of the dictionary. Need to fix it. Especially in multi-head setting, param tensor is replaced with zeros for the head. It won't be able to recognize (i guess it doesn't matter?). Memory consumption can skyrocket because keep storing 
+    - [x] Same in optimizer_utils.py/omega_optim
+    - [x] Need to fix omega getting re-zeroed every task.
+    - [ ] see if line 74 gets executed.      " if "fc_head" in name and multi_head:  "
+
+  - reg_utils.py/init_reg_params_across_task :
+    - [x] Final head layer omega should remain as 0 if multi-head 
+    - [x] Final head layer mask set to 1.
+    - [x] Final head layer init does not matter if multi-head.
+    - [x] Remain same when using single-head.
+  -[x] Fix the mask function.
+  -optimizer_utils.py/omega_optim
+    -[x] batch_index=0 --> prev_size=0 --> omega=0. Omega reinitialized to zero when evaluating omega for each task.
+    -[x] implement accumulate_omega function
+  -[x] check whether train_utils.py/train_MAS(...) has to return network for changes to take effect. NO.
+  -[x] Finish Implementing EWC
+
+
+#### 9/23 ####
+TODO:
+  -[x] implement plot_result
+  -[x] toggle ISG for the training
+  -[x] toggle ISG for the inference
+  -[x] increase number of epoch
+  -[x] test pMNIST on MAS and EWC
+
+#### 9/30 ####
+  -[x] ISG_backup folder creation. ISG_backup should contain per-data-sample mask computation of pMNIST task.
+  -[x] Double check regularization methods... They have poor performance.
+    --I think the problem was at train_utils.py/train_MAS --> if epoch == n_epochs:. In here, data = permute_MNIST(...) was omitted
+    --fixed train_MAS and EWC_update_fisher_params
+  -[x] optimizer_utils.py/continual_SDG:   mask MUST be applied to param_diff as well. 
+  -[x] Parameter mask computed in the beginning of each task (used testset)
+  -[x] Parameter updates must be done with mask applied
+  -[x] At the end of training, parameters are restored. Bias is excluded.
+  -[x] If multihead, intelligent_gating does not need mask out the final layer. If singlehead, it needs to.
+    -[x] in model_utils.py finish save_mask
+    -[x] in model_utils.py finish load_mask
+    -[x] in reg_utils.py finish apply_mask
+    -[x] in reg_utils.py finish lift_mask
+  -[x] Mask for each task is stored & used during inference
+  -[x] Enable GPU functionality
+  -reg_utils.py/Intelligent_gating:
+    -[x]Increase drop_ratio 
+
+
+#### 10/7 ####
+TODO:
+  -[x] check whether dropping bias is helpful or not
+      Dropping bias significantly improved the performance
+  -[x] model_utils.py/model_init() lines 66-68: check if zeroed out head is better for each new task
+      Using zero-ed out new head sig. improved the performance.
+  -[ ] check whether dropping units is better than dropping parameters
+  -[ ] implement split-CIFAR

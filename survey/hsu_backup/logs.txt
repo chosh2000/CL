@@ -1,0 +1,3 @@
+11/28/2020
+	- Do we need RequireGradient for the mask layer?
+		ex) out = o1 * mask(RequireGradient = True)
