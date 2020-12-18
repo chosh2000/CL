@@ -48,7 +48,9 @@ def SIM_gating(network, task_num, dataloader):
 				assert network.tmodel.mask_list[n] is not None, "Mask mismatch" #
 				if network.tmodel.rho[n] < 1:
 					assert M.sum() < M.numel(), "Mask error"
-				network.tmodel.mask_list[n].data = M.to(network.device)
+				# network.tmodel.mask_list[n].data = M.to(network.device) ##TODO: fix
+				network.tmodel.mask_list[n].copy_(M) ##TODO: fix here
+
 	#Saving masks
 	network.save_mask(task_num)
 	network.optimizer.zero_grad()

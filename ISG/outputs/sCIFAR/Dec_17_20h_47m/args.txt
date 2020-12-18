@@ -1,6 +1,6 @@
 {
   "use_gpu": true,
-  "out_dir": "outputs/sCIFAR/unscripted",
+  "out_dir": "outputs/sCIFAR/Dec_17_20h_47m",
   "repeat": 1,
   "method": "MAS",
   "model_type": "cnn",
@@ -14,7 +14,8 @@
   "dataset": "sCIFAR100",
   "num_task": 10,
   "schedule": [
-    5
+    60,
+    100
   ],
   "batch_size_train": 128,
   "batch_size_test": 1000,
@@ -24,11 +25,11 @@
   "train_aug": false,
   "dataroot": "data",
   "padding": true,
-  "reglambda": 10,
+  "reglambda": 0.1,
   "online_reg": true,
   "omega_multiplier": 1,
   "rho": [
-    1,
+    0.5,
     0.5,
     0.5
   ],
