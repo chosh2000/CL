@@ -89,7 +89,7 @@ def get_args(argv):
     #dataset
     parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
     parser.add_argument('--num_task', type=int, default=10, help="number of tasks")
-    parser.add_argument('--schedule', nargs="+", type=int, default=[10], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
+    parser.add_argument('--schedule', nargs="+", type=int, default=[5], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
     parser.add_argument('--batch_size_train', type=int, default=128)
     parser.add_argument('--batch_size_test', type=int, default=1000)
     parser.add_argument('--batch_size_fisher', type=int, default=100)
