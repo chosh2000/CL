@@ -28,7 +28,7 @@
   "online_reg": true,
   "omega_multiplier": 1,
   "rho": [
-    0.5,
+    1,
     0.5,
     0.5
   ],
