@@ -100,7 +100,7 @@ def get_args(argv):
     parser.add_argument('--padding', type=bool, default=True, help="apply padding to input data")
 
     #regularization
-    parser.add_argument('--reglambda', type=float, default=1, help="Lambda: regularization strength")
+    parser.add_argument('--reglambda', type=float, default=0, help="Lambda: regularization strength")
     parser.add_argument('--online_reg', type=bool, default=True, help="Flag for online regularization computation")
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
