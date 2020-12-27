@@ -21,9 +21,9 @@ def SIM_gating(network, task_num, dataloader):
 
 	#Apply masks
 	assert network.online_reg, "SIM only supports online reg. computation"
-	if task_num == 0:
-		network.random_mask()
-	if task_num >0 :
+	# if task_num == 0:
+	# 	network.random_mask()
+	if task_num >= 0  :
 		network.stat[task_num] = {'omega_sum': {}}
 		for n, p in network.tmodel.named_parameters():
 			# if "head" not in n and "bias" not in n:
