@@ -57,10 +57,10 @@ class CNN(nn.Module):
 		self.fc1_mask = torch.ones(512).to(self.device)
 		self.rho = {}
 		self.mask_list = {
-								'conv1_layer.2.weight':self.conv1_mask, 
-								'conv2_layer.2.weight':self.conv2_mask,
-								'fc1_layer.0.weight':self.fc1_mask,
-								}
+							'conv1_layer.2.weight':self.conv1_mask, 
+							'conv2_layer.2.weight':self.conv2_mask,
+							'fc1_layer.0.weight':self.fc1_mask,
+						}
 		assert len(self.args.rho) == len(self.mask_list), "make sure mask number matches"
 		for i, key in enumerate(self.mask_list.keys()):
 			self.rho[key] = self.args.rho[i]

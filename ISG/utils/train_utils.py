@@ -13,6 +13,28 @@ from utils.model_utils import *
 from utils.data_prep import *
 from utils.EWC_utils import *
 
+def init_train(network, args, task_num, trainloader, testloader, maskloader=None):
+	n_epochs = args.schedule[-1]
+	for epoch in range(n_epochs+1):
+		for batch_idx, (data, target) in enumerate(trainloader):
+			data = data.to(network.device)
+			target = target.to(network.device)
+
+
+			#Compute loss
+			loss = network.criterion(data, target)
+
+			#update
+			network.optimizer.zero_grad()
+			loss.backward()
+			network.optimizer.step()
+
+			#Train stats
+			# if batch_idx % args.print_freq == 0:
+			# 	print("Task: {} Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(task_num, epoch, batch_idx * len(data), len(trainloader.dataset), 100. * batch_idx / len(trainloader), loss.item() ))
+			# 	train_losses.append(loss.item())
+			# 	train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
+		test(network, task_num, testloader)
 
 def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None):
 	train_losses = []
@@ -27,6 +49,8 @@ def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None)
 
 	#Training Phase
 	network.load_new_head()
+	# print(network.tmodel.fc_head.weight.sum())
+
 	network.tmodel.train()
 	n_epochs = args.schedule[-1]
 	for epoch in range(n_epochs+1):
@@ -71,10 +95,10 @@ def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None)
 				network.optimizer.step()
 
 				#Train stats
-				if batch_idx % args.print_freq == 0:
-					print("Task: {} Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(task_num, epoch, batch_idx * len(data), len(trainloader.dataset), 100. * batch_idx / len(trainloader), loss.item() ))
-					train_losses.append(loss.item())
-					train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
+				# if batch_idx % args.print_freq == 0:
+				# 	print("Task: {} Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(task_num, epoch, batch_idx * len(data), len(trainloader.dataset), 100. * batch_idx / len(trainloader), loss.item() ))
+				# 	train_losses.append(loss.item())
+				# 	train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
 
 			#Test at the end of each epoch
 			test(network, task_num, testloader)

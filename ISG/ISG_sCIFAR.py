@@ -30,8 +30,12 @@ def SIM_CIFAR_train(args):
     stat_save_path = os.path.join(save_path,"SIM_stat"+str(args.rho)+".pth" )
     # param_save_path = os.path.join(save_path,"SIM_param"+str(args.rho)+".pth" )
     # reg_save_path = os.path.join(save_path,"SIM_reg"+str(args.rho)+".pth" )
-     
 
+    #Initialize network with CIFAR10 dataset
+    trainloader, testloader = load_datasets(args, -1)
+    init_train(network, args, task_num, trainloader, testloader)
+
+    #Training split CIFAR100
     for task_num in range(args.num_task):
         #Re-import the dataset associated with the task_num
         trainloader, testloader = load_datasets(args, task_num)
@@ -89,7 +93,7 @@ def get_args(argv):
     #dataset
     parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
     parser.add_argument('--num_task', type=int, default=10, help="number of tasks")
-    parser.add_argument('--schedule', nargs="+", type=int, default=[5], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
+    parser.add_argument('--schedule', nargs="+", type=int, default=[40], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
     parser.add_argument('--batch_size_train', type=int, default=128)
     parser.add_argument('--batch_size_test', type=int, default=1000)
     parser.add_argument('--batch_size_fisher', type=int, default=100)
