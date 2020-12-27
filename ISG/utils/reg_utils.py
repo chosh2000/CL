@@ -32,7 +32,10 @@ def SIM_gating(network, task_num, dataloader):
 				x = network.args.xi #Xi
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
 				F /= F.max()
-				O = network.reg_params[0]['importance'][n].clone() #Omega
+				if task_num == 0:
+					O = torch.ones(F.shape())
+				else:
+					O = network.reg_params[0]['importance'][n].clone() #Omega
 				O /= O.max()
 				R = F/(O*a+x) #Relevance
 				# R = F-O*a #Relevance
