@@ -13,31 +13,37 @@ import torchvision
 
 def load_datasets(args, task_num):
 
-    #Load datasets
-    transform_train = transforms.Compose([
-        transforms.RandomCrop(32, padding=4),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-        transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
-    ])
-    # Normalize the test set same as training set without augmentation
-    transform_test = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
-    ])
+	#Load datasets
+	transform_train = transforms.Compose([
+		transforms.RandomCrop(32, padding=4),
+		transforms.RandomHorizontalFlip(),
+		transforms.ToTensor(),
+		transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+	])
+	# Normalize the test set same as training set without augmentation
+	transform_test = transforms.Compose([
+		transforms.ToTensor(),
+		transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+	])
 
-    trainset = torchvision.datasets.CIFAR100(root="../../data", train=True, download=True, transform=transform_train)
-    testset = torchvision.datasets.CIFAR100(root="../../data", train=False, download=True, transform=transform_test)
+	if task_num == -1:  #CIFAR10 
+		trainset = torchvision.datasets.CIFAR10(root="../../data", train=True, download=True, transform=transform_train)
+		testset = torchvision.datasets.CIFAR10(root="../../data", train=False, download=True, transform=transform_test)
 
-    #split the dataset
-    trainset = split_CIFAR100_dataset(trainset,task_num)
-    testset  = split_CIFAR100_dataset(testset, task_num)
-    #dataset loaders
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size_train, shuffle=True, num_workers=2)
-    testloader  = torch.utils.data.DataLoader(testset, batch_size=args.batch_size_test, shuffle=False, num_workers=2)
-    # maskloader  = torch.utils.data.DataLoader(testset, batch_size = 1000, shuffle = True, num_workers = 2)
+	else:				#CIFAR100 
+		trainset = torchvision.datasets.CIFAR100(root="../../data", train=True, download=True, transform=transform_train)
+		testset = torchvision.datasets.CIFAR100(root="../../data", train=False, download=True, transform=transform_test)
 
-    return trainloader, testloader
+		#split the dataset
+		trainset = split_CIFAR100_dataset(trainset,task_num)
+		testset  = split_CIFAR100_dataset(testset, task_num)
+
+	#dataset loaders
+	trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size_train, shuffle=True, num_workers=2)
+	testloader  = torch.utils.data.DataLoader(testset, batch_size=args.batch_size_test, shuffle=False, num_workers=2)
+	# maskloader  = torch.utils.data.DataLoader(testset, batch_size = 1000, shuffle = True, num_workers = 2)
+
+	return trainloader, testloader
 
 
 
