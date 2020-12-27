@@ -31,9 +31,11 @@ def SIM_gating(network, task_num, dataloader):
 				a = network.args.alpha
 				x = network.args.xi #Xi
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
-				O = network.reg_params[0]['importance'][n] #Omega
-				# R = F/(O*a+x) #Relevance
-				R = F-O*a #Relevance
+				F /= F.max()
+				O = network.reg_params[0]['importance'][n].clone() #Omega
+				O /= O.max()
+				R = F/(O*a+x) #Relevance
+				# R = F-O*a #Relevance
 				network.stat[task_num]['omega_sum'][n] = O.sum()
 				print("Layer        : {}".format(n))
 				print("Sum Omega    : {}".format(O.sum()))

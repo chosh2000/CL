@@ -2,6 +2,7 @@
   "use_gpu": true,
   "out_dir": "outputs/sCIFAR/unscripted",
   "repeat": 1,
+  "init_model": false,
   "method": "MAS",
   "model_type": "cnn",
   "mlp_size": 1000,
@@ -14,7 +15,8 @@
   "dataset": "sCIFAR100",
   "num_task": 10,
   "schedule": [
-    4
+    60,
+    80
   ],
   "batch_size_train": 128,
   "batch_size_test": 1000,
@@ -24,7 +26,7 @@
   "train_aug": false,
   "dataroot": "data",
   "padding": true,
-  "reglambda": 0,
+  "reglambda": 1,
   "online_reg": true,
   "omega_multiplier": 1,
   "rho": [
@@ -32,6 +34,6 @@
     0.5,
     0.5
   ],
-  "xi": 0.001,
+  "xi": 0.5,
   "alpha": 0.5
 }

@@ -28,13 +28,18 @@ def SIM_CIFAR_train(args):
     acc_save_path = os.path.join(save_path,"SIM_acc"+str(args.rho)+".pth" )
     mask_save_path = os.path.join(save_path,"SIM_mask"+str(args.rho)+".pth" )
     stat_save_path = os.path.join(save_path,"SIM_stat"+str(args.rho)+".pth" )
+    model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
     # param_save_path = os.path.join(save_path,"SIM_param"+str(args.rho)+".pth" )
     # reg_save_path = os.path.join(save_path,"SIM_reg"+str(args.rho)+".pth" )
 
     #Initialize network with CIFAR10 dataset
-    task_num = -1
-    trainloader, testloader = load_datasets(args, task_num)
-    init_train(network, args, task_num, trainloader, testloader)
+    if args.init_model:
+        task_num = -1
+        trainloader, testloader = load_datasets(args, task_num)
+        init_train(network, args, task_num, trainloader, testloader)
+        torch.save(network.tmodel.state_dict(), model_save_path)
+    #Load initialized model
+    network.tmodel.load_state_dict(torch.load(model_save_path))
 
     #Training split CIFAR100
     for task_num in range(args.num_task):
@@ -81,6 +86,7 @@ def get_args(argv):
     parser.add_argument('--repeat', type=int, default=1, help="Repeat the experiment N times")
 
     #network config
+    parser.add_argument('--init_model', type=bool, default=False)
     parser.add_argument('--method', type=str, default="MAS", help="Continual Learning Algorithm used")
     parser.add_argument('--model_type', type=str, default='cnn',help="The type (mlp|cnn|lenet|vgg|resnet) of backbone network")
     parser.add_argument('--mlp_size', type=int, default=1000)
@@ -94,7 +100,7 @@ def get_args(argv):
     #dataset
     parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
     parser.add_argument('--num_task', type=int, default=10, help="number of tasks")
-    parser.add_argument('--schedule', nargs="+", type=int, default=[40], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
+    parser.add_argument('--schedule', nargs="+", type=int, default=[60, 80], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
     parser.add_argument('--batch_size_train', type=int, default=128)
     parser.add_argument('--batch_size_test', type=int, default=1000)
     parser.add_argument('--batch_size_fisher', type=int, default=100)
@@ -105,13 +111,13 @@ def get_args(argv):
     parser.add_argument('--padding', type=bool, default=True, help="apply padding to input data")
 
     #regularization
-    parser.add_argument('--reglambda', type=float, default=0, help="Lambda: regularization strength")
+    parser.add_argument('--reglambda', type=float, default=1, help="Lambda: regularization strength")
     parser.add_argument('--online_reg', type=bool, default=True, help="Flag for online regularization computation")
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
     #masking
     parser.add_argument('--rho', nargs="+", type=float, default=[1, 0.5, 0.5], help="ratio of 1 in mask")
-    parser.add_argument('--xi', type=float, default=0.001, help="Xi, damping factor to avoid divison by zero")
+    parser.add_argument('--xi', type=float, default=0.5, help="Xi, damping factor to avoid divison by zero")
     parser.add_argument('--alpha', type=float, default=0.5, help="Alpha, stability-plasticity tradeoff")
 
     args = parser.parse_args(argv)

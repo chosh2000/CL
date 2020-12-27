@@ -117,9 +117,11 @@ TODO:
 
 
 
-
-
-################################################################################################
-12/3:
-  -completely rebuilt the system in ISG_unitdrop_pMNIST.py
-  -stopped at line 54
+#################################################################################################################
+12/27
+  - Seems to work very well. SIM performs better than MAS.
+  - [ ] store and load model pretrained on cifar10
+  - [ ] want to change the following
+    - [ ] relevance equation
+    - [ ] reg strength
+    - [ ] rho ratio
