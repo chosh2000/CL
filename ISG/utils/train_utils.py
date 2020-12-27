@@ -14,6 +14,7 @@ from utils.data_prep import *
 from utils.EWC_utils import *
 
 def init_train(network, args, task_num, trainloader, testloader, maskloader=None):
+	network.tmodel.to(network.device)
 	n_epochs = args.schedule[-1]
 	for epoch in range(n_epochs+1):
 		for batch_idx, (data, target) in enumerate(trainloader):
@@ -126,7 +127,7 @@ def test(network, task_num, testloader):
 	test_loss /= len(testloader.dataset)
 	test_losses.append(test_loss)
 	accuracy = 100.*correct/len(testloader.dataset)
-	print('Task: {}   Test set: Avg. loss: {:.4f}, Accuracy: {}/{}({:.0f}%)\n'.format(
+	print('Task: {}   Test set: Avg. loss: {:.4f}, Accuracy: {}/{}({:.0f}%)'.format(
 		task_num, test_loss, correct, len(testloader.dataset), accuracy))
 	return accuracy
 

@@ -32,7 +32,8 @@ def SIM_CIFAR_train(args):
     # reg_save_path = os.path.join(save_path,"SIM_reg"+str(args.rho)+".pth" )
 
     #Initialize network with CIFAR10 dataset
-    trainloader, testloader = load_datasets(args, -1)
+    task_num = -1
+    trainloader, testloader = load_datasets(args, task_num)
     init_train(network, args, task_num, trainloader, testloader)
 
     #Training split CIFAR100
