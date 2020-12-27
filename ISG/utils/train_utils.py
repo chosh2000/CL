@@ -14,8 +14,10 @@ from utils.data_prep import *
 from utils.EWC_utils import *
 
 def init_train(network, args, task_num, trainloader, testloader, maskloader=None):
+	train_losses = []
+	train_counter = []
 	network.tmodel.to(network.device)
-	n_epochs = args.schedule[-1]
+	n_epochs = 40
 	for epoch in range(n_epochs+1):
 		for batch_idx, (data, target) in enumerate(trainloader):
 			data = data.to(network.device)
@@ -30,12 +32,12 @@ def init_train(network, args, task_num, trainloader, testloader, maskloader=None
 			loss.backward()
 			network.optimizer.step()
 
-			#Train stats
+			# Train stats
 			# if batch_idx % args.print_freq == 0:
 			# 	print("Task: {} Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(task_num, epoch, batch_idx * len(data), len(trainloader.dataset), 100. * batch_idx / len(trainloader), loss.item() ))
 			# 	train_losses.append(loss.item())
 			# 	train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
-		test(network, task_num, testloader)
+		test(network, task_num, testloader, epoch)
 
 def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None):
 	train_losses = []
@@ -102,9 +104,9 @@ def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None)
 				# 	train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
 
 			#Test at the end of each epoch
-			test(network, task_num, testloader)
+			test(network, task_num, testloader, epoch)
 
-def test(network, task_num, testloader):
+def test(network, task_num, testloader, epoch):
 	test_losses = []
 	test_loss = 0
 	correct = 0
@@ -127,7 +129,7 @@ def test(network, task_num, testloader):
 	test_loss /= len(testloader.dataset)
 	test_losses.append(test_loss)
 	accuracy = 100.*correct/len(testloader.dataset)
-	print('Task: {}   Test set: Avg. loss: {:.4f}, Accuracy: {}/{}({:.0f}%)'.format(
-		task_num, test_loss, correct, len(testloader.dataset), accuracy))
+	print('Task: {},\t Epoch: {}/{},\t Avg.loss: {:.4f},\t Accuracy: {}/{}({:.0f}%)'.format(
+		task_num, epoch, network.args.schedule[-1], test_loss, correct, len(testloader.dataset), accuracy))
 	return accuracy
 
