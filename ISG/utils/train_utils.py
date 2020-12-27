@@ -53,6 +53,7 @@ def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None)
 
 	#Training Phase
 	network.load_new_head()
+	network.record_trace()
 	# print(network.tmodel.fc_head.weight.sum())
 
 	network.tmodel.train()

@@ -29,6 +29,7 @@ class shared_model(nn.Module):
 		self.task_masks = {} #{task_num:   {fc1: 		 , fc2: 	   }}
 		self.task_heads = {} #{task_num:   {}}
 		self.stat       = {} #{task_num:   {'omega_sum'  : {}}
+		self.mask_trace = {}
 		self.criterion_fn = nn.CrossEntropyLoss()
 		self.shuffle_idx = pMNIST_shuffle(self.args)
 		self.optimizer = optim.Adam(self.tmodel.parameters(), lr=args.lr, weight_decay=args.weight_decay)
@@ -160,6 +161,19 @@ class shared_model(nn.Module):
 			p[:int(p.shape[0]*self.tmodel.rho[n])].fill_(1)
 			# mask = torch.FloatTensor(p.shape).uniform_() > (1-self.tmodel.rho[n])		
 			# self.tmodel.mask_list[n].data = mask.to(self.device)
+
+	def record_trace(self):
+		if len(self.mask_trace) == 0:
+			for n,p in self.tmodel.mask_list.items():
+				self.mask_trace[n] = p.clone()
+		else:
+			for n,p in self.tmodel.mask_list.items():
+				# self.mask_trace[n] = torch.logical_or(self.mask_trace[n], p)
+				self.mask_trace[n] += p
+		#print
+		for n,p in self.mask_trace.items():
+			print("Mask histogram {}: \t {}".format(n, torch.histc(p, bins=10, min=0, max=10)))
+
 
 def clear_models():
 	model_path = os.path.join(os.getcwd(), "models")
