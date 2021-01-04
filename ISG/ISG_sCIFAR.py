@@ -17,8 +17,8 @@ def SIM_CIFAR_train(args):
     #Initialize model
     model = CNN(args)
     network = shared_model(model, args)
-    acc_list = {}
-
+    args.xi = 1 - args.alpha
+    
     #save paths
     save_path = os.path.join(os.getcwd(),args.out_dir)
     if not os.path.isdir(save_path):
@@ -42,6 +42,8 @@ def SIM_CIFAR_train(args):
     network.tmodel.load_state_dict(torch.load(model_save_path))
 
     #Training split CIFAR100
+    acc_list = {}
+    acc_avg_list = []
     for task_num in range(args.num_task):
         #Re-import the dataset associated with the task_num
         trainloader, testloader = load_datasets(args, task_num)
@@ -50,24 +52,29 @@ def SIM_CIFAR_train(args):
 
         #Inference test on past tasks
         if args.multi_head:
-            acc_list[task_num] = {}
+            acc_list[task_num] = []
             for loaded_task in range(task_num + 1):
                 network.tmodel.eval() #TODO: is this line necessary
                 network.load_head(loaded_task)
                 network.load_mask(loaded_task)
                 _, testloader = load_datasets(args, loaded_task)
                 accuracy = test(network, loaded_task, testloader, -1)
-                acc_list[task_num][loaded_task] = accuracy
+                acc_list[task_num].append(accuracy.data.item())
+                # acc_list[task_num][loaded_task] = accuracy
                 network.lift_mask()
                 print("Trained Task:{}, Loaded task:{}, Accuracy:{:.1f}%".format(task_num, loaded_task, accuracy))
+            acc_avg = np.around(sum(acc_list[task_num])/len(acc_list[task_num]), 1)
+            acc_avg_list.append(acc_avg)
+            print("Trained Task:{}, Avg. Accuracy: {:.1f} \n".format(task_num, acc_avg))
         else:
             raise("not implemented yet")
         #Save data
-        torch.save(acc_list, acc_save_path)
         torch.save(network.task_masks, mask_save_path)
         torch.save(network.stat, stat_save_path)
         # torch.save(network.params, param_save_path)
         # torch.save(network.reg_params, reg_save_path)
+    torch.save(acc_avg_list, acc_save_path)
+    print("List of avg. accuracy: {}".format(acc_avg_list))
 
 
 def get_args(argv):
@@ -117,8 +124,8 @@ def get_args(argv):
 
     #masking
     parser.add_argument('--rho', nargs="+", type=float, default=[1, 0.5, 0.5], help="ratio of 1 in mask")
-    parser.add_argument('--xi', type=float, default=0.5, help="Xi, damping factor to avoid divison by zero")
-    parser.add_argument('--alpha', type=float, default=0.5, help="Alpha, stability-plasticity tradeoff")
+    parser.add_argument('--xi', type=float, default=0.1, help="Xi, damping factor to avoid divison by zero")
+    parser.add_argument('--alpha', type=float, default=0.9, help="Alpha, stability-plasticity tradeoff")
 
     args = parser.parse_args(argv)
     return args

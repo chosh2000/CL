@@ -47,7 +47,7 @@ class shared_model(nn.Module):
 
 
 	def calculate_importance(self, dataloader, task_num):
-		print('Computing MAS')
+		# print('Computing MAS')
 		# Initialize the importance matrix
 		if self.online_reg and len(self.reg_params)>0:
 		    importance = self.reg_params[0]['importance']
@@ -111,14 +111,14 @@ class shared_model(nn.Module):
 
 	#Head functions
 	def save_head(self, task_num):
-		print("Saving head (task#: {})".format(task_num))
+		# print("Saving head (task#: {})".format(task_num))
 		assert self.args.multi_head,  "must be a multi_head approach"
 		head_weight = self.tmodel.fc_head.weight.data.clone().detach()
 		head_bias = self.tmodel.fc_head.bias.data.clone().detach()
 		self.task_heads[task_num] = {'weight': head_weight, 'bias':head_bias}
 
 	def load_head(self, task_num): #only used during the inference step of multi-head method. Single head doesn't need save/load.
-		print("Loading head (task#:{})".format(task_num))
+		# print("Loading head (task#:{})".format(task_num))
 		assert self.args.multi_head,  "must be a multi_head approach"
 		with torch.no_grad():
 			self.tmodel.fc_head.weight.copy_(self.task_heads[task_num]['weight'])
@@ -134,7 +134,7 @@ class shared_model(nn.Module):
 
 	#Mask functions
 	def save_mask(self, task_num):
-		print("Saving  mask (task#:{})".format(task_num))
+		# print("Saving  mask (task#:{})".format(task_num))
 		self.task_masks[task_num] = {}
 		for n,p in self.tmodel.mask_list.items():
 			self.task_masks[task_num][n] = self.tmodel.mask_list[n].clone().detach()
@@ -143,7 +143,7 @@ class shared_model(nn.Module):
 			# 	print(format(self.task_masks[task_num][n]))
 
 	def load_mask(self, task_num):
-		print("Loading mask (task#:{})".format(task_num))
+		# print("Loading mask (task#:{})".format(task_num))
 		for n,p in self.tmodel.mask_list.items():
 			# self.tmodel.mask_list[n].data = self.task_masks[task_num][n].to(self.device)
 			self.tmodel.mask_list[n].copy_(self.task_masks[task_num][n])

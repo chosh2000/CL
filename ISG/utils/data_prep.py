@@ -27,12 +27,12 @@ def load_datasets(args, task_num):
 	])
 
 	if task_num == -1:  #CIFAR10 
-		trainset = torchvision.datasets.CIFAR10(root="../../data", train=True, download=True, transform=transform_train)
-		testset = torchvision.datasets.CIFAR10(root="../../data", train=False, download=True, transform=transform_test)
+		trainset = torchvision.datasets.CIFAR10(root="../../data", train=True, download=False, transform=transform_train)
+		testset = torchvision.datasets.CIFAR10(root="../../data", train=False, download=False, transform=transform_test)
 
 	else:				#CIFAR100 
-		trainset = torchvision.datasets.CIFAR100(root="../../data", train=True, download=True, transform=transform_train)
-		testset = torchvision.datasets.CIFAR100(root="../../data", train=False, download=True, transform=transform_test)
+		trainset = torchvision.datasets.CIFAR100(root="../../data", train=True, download=False, transform=transform_train)
+		testset = torchvision.datasets.CIFAR100(root="../../data", train=False, download=False, transform=transform_test)
 
 		#split the dataset
 		trainset = split_CIFAR100_dataset(trainset,task_num)

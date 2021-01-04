@@ -29,7 +29,7 @@ def SIM_gating(network, task_num, dataloader):
 			# if "head" not in n and "bias" not in n:
 			if n in network.tmodel.mask_list:
 				a = network.args.alpha
-				x = network.args.xi #Xi
+				x = network.args.xi 
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
 				F /= F.max()
 				if task_num == 0:

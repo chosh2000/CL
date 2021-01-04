@@ -13,10 +13,9 @@
   "weight_decay": 0,
   "model_weights": null,
   "dataset": "sCIFAR100",
-  "num_task": 10,
+  "num_task": 4,
   "schedule": [
-    60,
-    80
+    1
   ],
   "batch_size_train": 128,
   "batch_size_test": 1000,
