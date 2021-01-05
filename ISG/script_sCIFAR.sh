@@ -29,7 +29,7 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0.4    | tee ${OUTDIR}/SIM_rho115_reg1_a04.log
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--alpha 0.4    | tee ${OUTDIR}/SIM_rho155_reg1_a04.log
 
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 1 	   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho151_reg1_a0.log
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho115_reg1_a0.log
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho155_reg1_a0.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 1 	   --reglambda 1 	--alpha 0.99    | tee ${OUTDIR}/SIM_rho151_reg1_a099.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0.99    | tee ${OUTDIR}/SIM_rho115_reg1_a099.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--alpha 0.99    | tee ${OUTDIR}/SIM_rho155_reg1_a099.log
 

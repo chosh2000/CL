@@ -44,12 +44,14 @@ def SIM_gating(network, task_num, dataloader):
 				print("Sum Omega    : {}".format(O.sum()))
 				print("Max Fisher   : {}".format(F.max()))
 				print("Max Omega    : {}".format(O.max()))
+				print("Min Fisher   : {}".format(F.min()))
+				print("Min Omega    : {}".format(O.min()))
 				print("Max Relevance: {}".format(R.max()))
 				M = torch.zeros(network.tmodel.mask_list[n].shape) #Mask initialized to zero
 				R_sum = R.sum(dim=[i for i in range(1, len(R.shape))])
 				M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
 				M[M_index] = 1 #Sailent features set to 1
-				print("Mask active  : {}/{}\n".format(M.sum(), M.numel()))
+				# print("Mask active  : {}/{}\n".format(M.sum(), M.numel()))
 				assert network.tmodel.mask_list[n] is not None, "Mask mismatch" #
 				if network.tmodel.rho[n] < 1:
 					assert M.sum() < M.numel(), "Mask error"
