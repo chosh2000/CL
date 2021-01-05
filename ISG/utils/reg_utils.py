@@ -42,6 +42,8 @@ def SIM_gating(network, task_num, dataloader):
 				network.stat[task_num]['omega_sum'][n] = O.sum()
 				print("Layer        : {}".format(n))
 				print("Sum Omega    : {}".format(O.sum()))
+				print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
+				print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				
 				print("Max Fisher   : {}".format(F.max()))
 				print("Max Omega    : {}".format(O.max()))
 				print("Min Fisher   : {}".format(F.min()))
