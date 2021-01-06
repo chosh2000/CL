@@ -94,6 +94,7 @@ def get_args(argv):
 
     #network config
     parser.add_argument('--init_model', type=bool, default=False)
+    parser.add_argument('--random_drop', type=int, default=0)
     parser.add_argument('--method', type=str, default="MAS", help="Continual Learning Algorithm used")
     parser.add_argument('--model_type', type=str, default='cnn',help="The type (mlp|cnn|lenet|vgg|resnet) of backbone network")
     parser.add_argument('--mlp_size', type=int, default=1000)

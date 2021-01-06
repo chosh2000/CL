@@ -33,6 +33,10 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0.2    | tee ${OUTDIR}/SIM_rho115_reg1_a02.log
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--alpha 0.2    | tee ${OUTDIR}/SIM_rho155_reg1_a099.log
 
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 1 	   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho151_reg1_a00.log
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho115_reg1_a00.log
-# python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--alpha 0.2    | tee ${OUTDIR}/SIM_rho155_reg1_a099.log
+# python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 1 	   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho151_reg1_a00.log
+# python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho115_reg1_a00.log
+# python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--alpha 0    | tee ${OUTDIR}/SIM_rho155_reg1_a00.log
+
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 1 	   --reglambda 1 	--random_drop 1    | tee ${OUTDIR}/SIM_rho151_reg1_random.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--random_drop 1    | tee ${OUTDIR}/SIM_rho115_reg1_random.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 0.5   --reglambda 1 	--random_drop 1    | tee ${OUTDIR}/SIM_rho155_reg1_random.log
