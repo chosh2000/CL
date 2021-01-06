@@ -15,7 +15,8 @@
   "dataset": "sCIFAR100",
   "num_task": 10,
   "schedule": [
-    2
+    60,
+    80
   ],
   "batch_size_train": 128,
   "batch_size_test": 1000,
