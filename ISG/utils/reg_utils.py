@@ -4,6 +4,7 @@ from utils.data_prep import *
 def SIM_gating(network, task_num, dataloader):
 	network.tmodel.eval()
 	network.optimizer.zero_grad()
+	# network.lift_mask()
 	# network.lift_mask() #Make sure no mask is applied yet
 	#Populate Inductive Fisher
 	for batch_idx, (data, target) in enumerate(dataloader):
@@ -37,11 +38,13 @@ def SIM_gating(network, task_num, dataloader):
 				else:
 					O = network.reg_params[0]['importance'][n].clone() #Omega
 				O /= O.max()
-				R = F/(O*a+x) #Relevance
-				# R = F-O*a #Relevance
+				# R = F/(O*a+x) #Relevance
+				R = F-O*a #Relevance
 				network.stat[task_num]['omega_sum'][n] = O.sum()
+				# print("Xi           : {}".format(x))
 				print("Layer        : {}".format(n))
 				print("Sum Omega    : {}".format(O.sum()))
+				print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
 				print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
 				print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				
 				print("Max Fisher   : {}".format(F.max()))

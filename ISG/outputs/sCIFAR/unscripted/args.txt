@@ -13,9 +13,9 @@
   "weight_decay": 0,
   "model_weights": null,
   "dataset": "sCIFAR100",
-  "num_task": 4,
+  "num_task": 10,
   "schedule": [
-    1
+    2
   ],
   "batch_size_train": 128,
   "batch_size_test": 1000,
@@ -30,9 +30,9 @@
   "omega_multiplier": 1,
   "rho": [
     1,
-    0.5,
+    1,
     0.5
   ],
-  "xi": 0.5,
-  "alpha": 0.5
+  "xi": 0.09999999999999998,
+  "alpha": 0.9
 }
