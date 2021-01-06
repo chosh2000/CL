@@ -1,6 +1,6 @@
 {
   "use_gpu": true,
-  "out_dir": "outputs/sCIFAR/Jan_05_20h_01m",
+  "out_dir": "outputs/sCIFAR/Jan_06_12h_08m",
   "repeat": 1,
   "init_model": false,
   "method": "MAS",
@@ -34,6 +34,6 @@
     1.0,
     0.5
   ],
-  "xi": 0.8,
-  "alpha": 0.2
+  "xi": 1.0,
+  "alpha": 0.0
 }

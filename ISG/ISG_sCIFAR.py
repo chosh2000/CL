@@ -69,12 +69,12 @@ def SIM_CIFAR_train(args):
         else:
             raise("not implemented yet")
         #Save data
+        print("List of avg. accuracy: {}".format(acc_avg_list))
         torch.save(network.task_masks, mask_save_path)
         torch.save(network.stat, stat_save_path)
         # torch.save(network.params, param_save_path)
         # torch.save(network.reg_params, reg_save_path)
     torch.save(acc_avg_list, acc_save_path)
-    print("List of avg. accuracy: {}".format(acc_avg_list))
 
 
 def get_args(argv):

@@ -157,9 +157,12 @@ class shared_model(nn.Module):
 
 	def random_mask(self):
 		for n,p in self.tmodel.mask_list.items():
-			p.fill_(0)
-			p[:int(p.shape[0]*self.tmodel.rho[n])].fill_(1)
-			# mask = torch.FloatTensor(p.shape).uniform_() > (1-self.tmodel.rho[n])		
+			# p.fill_(0)
+			# p[:int(p.shape[0]*self.tmodel.rho[n])].fill_(1)
+			mask = torch.FloatTensor(p.shape).uniform_() > (1-self.tmodel.rho[n])
+			print(mask)
+			p()
+			p.copy_(mask)	
 			# self.tmodel.mask_list[n].data = mask.to(self.device)
 
 	def record_trace(self):
