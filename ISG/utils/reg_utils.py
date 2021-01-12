@@ -44,14 +44,11 @@ def SIM_gating(network, task_num, dataloader):
 				# print("Xi           : {}".format(x))
 				print("Layer        : {}".format(n))
 				print("Sum Omega    : {}".format(O.sum()))
-				print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
+				print("F.histogram  : {}".format(torch.histc(F, bins=10, min=0, max=1)))
 				print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
+				print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
 				print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				
-				print("Max Fisher   : {}".format(F.max()))
-				print("Max Omega    : {}".format(O.max()))
-				print("Min Fisher   : {}".format(F.min()))
-				print("Min Omega    : {}".format(O.min()))
-				print("Max Relevance: {}".format(R.max()))
+
 				M = torch.zeros(network.tmodel.mask_list[n].shape) #Mask initialized to zero
 				R_sum = R.sum(dim=[i for i in range(1, len(R.shape))])
 				M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
