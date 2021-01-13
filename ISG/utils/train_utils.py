@@ -24,7 +24,6 @@ def init_train(network, args, task_num, trainloader, testloader, maskloader=None
 			data = data.to(network.device)
 			target = target.to(network.device)
 
-
 			#Compute loss
 			loss = network.criterion(data, target)
 

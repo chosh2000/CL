@@ -7,14 +7,6 @@ import shutil
 import sys
 from utils.optimizer_utils import *
 from utils.data_prep import *
-# from __future__ import print_function
-# import matplotlib.pyplot as plt
-# from torchvision import datasets, models, transforms
-# import pickle
-# import glob
-# import numpy as np
-
-
 sys.path.append('./')
 
 
@@ -164,12 +156,12 @@ class shared_model(nn.Module):
 			# self.tmodel.mask_list[n].data = mask.to(self.device)
 
 	def record_trace(self):
+	# Keep a record of all neurons used in past.
 		if len(self.mask_trace) == 0:
 			for n,p in self.tmodel.mask_list.items():
 				self.mask_trace[n] = p.clone()
 		else:
 			for n,p in self.tmodel.mask_list.items():
-				# self.mask_trace[n] = torch.logical_or(self.mask_trace[n], p)
 				self.mask_trace[n] += p
 		#print
 		for n,p in self.mask_trace.items():

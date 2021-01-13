@@ -75,7 +75,7 @@ def SIM_CIFAR_train(args):
         # torch.save(network.params, param_save_path)
         # torch.save(network.reg_params, reg_save_path)
     torch.save(acc_avg_list, acc_save_path)
-
+    
 
 def get_args(argv):
     # TO read from a file
