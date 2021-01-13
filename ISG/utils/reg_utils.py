@@ -20,7 +20,7 @@ def SIM_gating(network, task_num, dataloader):
 		loss.backward()
 
 	assert network.online_reg, "SIM only supports online reg. computation"
-	
+
 	#Apply masks
 	if network.args.random_drop:
 		network.random_mask()
@@ -38,7 +38,7 @@ def SIM_gating(network, task_num, dataloader):
 					O = network.reg_params[0]['importance'][n].clone() #Omega
 				O /= O.max()
 				# R = F/(O*a+x) #Relevance
-				R = F-O*a #Relevance
+				R = (1-a)*F - a*O #Relevance
 				# print("Xi           : {}".format(x))
 				print("Layer        : {}".format(n))
 				print("Sum Omega    : {}".format(O.sum()))
