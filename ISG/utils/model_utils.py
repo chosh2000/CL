@@ -20,7 +20,6 @@ class shared_model(nn.Module):
 		self.reg_params = {} #{task_num:   {importance:  , task_param: }}  
 		self.task_masks = {} #{task_num:   {fc1: 		 , fc2: 	   }}
 		self.task_heads = {} #{task_num:   {}}
-		self.stat       = {} #{task_num:   {'omega_sum'  : {}}
 		self.mask_trace = {}
 		self.criterion_fn = nn.CrossEntropyLoss()
 		self.shuffle_idx = pMNIST_shuffle(self.args)

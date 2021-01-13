@@ -32,11 +32,6 @@ def init_train(network, args, task_num, trainloader, testloader, maskloader=None
 			loss.backward()
 			network.optimizer.step()
 
-			# Train stats
-			# if batch_idx % args.print_freq == 0:
-			# 	print("Task: {} Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(task_num, epoch, batch_idx * len(data), len(trainloader.dataset), 100. * batch_idx / len(trainloader), loss.item() ))
-			# 	train_losses.append(loss.item())
-			# 	train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
 		test(network, task_num, testloader, epoch)
 
 def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None):
@@ -97,18 +92,6 @@ def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None)
 				network.optimizer.zero_grad()
 				loss.backward()
 				network.optimizer.step()
-
-				#Below is to check masked parameters get 0 gradient when Back propagated
-				# for n, p in network.tmodel.named_parameters():
-				# 	if n in network.tmodel.mask_list:
-				# 		grad_sum = p.grad.data.sum(dim=[i for i in range(1, len(p.shape))])
-				# 		print("Layer:{}, num_zeros {}/{}".format(n, grad_sum.numel()-grad_sum.nonzero().size(0), grad_sum.numel()))
-
-				#Train stats
-				# if batch_idx % args.print_freq == 0:
-				# 	print("Task: {} Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(task_num, epoch, batch_idx * len(data), len(trainloader.dataset), 100. * batch_idx / len(trainloader), loss.item() ))
-				# 	train_losses.append(loss.item())
-				# 	train_counter.append((batch_idx*args.batch_size_train)+((epoch-1)*len(trainloader.dataset)))
 
 			#Test at the end of each epoch
 			test(network, task_num, testloader, epoch)

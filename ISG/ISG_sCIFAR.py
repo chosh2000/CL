@@ -27,7 +27,6 @@ def SIM_CIFAR_train(args):
         json.dump(args.__dict__, f, indent=2)
     acc_save_path = os.path.join(save_path,"SIM_acc"+str(args.rho)+".pth" )
     mask_save_path = os.path.join(save_path,"SIM_mask"+str(args.rho)+".pth" )
-    stat_save_path = os.path.join(save_path,"SIM_stat"+str(args.rho)+".pth" )
     model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
     # param_save_path = os.path.join(save_path,"SIM_param"+str(args.rho)+".pth" )
     # reg_save_path = os.path.join(save_path,"SIM_reg"+str(args.rho)+".pth" )
@@ -71,7 +70,6 @@ def SIM_CIFAR_train(args):
         #Save data
         print("List of avg. accuracy: {}".format(acc_avg_list))
         torch.save(network.task_masks, mask_save_path)
-        torch.save(network.stat, stat_save_path)
         # torch.save(network.params, param_save_path)
         # torch.save(network.reg_params, reg_save_path)
     torch.save(acc_avg_list, acc_save_path)

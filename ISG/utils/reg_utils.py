@@ -19,13 +19,12 @@ def SIM_gating(network, task_num, dataloader):
 		#compute gradients for these parameters
 		loss.backward()
 
-	#Apply masks
 	assert network.online_reg, "SIM only supports online reg. computation"
-	# if task_num >= 0:
+	
+	#Apply masks
 	if network.args.random_drop:
 		network.random_mask()
 	else:
-		network.stat[task_num] = {'omega_sum': {}}
 		for n, p in network.tmodel.named_parameters():
 			# if "head" not in n and "bias" not in n:
 			if n in network.tmodel.mask_list:
@@ -40,7 +39,6 @@ def SIM_gating(network, task_num, dataloader):
 				O /= O.max()
 				# R = F/(O*a+x) #Relevance
 				R = F-O*a #Relevance
-				network.stat[task_num]['omega_sum'][n] = O.sum()
 				# print("Xi           : {}".format(x))
 				print("Layer        : {}".format(n))
 				print("Sum Omega    : {}".format(O.sum()))
