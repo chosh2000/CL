@@ -51,7 +51,10 @@ def SIM_gating(network, task_num, dataloader):
 					# if network.tmodel.rho[n] < 1:
 					# 	assert M.sum() < M.numel(), "Mask error"
 				elif network.args.dropmethod == "dist":
-					M_index = R_sum.topk(int(R_sum_hist[1:10].sum()))[1]
+					if 'conv1' not in n:
+						M_index = R_sum.topk(int(R_sum_hist[1:10].sum()))[1]
+					else:
+						M_index = R_sum.topk(R_sum.numel())
 				else:
 					raise "invalid drop method"
 				M[M_index] = 1 #Sailent features set to 1
