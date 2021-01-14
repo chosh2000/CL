@@ -122,9 +122,10 @@ def get_args(argv):
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
     #masking
+    parser.add_argument('--dropmethod', type=str, default="rho", help="Drop method (rho | prob | dist)")
     parser.add_argument('--rho', nargs="+", type=float, default=[1, 1, 0.5], help="ratio of 1 in mask")
     parser.add_argument('--xi', type=float, default=0.1, help="Xi, damping factor to avoid divison by zero")
-    parser.add_argument('--alpha', type=float, default=0.9, help="Alpha, stability-plasticity tradeoff")
+    parser.add_argument('--alpha', type=float, default=0, help="Alpha, stability-plasticity tradeoff")
 
     args = parser.parse_args(argv)
     return args

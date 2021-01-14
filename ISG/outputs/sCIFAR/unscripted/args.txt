@@ -3,6 +3,7 @@
   "out_dir": "outputs/sCIFAR/unscripted",
   "repeat": 1,
   "init_model": false,
+  "random_drop": 0,
   "method": "MAS",
   "model_type": "cnn",
   "mlp_size": 1000,
@@ -29,6 +30,7 @@
   "reglambda": 1,
   "online_reg": true,
   "omega_multiplier": 1,
+  "dropmethod": "sex",
   "rho": [
     1,
     1,
