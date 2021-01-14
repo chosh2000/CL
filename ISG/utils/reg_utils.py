@@ -39,24 +39,23 @@ def SIM_gating(network, task_num, dataloader):
 				O /= O.max()
 				# R = F/(O*a+x) #Relevance
 				R = (1-a)*F - a*O #Relevance
-				# print("Xi           : {}".format(x))
-				print("Layer        : {}".format(n))
-				print("Sum Omega    : {}".format(O.sum()))
-				print("F.histogram  : {}".format(torch.histc(F, bins=10, min=0, max=1)))
-				print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
-				print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
-				print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				
 
 				M = torch.zeros(network.tmodel.mask_list[n].shape) #Mask initialized to zero
 				R_sum = R.sum(dim=[i for i in range(1, len(R.shape))])
 				M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
 				M[M_index] = 1 #Sailent features set to 1
-				# print("Mask active  : {}/{}\n".format(M.sum(), M.numel()))
 				assert network.tmodel.mask_list[n] is not None, "Mask mismatch" #
 				if network.tmodel.rho[n] < 1:
 					assert M.sum() < M.numel(), "Mask error"
 				network.tmodel.mask_list[n].copy_(M) 
 
+				# print("Xi           : {}".format(x))
+				print("Layer        : {}".format(n))
+				print("R.histogram  : {}".format(torch.histc(R_sum, bins=10, min=R_sum.min(), max=R_sum.max())))
+				print("R_sum max/min: {}/{}".format(R_sum.max(), R_sum.min()))
+				print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
+				print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
+				print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				
 	#Saving masks
 	network.save_mask(task_num)
 	network.optimizer.zero_grad()
