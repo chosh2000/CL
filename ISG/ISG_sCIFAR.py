@@ -123,6 +123,7 @@ def get_args(argv):
 
     #masking
     parser.add_argument('--dropmethod', type=str, default="rho", help="Drop method (rho | prob | dist)")
+    parser.add_argument('--dist_num', type=int, default=1, help="how many hist bins to include for the dist. method")
     parser.add_argument('--rho', nargs="+", type=float, default=[1, 1, 0.5], help="ratio of 1 in mask")
     parser.add_argument('--xi', type=float, default=0.1, help="Xi, damping factor to avoid divison by zero")
     parser.add_argument('--alpha', type=float, default=0, help="Alpha, stability-plasticity tradeoff")

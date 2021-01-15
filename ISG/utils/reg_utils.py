@@ -52,7 +52,7 @@ def SIM_gating(network, task_num, dataloader):
 					# 	assert M.sum() < M.numel(), "Mask error"
 				elif network.args.dropmethod == "dist":
 					if 'conv1' not in n:
-						M_index = R_sum.topk(int(R_sum_hist[1:10].sum()))[1]
+						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
 					else:
 						M_index = R_sum.topk(R_sum.numel())[1]
 				else:
