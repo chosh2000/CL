@@ -75,8 +75,6 @@ def SIM_gating(network, task_num, dataloader):
 				print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
 				print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
 				print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				
-
-
 	#Saving masks
 	network.save_mask(task_num)
 	network.optimizer.zero_grad()

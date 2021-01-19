@@ -119,7 +119,8 @@ def test(network, task_num, testloader, epoch):
 	test_loss /= len(testloader.dataset)
 	test_losses.append(test_loss)
 	accuracy = 100.*correct/len(testloader.dataset)
-	print('Task: {},\t Epoch: {}/{},\t Avg.loss: {:.4f},\t Accuracy: {}/{}({:.0f}%)'.format(
+	if epoch != -1:
+		print('Task: {},\t Epoch: {}/{},\t Avg.loss: {:.4f},\t Accuracy: {}/{}({:.0f}%)'.format(
 		task_num, epoch, network.args.schedule[-1], test_loss, correct, len(testloader.dataset), accuracy))
 	return accuracy
 
