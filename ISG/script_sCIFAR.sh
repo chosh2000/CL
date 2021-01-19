@@ -45,7 +45,7 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.3 0.3   --reglambda 1 --alpha 1	| tee ${OUTDIR}/SIM_rho133_reg1_a1.log
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.2 0.2   --reglambda 1 --alpha 1	| tee ${OUTDIR}/SIM_rho122_reg1_a1.log
 
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod dist --dist_num 2 --reglambda 1 --alpha 0	| tee ${OUTDIR}/SIM_dist2_reg1_a0.log
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod dist --dist_num 3 --reglambda 1 --alpha 0	| tee ${OUTDIR}/SIM_dist3_reg1_a0.log
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod dist --dist_num 4 --reglambda 1 --alpha 0	| tee ${OUTDIR}/SIM_dist4_reg1_a0.log
-python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod dist --dist_num 5 --reglambda 1 --alpha 0	| tee ${OUTDIR}/SIM_dist5_reg1_a0.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod random_even --rho 1 0.4 1 --reglambda 1 	| tee ${OUTDIR}/SIM_randomeven_rho141_reg1.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod random_even --rho 1 1 0.4 --reglambda 1	| tee ${OUTDIR}/SIM_randomeven_rho114_reg1.log
+python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod random_even --rho 1 0.4 0.4 --reglambda 1 	| tee ${OUTDIR}/SIM_randomeven_rho144_reg1.log
+# python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --dropmethod random_even --rho 1 0.5 1 --reglambda 1 	| tee ${OUTDIR}/SIM_randomeven_rho151_reg1.log

@@ -30,12 +30,13 @@
   "reglambda": 1,
   "online_reg": true,
   "omega_multiplier": 1,
-  "dropmethod": "sex",
+  "dropmethod": "rho",
+  "dist_num": 1,
   "rho": [
     1,
     1,
     0.5
   ],
-  "xi": 0.09999999999999998,
-  "alpha": 0.9
+  "xi": 1,
+  "alpha": 0
 }

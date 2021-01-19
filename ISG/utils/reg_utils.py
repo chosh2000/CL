@@ -55,6 +55,11 @@ def SIM_gating(network, task_num, dataloader):
 						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
 					else:
 						M_index = R_sum.topk(R_sum.numel())[1]
+				elif network.args.dropmethod == "random":
+					network.random_mask()
+				elif network.args.dropmethod == "random_even":
+					trace_sum = -1 *network.mask_trace[n].sum(dim=[i for i in range(1, len(network.mask_trace[n].shape))])
+					M_index = trace_sum.topk(int(trace_sum.numel()* network.tmodel.rho[n]))[1]
 				else:
 					raise "invalid drop method"
 				M[M_index] = 1 #Sailent features set to 1
