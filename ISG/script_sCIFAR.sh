@@ -17,7 +17,6 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 1    | tee ${OUTDIR}/SIM_rho115_reg1_a1.log
 python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.4 0.4   --reglambda 1 	--alpha 1    | tee ${OUTDIR}/SIM_rho144_reg1_a1.log
 
-# python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.5 1 	   --reglambda 1 	--alpha 0.8    | tee ${OUTDIR}/SIM_rho151_reg1_a08.log
 # python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 1 0.5 	   --reglambda 1 	--alpha 0.8    | tee ${OUTDIR}/SIM_rho115_reg1_a08.log
 python -u ISG_sCIFAR.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --schedule 50 80  --rho 1 0.4 0.4   --reglambda 1 	--alpha 0.8    | tee ${OUTDIR}/SIM_rho144_reg1_a08.log
 
