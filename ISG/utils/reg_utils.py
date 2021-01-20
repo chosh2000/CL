@@ -61,6 +61,7 @@ def SIM_gating(network, task_num, dataloader):
 				elif network.args.dropmethod == "random_even":
 					if len(network.mask_trace) == 0:
 						count[n] = torch.zeros(M.shape[0])
+					print("count:{}".format(count))
 					M_index = count[n].topk(int(count[n].numel() * network.tmodel.rho[n]))[1]
 					count[n][M_index] -= 1
 				else:
