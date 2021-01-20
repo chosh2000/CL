@@ -21,6 +21,7 @@ class shared_model(nn.Module):
 		self.task_masks = {} #{task_num:   {fc1: 		 , fc2: 	   }}
 		self.task_heads = {} #{task_num:   {}}
 		self.mask_trace = {}
+		self.count      = {}
 		self.criterion_fn = nn.CrossEntropyLoss()
 		self.shuffle_idx = pMNIST_shuffle(self.args)
 		self.optimizer = optim.Adam(self.tmodel.parameters(), lr=args.lr, weight_decay=args.weight_decay)
