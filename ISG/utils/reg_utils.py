@@ -25,7 +25,6 @@ def SIM_gating(network, task_num, dataloader):
 	if network.args.random_drop:
 		network.random_mask()
 	else:
-		count = {}
 		for n, p in network.tmodel.named_parameters():
 			# if "head" not in n and "bias" not in n:
 			if n in network.tmodel.mask_list:
@@ -55,15 +54,11 @@ def SIM_gating(network, task_num, dataloader):
 						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
 					else:
 						M_index = R_sum.topk(R_sum.numel())[1]
-				elif network.args.dropmethod == "random":
-					network.random_mask()
-					raise "not implemented correctly"
 				elif network.args.dropmethod == "random_even":
 					if len(network.mask_trace) == 0:
-						count[n] = torch.zeros(M.shape[0])
-					print("count:{}".format(count))
-					M_index = count[n].topk(int(count[n].numel() * network.tmodel.rho[n]))[1]
-					count[n][M_index] -= 1
+						network.count[n] = torch.zeros(M.shape[0])
+					M_index = network.count[n].topk(int(network.count[n].numel() * network.tmodel.rho[n]))[1]
+					network.count[n][M_index] -= 1
 				else:
 					raise "invalid drop method"
 				M[M_index] = 1 #Sailent features set to 1
