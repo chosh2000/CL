@@ -1,5 +1,5 @@
 {
-  "use_gpu": true,
+  "use_gpu": false,
   "out_dir": "outputs/sCIFAR/unscripted",
   "repeat": 1,
   "init_model": false,
@@ -12,7 +12,6 @@
   "multi_head": true,
   "momentum": 0,
   "weight_decay": 0,
-  "model_weights": null,
   "dataset": "sCIFAR100",
   "num_task": 10,
   "schedule": [
@@ -23,8 +22,6 @@
   "batch_size_test": 1000,
   "batch_size_fisher": 100,
   "print_freq": 10,
-  "workers": 3,
-  "train_aug": false,
   "dataroot": "data",
   "padding": true,
   "reglambda": 1,
@@ -34,7 +31,7 @@
   "dist_num": 1,
   "rho": [
     1,
-    1,
+    0.5,
     0.5
   ],
   "xi": 1,

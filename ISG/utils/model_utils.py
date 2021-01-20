@@ -163,8 +163,9 @@ class shared_model(nn.Module):
 			for n,p in self.tmodel.mask_list.items():
 				self.mask_trace[n] += p
 		#print
+		print("Mask histogram")
 		for n,p in self.mask_trace.items():
-			print("Mask histogram {}: \t {}".format(n, torch.histc(p, bins=11, min=0, max=11)))
+			print("{}: \t {}".format(n, torch.histc(p, bins=11, min=0, max=11)))
 
 
 def clear_models():

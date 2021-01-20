@@ -44,7 +44,6 @@ def SIM_gating(network, task_num, dataloader):
 				M = torch.zeros(network.tmodel.mask_list[n].shape) #Mask initialized to zero
 
 
-
 				if network.args.dropmethod == "rho":
 					M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
 					# assert network.tmodel.mask_list[n] is not None, "Mask mismatch" #
@@ -64,6 +63,7 @@ def SIM_gating(network, task_num, dataloader):
 					else:
 						trace_sum = -1 *network.mask_trace[n].sum(dim=[i for i in range(1, len(network.mask_trace[n].shape))])
 						M_index = trace_sum.topk(int(trace_sum.numel()* network.tmodel.rho[n]))[1]
+						print('#'*24, M_index.shape, '/', M.shape)
 				else:
 					raise "invalid drop method"
 				M[M_index] = 1 #Sailent features set to 1

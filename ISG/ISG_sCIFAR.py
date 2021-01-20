@@ -38,7 +38,10 @@ def SIM_CIFAR_train(args):
         init_train(network, args, task_num, trainloader, testloader)
         torch.save(network.tmodel.state_dict(), model_save_path)
     #Load initialized model
-    network.tmodel.load_state_dict(torch.load(model_save_path))
+    if args.use_gpu:
+        network.tmodel.load_state_dict(torch.load(model_save_path))
+    else:
+        network.tmodel.load_state_dict(torch.load(model_save_path, map_location=torch.device('cpu')))
 
     #Training split CIFAR100
     acc_list = {}
@@ -86,7 +89,7 @@ def get_args(argv):
     parser = argparse.ArgumentParser()
     
     #experiment
-    parser.add_argument('--use_gpu', type=bool, default=True, help="Use_gpu")
+    parser.add_argument('--use_gpu', type=bool, default=False, help="Use_gpu")
     parser.add_argument('--out_dir', type=str, default="outputs/sCIFAR/unscripted", help="output directory")
     parser.add_argument('--repeat', type=int, default=1, help="Repeat the experiment N times")
 
@@ -101,7 +104,7 @@ def get_args(argv):
     parser.add_argument('--multi_head', type=bool, default=True)
     parser.add_argument('--momentum', type=float, default=0)
     parser.add_argument('--weight_decay', type=float, default=0)
-    parser.add_argument('--model_weights', type=str, default=None, help="The path to the file for the model weights (*.pth).")
+    # parser.add_argument('--model_weights', type=str, default=None, help="The path to the file for the model weights (*.pth).")
     
     #dataset
     parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
@@ -111,10 +114,10 @@ def get_args(argv):
     parser.add_argument('--batch_size_test', type=int, default=1000)
     parser.add_argument('--batch_size_fisher', type=int, default=100)
     parser.add_argument('--print_freq', type=float, default=10, help="Print the log at every x iteration")
-    parser.add_argument('--workers', type=int, default=3, help="#Thread for dataloader")
-    parser.add_argument('--train_aug', dest='train_aug', default=False, action='store_true',help="Allow data augmentation during training")
     parser.add_argument('--dataroot', type=str, default='data', help="The root folder of dataset or downloaded data")
     parser.add_argument('--padding', type=bool, default=True, help="apply padding to input data")
+    # parser.add_argument('--workers', type=int, default=3, help="#Thread for dataloader")
+    # parser.add_argument('--train_aug', dest='train_aug', default=False, action='store_true',help="Allow data augmentation during training")
 
     #regularization
     parser.add_argument('--reglambda', type=float, default=1, help="Lambda: regularization strength")
@@ -122,9 +125,9 @@ def get_args(argv):
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
     #masking
-    parser.add_argument('--dropmethod', type=str, default="rho", help="Drop method (rho | prob | dist| random_even)")
-    parser.add_argument('--dist_num', type=int, default=1, help="how many hist bins to include for the dist. method")
-    parser.add_argument('--rho', nargs="+", type=float, default=[1, 1, 0.5], help="ratio of 1 in mask")
+    parser.add_argument('--dropmethod', type=str, default="random_even", help="Drop method (rho | prob | dist| random_even)")
+    # parser.add_argument('--dist_num', type=int, default=1, help="how many hist bins to include for the dist. method")
+    parser.add_argument('--rho', nargs="+", type=float, default=[1, 0.5, 0.5], help="ratio of 1 in mask")
     parser.add_argument('--xi', type=float, default=0.1, help="Xi, damping factor to avoid divison by zero")
     parser.add_argument('--alpha', type=float, default=0, help="Alpha, stability-plasticity tradeoff")
 
