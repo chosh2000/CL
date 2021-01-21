@@ -38,20 +38,18 @@ def init_train(network, args, task_num, trainloader, testloader, maskloader=None
 def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None):
 	train_losses = []
 	train_counter = []
-	#Set network to train
 	network.tmodel.to(network.device)
 
 
 	#Compute Inductive Fisher and apply SIM mask
 	SIM_gating(network, task_num, trainloader)
 	network.optimizer.zero_grad()
+	network.record_trace()
 
 	#Training Phase
 	network.load_new_head()
-	network.record_trace()
-	# print(network.tmodel.fc_head.weight.sum())
-
 	network.tmodel.train()
+
 	n_epochs = args.schedule[-1]
 	for epoch in range(n_epochs+1):
 		# network.log('Epoch:{0}'.format(epoch))
@@ -101,7 +99,7 @@ def test(network, task_num, testloader, epoch):
 	test_losses = []
 	test_loss = 0
 	correct = 0
-	# network.eval()
+	network.tmodel.eval()
 	device = network.device
 	network.tmodel.to(device)
 
@@ -123,5 +121,7 @@ def test(network, task_num, testloader, epoch):
 	if epoch != -1:
 		print('Task: {},\t Epoch: {}/{},\t Avg.loss: {:.4f},\t Test Accuracy: {}/{}({:.0f}%)'.format(
 		task_num, epoch, network.args.schedule[-1], test_loss, correct, len(testloader.dataset), accuracy))
+
+	network.tmodel.train()
 	return accuracy
 

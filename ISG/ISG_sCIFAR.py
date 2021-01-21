@@ -53,10 +53,10 @@ def SIM_CIFAR_train(args):
         train_SIM(network, args, task_num, trainloader, testloader)
 
         #Inference test on past tasks
+        network.tmodel.eval()
         if args.multi_head:
             acc_list[task_num] = []
             for loaded_task in range(task_num + 1):
-                network.tmodel.eval() #TODO: is this line necessary
                 network.load_head(loaded_task)
                 network.load_mask(loaded_task)
                 _, testloader = load_datasets(args, loaded_task)
