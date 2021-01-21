@@ -83,15 +83,14 @@ class CNN(nn.Module):
 			nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
-			# nn.Dropout2d(p=0.05),
+			nn.Dropout2d(p=0.05),
 			)
 
 		# FC layer
 		self.fc1_layer = nn.Sequential(
-			# nn.Dropout(p=0.1),   ############## commented out for nodropout
+			nn.Dropout(p=0.1),   ############## commented out for nodropout
 			nn.Linear(self.conv2_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
-			# nn.ReLU(inplace=True),
 			)
 
 		# Head layer

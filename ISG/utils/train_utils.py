@@ -18,8 +18,9 @@ def init_train(network, args, task_num, trainloader, testloader, maskloader=None
 	train_counter = []
 	network.tmodel.to(network.device)
 	network.tmodel.train()
-	n_epochs = 40
+	n_epochs = args.schedule[-1]
 	for epoch in range(n_epochs+1):
+		network.scheduler.step(epoch) #TODO: This might cause poor training in later tasks
 		for batch_idx, (data, target) in enumerate(trainloader):
 			data = data.to(network.device)
 			target = target.to(network.device)
