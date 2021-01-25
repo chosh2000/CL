@@ -26,7 +26,6 @@ def SIM_gating(network, task_num, dataloader):
 		network.random_mask()
 	else:
 		for n, p in network.tmodel.named_parameters():
-			# if "head" not in n and "bias" not in n:
 			if n in network.tmodel.mask_list:
 				a = network.args.alpha
 				x = network.args.xi 
@@ -46,9 +45,6 @@ def SIM_gating(network, task_num, dataloader):
 
 				if network.args.dropmethod == "rho":
 					M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
-					# assert network.tmodel.mask_list[n] is not None, "Mask mismatch" #
-					# if network.tmodel.rho[n] < 1:
-					# 	assert M.sum() < M.numel(), "Mask error"
 				elif network.args.dropmethod == "dist":
 					if 'conv1' not in n:
 						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]

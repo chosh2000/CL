@@ -89,7 +89,7 @@ def get_args(argv):
     parser = argparse.ArgumentParser()
     
     #experiment
-    parser.add_argument('--use_gpu', type=bool, default=True, help="Use_gpu")
+    parser.add_argument('--use_gpu', type=bool, default=False, help="Use_gpu")
     parser.add_argument('--out_dir', type=str, default="outputs/sCIFAR/unscripted", help="output directory")
     parser.add_argument('--repeat', type=int, default=1, help="Repeat the experiment N times")
 
@@ -125,9 +125,9 @@ def get_args(argv):
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
     #masking
-    parser.add_argument('--dropmethod', type=str, default="random_even", help="Drop method (rho | prob | dist| random_even)")
+    parser.add_argument('--dropmethod', type=str, default="rho", help="Drop method (rho | prob | dist| random_even)")
     # parser.add_argument('--dist_num', type=int, default=1, help="how many hist bins to include for the dist. method")
-    parser.add_argument('--rho', nargs="+", type=float, default=[1, 0.5, 0.5], help="ratio of 1 in mask")
+    parser.add_argument('--rho', nargs="+", type=float, default=[1, 0.4, 0.4], help="ratio of 1 in mask")
     parser.add_argument('--xi', type=float, default=0.1, help="Xi, damping factor to avoid divison by zero")
     parser.add_argument('--alpha', type=float, default=0, help="Alpha, stability-plasticity tradeoff")
 
