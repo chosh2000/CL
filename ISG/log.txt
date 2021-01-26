@@ -125,3 +125,18 @@ TODO:
     - [ ] relevance equation
     - [ ] reg strength
     - [ ] rho ratio
+
+
+#### 1/25 ####
+  - test the following Regularization methods.
+    look out for: training speed, accuracy, feature usage
+    -[ ] dropout vs no dropout
+         Best to apply it at the fully connected layers
+    -[ ] Batch norm
+         Best to apply it between convolution layer and RELU activation layer
+    -[ ] L2 regularization
+         We do this to reduce model complexity (simpler model = keep weights small = more even feature selection possible).
+         Look up structural risk minimization (SRM)
+    -[ ] Early stopping
+         Small number of training epoch could reduce forgetting.
+
