@@ -17,7 +17,6 @@ def SIM_CIFAR_train(args):
     #Initialize model
     model = CNN(args)
     network = shared_model(model, args)
-    args.xi = 1 - args.alpha
     
     #save paths
     save_path = os.path.join(os.getcwd(),args.out_dir)
@@ -28,8 +27,7 @@ def SIM_CIFAR_train(args):
     acc_save_path = os.path.join(save_path,"SIM_acc"+str(args.rho)+".pth" )
     mask_save_path = os.path.join(save_path,"SIM_mask"+str(args.rho)+".pth" )
     model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
-    # param_save_path = os.path.join(save_path,"SIM_param"+str(args.rho)+".pth" )
-    # reg_save_path = os.path.join(save_path,"SIM_reg"+str(args.rho)+".pth" )
+
 
     #Initialize network with CIFAR10 dataset
     if args.init_model:
@@ -37,6 +35,7 @@ def SIM_CIFAR_train(args):
         trainloader, testloader = load_datasets(args, task_num)
         init_train(network, args, task_num, trainloader, testloader)
         torch.save(network.tmodel.state_dict(), model_save_path)
+        
     #Load initialized model
     if args.use_gpu:
         network.tmodel.load_state_dict(torch.load(model_save_path))
@@ -73,19 +72,11 @@ def SIM_CIFAR_train(args):
         #Save data
         print("List of avg. accuracy: {}".format(acc_avg_list))
         torch.save(network.task_masks, mask_save_path)
-        # torch.save(network.params, param_save_path)
-        # torch.save(network.reg_params, reg_save_path)
+
     torch.save(acc_avg_list, acc_save_path)
     
 
 def get_args(argv):
-    # TO read from a file
-    # parser = ArgumentParser()
-    # args = parser.parse_args()
-    # with open('commandline_args.txt', 'r') as f:
-    #     args.__dict__ = json.load(f)
-
-    # This function prepares the variables shared across demo.py
     parser = argparse.ArgumentParser()
     
     #experiment

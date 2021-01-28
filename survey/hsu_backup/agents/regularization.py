@@ -213,34 +213,6 @@ class SI(L2):
 
         return loss.detach(), out
 
-    """
-    # - Alternative simplified implementation with similar performance -
-    def update_model(self, inputs, targets, tasks):
-        # A wrapper of original update step to include the estimation of w
-
-        # Backup prev param if not done yet
-        # The backup only happened at the beginning of a new task
-        if len(self.prev_params) == 0:
-            for n, p in self.params.items():
-                self.prev_params[n] = p.clone().detach()
-
-        # 1.Save current parameters
-        old_params = {}
-        for n, p in self.params.items():
-            old_params[n] = p.clone().detach()
-
-        # 2.Calculate the loss as usual
-        loss, out = super(SI, self).update_model(inputs, targets, tasks)
-
-        # 3.Accumulate the w
-        for n, p in self.params.items():
-            delta = p.detach() - old_params[n]
-            if p.grad is not None:  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
-                self.w[n] -= p.grad * delta  # w[n] is >=0
-
-        return loss.detach(), out
-    """
-
     def calculate_importance(self, dataloader):
         self.log('Computing SI')
         assert self.online_reg,'SI needs online_reg=True'

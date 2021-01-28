@@ -39,7 +39,6 @@ class shared_model(nn.Module):
 
 
 	def calculate_importance(self, dataloader, task_num):
-		# print('Computing MAS')
 		# Initialize the importance matrix
 		if self.online_reg and len(self.reg_params)>0:
 		    importance = self.reg_params[0]['importance']
@@ -103,45 +102,33 @@ class shared_model(nn.Module):
 
 	#Head functions
 	def save_head(self, task_num):
-		# print("Saving head (task#: {})".format(task_num))
 		assert self.args.multi_head,  "must be a multi_head approach"
 		head_weight = self.tmodel.fc_head.weight.data.clone().detach()
 		head_bias = self.tmodel.fc_head.bias.data.clone().detach()
 		self.task_heads[task_num] = {'weight': head_weight, 'bias':head_bias}
 
 	def load_head(self, task_num): #only used during the inference step of multi-head method. Single head doesn't need save/load.
-		# print("Loading head (task#:{})".format(task_num))
 		assert self.args.multi_head,  "must be a multi_head approach"
 		with torch.no_grad():
 			self.tmodel.fc_head.weight.copy_(self.task_heads[task_num]['weight'])
 			self.tmodel.fc_head.bias.copy_(self.task_heads[task_num]['bias'])
 
-		# self.tmodel.fc_head.load_state_dict(self.task_heads[task_num])
-
 	def load_new_head(self):
 		new = nn.Linear(self.tmodel.fc_head.in_features, self.tmodel.fc_head.out_features).to(self.device)
 		self.tmodel.fc_head.load_state_dict(new.state_dict())
-		# self.tmodel.fc_head.weight.data = new.weight.data
-		# self.tmodel.fc_head.bias.data = new.bias.data
+
 
 	#Mask functions
 	def save_mask(self, task_num):
-		# print("Saving  mask (task#:{})".format(task_num))
 		self.task_masks[task_num] = {}
 		for n,p in self.tmodel.mask_list.items():
 			self.task_masks[task_num][n] = self.tmodel.mask_list[n].clone().detach()
-			# if "conv1_layer.2.weight" in n:
-			# 	print("save_mask: **{}**  {}/{}".format(n, self.task_masks[task_num][n].sum(), self.task_masks[task_num][n].numel()))
-			# 	print(format(self.task_masks[task_num][n]))
+
 
 	def load_mask(self, task_num):
-		# print("Loading mask (task#:{})".format(task_num))
 		for n,p in self.tmodel.mask_list.items():
-			# self.tmodel.mask_list[n].data = self.task_masks[task_num][n].to(self.device)
 			self.tmodel.mask_list[n].copy_(self.task_masks[task_num][n])
-			# if "conv1_layer.2.weight" in n:
-			# 	print("load_mask: **{}**  {}/{}".format(n, self.tmodel.mask_list[n].sum(), self.tmodel.mask_list[n].numel()))
-			# 	print(self.tmodel.mask_list[n])
+
 
 	def lift_mask(self):
 		for n,p in self.tmodel.mask_list.items():
@@ -151,12 +138,10 @@ class shared_model(nn.Module):
 		for n,p in self.tmodel.mask_list.items():
 			mask = torch.FloatTensor(p.shape).uniform_() > (1-self.tmodel.rho[n])
 			p.copy_(mask)	
-			# p.fill_(0)
-			# p[:int(p.shape[0]*self.tmodel.rho[n])].fill_(1)
-			# self.tmodel.mask_list[n].data = mask.to(self.device)
+
 
 	def record_trace(self):
-	# Keep a record of all neurons used in past.
+		# Keep a record of all neurons used in past.
 		if len(self.mask_trace) == 0:
 			for n,p in self.tmodel.mask_list.items():
 				self.mask_trace[n] = p.clone()
