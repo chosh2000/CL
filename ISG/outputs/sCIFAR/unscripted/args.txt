@@ -1,8 +1,8 @@
 {
-  "use_gpu": false,
+  "use_gpu": 0,
   "out_dir": "outputs/sCIFAR/unscripted",
   "repeat": 1,
-  "init_model": false,
+  "init_model": 0,
   "random_drop": 0,
   "method": "MAS",
   "model_type": "cnn",
@@ -28,11 +28,12 @@
   "online_reg": true,
   "omega_multiplier": 1,
   "dropmethod": "rho",
+  "inhib": 0.5,
   "rho": [
     1,
     0.4,
     0.4
   ],
-  "xi": 1,
+  "xi": 0.1,
   "alpha": 0
 }

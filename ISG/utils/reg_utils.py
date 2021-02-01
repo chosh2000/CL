@@ -60,6 +60,7 @@ def SIM_gating(network, task_num, dataloader):
 				else:
 					raise "invalid drop method"
 				M[M_index] = 1 #Sailent features set to 1
+				M[M_inhib] = 1
 				network.tmodel.mask_list[n].copy_(M) 
 
 				print("Layer        : {}".format(n))

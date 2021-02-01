@@ -50,7 +50,7 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --reglambda 1 --alpha 0.6	| tee ${OUTDIR}/SIM_rho144_reg1_a06_batchnorm.log
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --reglambda 1 --alpha 1.0	| tee ${OUTDIR}/SIM_rho144_reg1_a1_batchnorm.log
 
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 1 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.0 --reglambda 1 --alpha 0.0	| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout_inhib00.log
+python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.0 --reglambda 1 --alpha 0.0	| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout_inhib00.log
 python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.1 --reglambda 1 --alpha 0.0	| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout_inhib01.log
 python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.2 --reglambda 1 --alpha 0.0	| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout_inhib02.log
 python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.3 --reglambda 1 --alpha 0.0	| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout_inhib03.log
