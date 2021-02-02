@@ -39,7 +39,8 @@ def SIM_gating(network, task_num, dataloader):
 				O /= O.max()
 				# R = F/(O*a+x) #Relevance
 				R = (1-a)*F - a*O #Relevance
-				S = -(1-b)*F - b*O#Secondary, Collateral, Supplement, Auxiliary 
+				# S = -(1-b)*F - b*O#Secondary, Collateral, Supplement, Auxiliary 
+				S = -1*O#Secondary, Collateral, Supplement, Auxiliary 
 				R_sum = R.sum(dim=[i for i in range(1, len(R.shape))])
 				S_sum = S.sum(dim=[i for i in range(1, len(S.shape))])
 				R_sum_hist = torch.histc(R_sum, bins=10, min=R_sum.min(), max=R_sum.max())
