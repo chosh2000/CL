@@ -57,9 +57,9 @@ class CNN(nn.Module):
 		self.fc1_mask = torch.ones(512).to(self.device)
 		self.rho = {}
 		self.mask_list = {
-							'conv1_layer.3.weight':self.conv1_mask, 
-							'conv2_layer.3.weight':self.conv2_mask,
-							'fc1_layer.0.weight':self.fc1_mask,
+							'conv1_layer.2.weight':self.conv1_mask, 
+							'conv2_layer.2.weight':self.conv2_mask,
+							'fc1_layer.1.weight':self.fc1_mask,
 						}
 		assert len(self.args.rho) == len(self.mask_list), "make sure mask number matches"
 		for i, key in enumerate(self.mask_list.keys()):
@@ -68,7 +68,7 @@ class CNN(nn.Module):
 		# Conv Layer block 1
 		self.conv1_layer = nn.Sequential(
 			nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, padding=1),
-			nn.BatchNorm2d(32),
+			# nn.BatchNorm2d(32),
 			nn.ReLU(),
 			nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, padding=1),
 			nn.ReLU(),
@@ -78,7 +78,7 @@ class CNN(nn.Module):
 		# Conv Layer block 2
 		self.conv2_layer = nn.Sequential(
 			nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1),
-			nn.BatchNorm2d(64),
+			# nn.BatchNorm2d(64),
 			nn.ReLU(),
 			nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1),
 			nn.ReLU(),
@@ -88,7 +88,7 @@ class CNN(nn.Module):
 
 		# FC layer
 		self.fc1_layer = nn.Sequential(
-			# nn.Dropout(p=0.1),   ############## commented out for nodropout
+			nn.Dropout(p=0.1),   ############## commented out for nodropout
 			nn.Linear(self.conv2_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
 			)
