@@ -38,15 +38,16 @@ def SIM_gating(network, task_num, dataloader):
 				O /= O.max()
 				# R = F/(O*a+x) #Relevance
 				R = (1-a)*F - a*O #Relevance
+				S = -O#Secondary, Collateral, Supplement, Auxiliary 
 				R_sum = R.sum(dim=[i for i in range(1, len(R.shape))])
+				S_sum = S.sum(dim=[i for i in range(1, len(S.shape))])
 				R_sum_hist = torch.histc(R_sum, bins=10, min=R_sum.min(), max=R_sum.max())
 				M = torch.zeros(network.tmodel.mask_list[n].shape) #Mask initialized to zero
 
 
 				if network.args.dropmethod == "rho":
 					M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]*(1-network.args.inhib)))[1]
-					R_sum = -R_sum
-					M_inhib = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]*network.args.inhib))[1]
+					M_inhib = S_sum.topk(int(S_sum.numel()* network.tmodel.rho[n]*network.args.inhib))[1]
 				elif network.args.dropmethod == "dist":
 					if 'conv1' not in n:
 						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
