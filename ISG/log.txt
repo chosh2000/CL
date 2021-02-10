@@ -140,3 +140,33 @@ TODO:
     -[ ] Early stopping
          Small number of training epoch could reduce forgetting.
 
+
+#################################################################################################################
+Experiment design on FWT, BWT, Interference(INT), memory saturation(SAT), long-term learning(LTL) "lifelong learning"
+
+ACC
+ - [ ] Average accuracy
+FWT
+ - [ ] Learning Curve Area(LCA), "Efficient Lifelong learning with a-GEM"
+      + measures learning speed
+ - [ ] Feature Saliency/Generality Test
+      + only applies to multi-head model
+      + Freeze shared layer. Only train the head layer
+BWT
+ - "Gradient Episodic Memory"
+ - [ ] We focus on Backward feature polishing/honeing/refining/shaping
+      + only applies to multi-head model
+      + freeze shared layer, retrain just the head layer(fine tuning). See if there are any Acc improvement.
+
+INT
+ - [ ] sum of parameter displacement * importance\
+      + only applies to reg. method
+SAT
+ - [ ] Accumulation of Fisher information. ratio of Acc/change_in_summed_importance over tasks.
+      + only applies to reg. method
+LTL
+ - Scalability test (information packing) with extended datasets
+      + 100 tasks on pMNIST
+      + 100 tasks on CIFAR100)
+
+- [ ] Task Agnostic Test
