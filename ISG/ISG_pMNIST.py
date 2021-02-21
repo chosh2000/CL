@@ -49,7 +49,7 @@ def ISG_train(args):
 
 	#Initialize model
 	model = FcNet(args)
-	network = shared_model(model, args)
+	network = MAS(model, args)
 	acc_list = {}
 	#save paths
 	save_path = os.path.join(os.getcwd(),args.out_dir)

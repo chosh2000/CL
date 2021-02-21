@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "use_gpu": 1,
-=======
   "use_gpu": 0,
->>>>>>> b8a11b16ae0c863ed8826d8c81b7a2ba33e915ac
   "out_dir": "outputs/sCIFAR/unscripted",
   "repeat": 1,
   "init_model": 0,
@@ -32,12 +28,13 @@
   "online_reg": true,
   "omega_multiplier": 1,
   "dropmethod": "rho",
-  "inhib": 0.5,
+  "inhib": 0.2,
   "rho": [
     1,
     0.4,
     0.4
   ],
   "xi": 0.1,
-  "alpha": 0
+  "alpha": 0,
+  "beta": 0.9
 }

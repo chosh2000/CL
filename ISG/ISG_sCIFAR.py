@@ -5,9 +5,9 @@ import numpy as np
 import torch
 import json
 # from utils.optimizer_utils import *
+import utils.model_utils
 from utils.train_utils import *
 from utils.reg_utils import *
-from utils.model_utils import *
 from utils.data_prep import *
 from utils.network_utils import *
 
@@ -16,7 +16,7 @@ from utils.network_utils import *
 def SIM_CIFAR_train(args):
     #Initialize model
     model = CNN(args)
-    network = shared_model(model, args)
+    network = utils.model_utils.__dict__[args.method](model, args)
     
     #save paths
     save_path = os.path.join(os.getcwd(),args.out_dir)
@@ -87,7 +87,7 @@ def get_args(argv):
     #network config
     parser.add_argument('--init_model', type=int, default=0)
     parser.add_argument('--random_drop', type=int, default=0)
-    parser.add_argument('--method', type=str, default="MAS", help="Continual Learning Algorithm used")
+    parser.add_argument('--method', type=str, default="MAS", help="CL algorithm (MAS|SI|EWC)")
     parser.add_argument('--model_type', type=str, default='cnn',help="The type (mlp|cnn|lenet|vgg|resnet) of backbone network")
     parser.add_argument('--mlp_size', type=int, default=1000)
     parser.add_argument('--optimizer', type=str, default='Adam', help="SGD|Adam|RMSprop|amsgrad|Adadelta|Adagrad|Adamax ...")

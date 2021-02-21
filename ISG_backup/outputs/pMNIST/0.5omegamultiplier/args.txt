@@ -1,0 +1,36 @@
+{
+  "use_gpu": false,
+  "out_dir": "outputs/pMNIST/unscripted",
+  "repeat": 1,
+  "method": "MAS",
+  "model_type": "mlp",
+  "mlp_size": 1000,
+  "optimizer": "Adam",
+  "lr": 0.0001,
+  "multi_head": true,
+  "momentum": 0,
+  "weight_decay": 0,
+  "model_weights": null,
+  "dataset": "MNIST",
+  "num_task": 100,
+  "schedule": [
+    10
+  ],
+  "batch_size_train": 64,
+  "batch_size_test": 1000,
+  "batch_size_fisher": 100,
+  "print_freq": 200,
+  "workers": 3,
+  "train_aug": false,
+  "dataroot": "data",
+  "padding": true,
+  "reglambda": 0.01,
+  "online_reg": true,
+  "omega_multiplier": 0.5,
+  "rho": [
+    1,
+    1
+  ],
+  "xi": 0.001,
+  "alpha": 0.1
+}

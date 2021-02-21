@@ -1,0 +1,122 @@
+Layer        : conv1_layer.2.weight
+R.histogram  : tensor([5., 9., 1., 5., 4., 4., 2., 0., 1., 1.], device='cuda:0')
+R_sum max/min: 57.0/0.0
+F.num_zeros  : 288/9216
+W.num_zeros  : 0/9216
+O.num_zeros  : 0/9216
+Layer        : conv2_layer.2.weight
+R.histogram  : tensor([22., 11., 10.,  9.,  1.,  4.,  0.,  3.,  2.,  2.], device='cuda:0')
+R_sum max/min: 93.2/0.0
+F.num_zeros  : 8941/36864
+W.num_zeros  : 0/36864
+O.num_zeros  : 0/36864
+Layer        : fc1_layer.0.weight
+R.histogram  : tensor([329., 100.,  49.,  22.,   3.,   6.,   1.,   1.,   0.,   1.],
+       device='cuda:0')
+R_sum max/min: 518.4/0.0
+F.num_zeros  : 1274405/2097152
+W.num_zeros  : 0/2097152
+O.num_zeros  : 0/2097152
+Mask histogram conv1_layer.2.weight: 	 tensor([   0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.],
+       device='cuda:0')
+Mask histogram conv2_layer.2.weight: 	 tensor([2496., 1600.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.],
+       device='cuda:0')
+Mask histogram fc1_layer.0.weight: 	 tensor([308., 204.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Task: 0,	 Epoch: 0/80,	 Avg.loss: 0.0010,	 Accuracy: 634/1000(63%)
+Task: 0,	 Epoch: 1/80,	 Avg.loss: 0.0008,	 Accuracy: 736/1000(74%)
+Task: 0,	 Epoch: 2/80,	 Avg.loss: 0.0007,	 Accuracy: 751/1000(75%)
+Task: 0,	 Epoch: 3/80,	 Avg.loss: 0.0007,	 Accuracy: 783/1000(78%)
+Task: 0,	 Epoch: 4/80,	 Avg.loss: 0.0007,	 Accuracy: 771/1000(77%)
+Task: 0,	 Epoch: 5/80,	 Avg.loss: 0.0006,	 Accuracy: 778/1000(78%)
+Task: 0,	 Epoch: 6/80,	 Avg.loss: 0.0006,	 Accuracy: 798/1000(80%)
+Task: 0,	 Epoch: 7/80,	 Avg.loss: 0.0006,	 Accuracy: 815/1000(82%)
+Task: 0,	 Epoch: 8/80,	 Avg.loss: 0.0006,	 Accuracy: 814/1000(81%)
+Task: 0,	 Epoch: 9/80,	 Avg.loss: 0.0006,	 Accuracy: 807/1000(81%)
+Task: 0,	 Epoch: 10/80,	 Avg.loss: 0.0006,	 Accuracy: 813/1000(81%)
+Task: 0,	 Epoch: 11/80,	 Avg.loss: 0.0006,	 Accuracy: 820/1000(82%)
+Task: 0,	 Epoch: 12/80,	 Avg.loss: 0.0006,	 Accuracy: 826/1000(83%)
+Task: 0,	 Epoch: 13/80,	 Avg.loss: 0.0006,	 Accuracy: 816/1000(82%)
+Task: 0,	 Epoch: 14/80,	 Avg.loss: 0.0006,	 Accuracy: 831/1000(83%)
+Task: 0,	 Epoch: 15/80,	 Avg.loss: 0.0006,	 Accuracy: 840/1000(84%)
+Task: 0,	 Epoch: 16/80,	 Avg.loss: 0.0006,	 Accuracy: 831/1000(83%)
+Task: 0,	 Epoch: 17/80,	 Avg.loss: 0.0006,	 Accuracy: 814/1000(81%)
+Task: 0,	 Epoch: 18/80,	 Avg.loss: 0.0007,	 Accuracy: 814/1000(81%)
+Task: 0,	 Epoch: 19/80,	 Avg.loss: 0.0007,	 Accuracy: 811/1000(81%)
+Task: 0,	 Epoch: 20/80,	 Avg.loss: 0.0006,	 Accuracy: 830/1000(83%)
+Task: 0,	 Epoch: 21/80,	 Avg.loss: 0.0006,	 Accuracy: 824/1000(82%)
+Task: 0,	 Epoch: 22/80,	 Avg.loss: 0.0006,	 Accuracy: 836/1000(84%)
+Task: 0,	 Epoch: 23/80,	 Avg.loss: 0.0006,	 Accuracy: 821/1000(82%)
+Task: 0,	 Epoch: 24/80,	 Avg.loss: 0.0006,	 Accuracy: 832/1000(83%)
+Task: 0,	 Epoch: 25/80,	 Avg.loss: 0.0006,	 Accuracy: 847/1000(85%)
+Task: 0,	 Epoch: 26/80,	 Avg.loss: 0.0006,	 Accuracy: 828/1000(83%)
+Task: 0,	 Epoch: 27/80,	 Avg.loss: 0.0007,	 Accuracy: 817/1000(82%)
+Task: 0,	 Epoch: 28/80,	 Avg.loss: 0.0007,	 Accuracy: 814/1000(81%)
+Task: 0,	 Epoch: 29/80,	 Avg.loss: 0.0006,	 Accuracy: 824/1000(82%)
+Task: 0,	 Epoch: 30/80,	 Avg.loss: 0.0006,	 Accuracy: 823/1000(82%)
+Task: 0,	 Epoch: 31/80,	 Avg.loss: 0.0007,	 Accuracy: 808/1000(81%)
+Task: 0,	 Epoch: 32/80,	 Avg.loss: 0.0007,	 Accuracy: 809/1000(81%)
+Task: 0,	 Epoch: 33/80,	 Avg.loss: 0.0006,	 Accuracy: 833/1000(83%)
+Task: 0,	 Epoch: 34/80,	 Avg.loss: 0.0007,	 Accuracy: 816/1000(82%)
+Task: 0,	 Epoch: 35/80,	 Avg.loss: 0.0007,	 Accuracy: 827/1000(83%)
+Task: 0,	 Epoch: 36/80,	 Avg.loss: 0.0007,	 Accuracy: 845/1000(85%)
+Task: 0,	 Epoch: 37/80,	 Avg.loss: 0.0006,	 Accuracy: 824/1000(82%)
+Task: 0,	 Epoch: 38/80,	 Avg.loss: 0.0006,	 Accuracy: 827/1000(83%)
+Task: 0,	 Epoch: 39/80,	 Avg.loss: 0.0006,	 Accuracy: 835/1000(84%)
+Task: 0,	 Epoch: 40/80,	 Avg.loss: 0.0006,	 Accuracy: 844/1000(84%)
+Task: 0,	 Epoch: 41/80,	 Avg.loss: 0.0006,	 Accuracy: 835/1000(84%)
+Task: 0,	 Epoch: 42/80,	 Avg.loss: 0.0007,	 Accuracy: 831/1000(83%)
+Task: 0,	 Epoch: 43/80,	 Avg.loss: 0.0006,	 Accuracy: 821/1000(82%)
+Task: 0,	 Epoch: 44/80,	 Avg.loss: 0.0007,	 Accuracy: 824/1000(82%)
+Task: 0,	 Epoch: 45/80,	 Avg.loss: 0.0007,	 Accuracy: 840/1000(84%)
+Task: 0,	 Epoch: 46/80,	 Avg.loss: 0.0007,	 Accuracy: 836/1000(84%)
+Task: 0,	 Epoch: 47/80,	 Avg.loss: 0.0006,	 Accuracy: 832/1000(83%)
+Task: 0,	 Epoch: 48/80,	 Avg.loss: 0.0007,	 Accuracy: 831/1000(83%)
+Task: 0,	 Epoch: 49/80,	 Avg.loss: 0.0008,	 Accuracy: 809/1000(81%)
+Task: 0,	 Epoch: 50/80,	 Avg.loss: 0.0007,	 Accuracy: 836/1000(84%)
+Task: 0,	 Epoch: 51/80,	 Avg.loss: 0.0007,	 Accuracy: 840/1000(84%)
+Task: 0,	 Epoch: 52/80,	 Avg.loss: 0.0007,	 Accuracy: 842/1000(84%)
+Task: 0,	 Epoch: 53/80,	 Avg.loss: 0.0007,	 Accuracy: 842/1000(84%)
+Task: 0,	 Epoch: 54/80,	 Avg.loss: 0.0007,	 Accuracy: 844/1000(84%)
+Task: 0,	 Epoch: 55/80,	 Avg.loss: 0.0007,	 Accuracy: 846/1000(85%)
+Task: 0,	 Epoch: 56/80,	 Avg.loss: 0.0007,	 Accuracy: 844/1000(84%)
+Task: 0,	 Epoch: 57/80,	 Avg.loss: 0.0007,	 Accuracy: 850/1000(85%)
+Task: 0,	 Epoch: 58/80,	 Avg.loss: 0.0007,	 Accuracy: 846/1000(85%)
+Task: 0,	 Epoch: 59/80,	 Avg.loss: 0.0007,	 Accuracy: 847/1000(85%)
+Task: 0,	 Epoch: 60/80,	 Avg.loss: 0.0007,	 Accuracy: 846/1000(85%)
+Task: 0,	 Epoch: 61/80,	 Avg.loss: 0.0007,	 Accuracy: 846/1000(85%)
+Task: 0,	 Epoch: 62/80,	 Avg.loss: 0.0007,	 Accuracy: 853/1000(85%)
+Task: 0,	 Epoch: 63/80,	 Avg.loss: 0.0007,	 Accuracy: 850/1000(85%)
+Task: 0,	 Epoch: 64/80,	 Avg.loss: 0.0007,	 Accuracy: 840/1000(84%)
+Task: 0,	 Epoch: 65/80,	 Avg.loss: 0.0007,	 Accuracy: 848/1000(85%)
+Task: 0,	 Epoch: 66/80,	 Avg.loss: 0.0007,	 Accuracy: 848/1000(85%)
+Task: 0,	 Epoch: 67/80,	 Avg.loss: 0.0007,	 Accuracy: 849/1000(85%)
+Task: 0,	 Epoch: 68/80,	 Avg.loss: 0.0007,	 Accuracy: 846/1000(85%)
+Task: 0,	 Epoch: 69/80,	 Avg.loss: 0.0007,	 Accuracy: 851/1000(85%)
+Task: 0,	 Epoch: 70/80,	 Avg.loss: 0.0007,	 Accuracy: 853/1000(85%)
+Task: 0,	 Epoch: 71/80,	 Avg.loss: 0.0007,	 Accuracy: 852/1000(85%)
+Task: 0,	 Epoch: 72/80,	 Avg.loss: 0.0007,	 Accuracy: 853/1000(85%)
+Task: 0,	 Epoch: 73/80,	 Avg.loss: 0.0007,	 Accuracy: 849/1000(85%)
+Task: 0,	 Epoch: 74/80,	 Avg.loss: 0.0007,	 Accuracy: 841/1000(84%)
+Task: 0,	 Epoch: 75/80,	 Avg.loss: 0.0007,	 Accuracy: 852/1000(85%)
+Task: 0,	 Epoch: 76/80,	 Avg.loss: 0.0007,	 Accuracy: 850/1000(85%)
+Task: 0,	 Epoch: 77/80,	 Avg.loss: 0.0007,	 Accuracy: 849/1000(85%)
+Task: 0,	 Epoch: 78/80,	 Avg.loss: 0.0007,	 Accuracy: 852/1000(85%)
+Task: 0,	 Epoch: 79/80,	 Avg.loss: 0.0007,	 Accuracy: 845/1000(85%)
+Task: 0,	 Epoch: -1/80,	 Avg.loss: 0.0007,	 Accuracy: 845/1000(85%)
+Trained Task:0, Loaded task:0, Accuracy:84.5%
+Trained Task:0, Avg. Accuracy: 84.5 
+
+List of avg. accuracy: [84.5]
+Layer        : conv1_layer.2.weight
+R.histogram  : tensor([4., 6., 3., 6., 5., 3., 1., 1., 0., 3.], device='cuda:0')
+R_sum max/min: 50.4/0.0
+F.num_zeros  : 288/9216
+W.num_zeros  : 0/9216
+O.num_zeros  : 288/9216
+Layer        : conv2_layer.2.weight
+R.histogram  : tensor([40.,  9.,  6.,  3.,  1.,  1.,  2.,  1.,  0.,  1.], device='cuda:0')
+R_sum max/min: 94.7/0.0
+F.num_zeros  : 9149/36864
+W.num_zeros  : 0/36864
+O.num_zeros  : 22464/36864

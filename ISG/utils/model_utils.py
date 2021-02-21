@@ -10,9 +10,9 @@ from utils.data_prep import *
 sys.path.append('./')
 
 
-class shared_model(nn.Module):
+class MAS(nn.Module):
 	def __init__(self, model, args):
-		super(shared_model, self).__init__()
+		super(MAS, self).__init__()
 		self.args = args
 		self.tmodel = model
 		self.online_reg = args.online_reg
@@ -152,6 +152,88 @@ class shared_model(nn.Module):
 		print("Mask histogram")
 		for n,p in self.mask_trace.items():
 			print("{}: \t {}".format(n, torch.histc(p, bins=11, min=0, max=11)))
+
+
+
+
+class SI(MAS):
+    """
+    @inproceedings{zenke2017continual,
+        title={Continual Learning Through Synaptic Intelligence},
+        author={Zenke, Friedemann and Poole, Ben and Ganguli, Surya},
+        booktitle={International Conference on Machine Learning},
+        year={2017},
+        url={https://arxiv.org/abs/1703.04200}
+    }
+    """
+    def __init__(self, model, args):
+        super(SI, self).__init__(model, args)
+        self.damping_factor = 0.1
+        self.w = {}
+        self.initial_params = {}
+
+        for n, p in self.params.items():
+            self.w[n] = p.clone().detach().zero_()
+            self.initial_params[n] = p.clone().detach() # The initial_params will only be used in the first task
+
+
+    def update_model(self, inputs, targets, tasks):
+
+        unreg_gradients = {}
+        
+        # 1.Save current parameters
+        old_params = {}
+        for n, p in self.params.items():
+            old_params[n] = p.clone().detach()
+
+        # 2. Collect the gradients without regularization term
+        out = self.forward(inputs)
+        loss = self.criterion(out, targets, tasks, regularization=False)
+        self.optimizer.zero_grad()
+        loss.backward(retain_graph=True)
+        for n, p in self.params.items():
+            if p.grad is not None:
+                unreg_gradients[n] = p.grad.clone().detach()
+
+        # 3. Normal update with regularization
+        loss = self.criterion(out, targets, tasks, regularization=True)
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+
+        # 4. Accumulate the w
+        for n, p in self.params.items():
+            delta = p.detach() - old_params[n]
+            if n in unreg_gradients.keys():  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
+                self.w[n] -= unreg_gradients[n] * delta  # w[n] is >=0
+
+        return loss.detach(), out
+
+    def calculate_importance(self, dataloader):
+        self.log('Computing SI')
+        assert self.online_reg,'SI needs online_reg=True'
+
+        # Initialize the importance matrix
+        if len(self.regularization_terms)>0: # The case of after the first task
+            importance = self.regularization_terms[1]['importance']
+            prev_params = self.regularization_terms[1]['task_param']
+        else:  # It is in the first task
+            importance = {}
+            for n, p in self.params.items():
+                importance[n] = p.clone().detach().fill_(0)  # zero initialized
+            prev_params = self.initial_params
+
+        # Calculate or accumulate the Omega (the importance matrix)
+        for n, p in importance.items():
+            delta_theta = self.params[n].detach() - prev_params[n]
+            p += self.w[n]/(delta_theta**2 + self.damping_factor)
+            self.w[n].zero_()
+
+        return importance
+
+
+
+
 
 
 def clear_models():
