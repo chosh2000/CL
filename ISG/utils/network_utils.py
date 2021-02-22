@@ -110,6 +110,7 @@ class CNN(nn.Module):
 
 		# head layer
 		x = self.fc_head(x)
+
 		return x
 
 	def SIM_forward(self, x):

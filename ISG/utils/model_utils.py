@@ -37,11 +37,11 @@ class MAS(nn.Module):
 		# loss /= len(target) #TODO: keeps update same scale as reg. term 
 		return loss
 
-
 	def calculate_importance(self, dataloader, task_num):
+		assert self.args.method=='MAS', "not using MAS version"
 		# Initialize the importance matrix
 		if self.online_reg and len(self.reg_params)>0:
-		    importance = self.reg_params[0]['importance']
+			importance = self.reg_params[0]['importance']
 		else:
 			importance = {}
 			for n, p in self.tmodel.named_parameters():
@@ -69,6 +69,17 @@ class MAS(nn.Module):
 					p += (self.params[n].grad.abs() / len(dataloader)) * self.args.omega_multiplier
 		self.tmodel.train(mode=mode)
 		return importance
+
+	def update_model(self, data, target):
+		assert self.args.method=='MAS', "not using MAS version"
+		#Compute loss
+		loss = self.criterion(data, target)
+		loss = self.add_l2_loss(loss) #applying l2 penalty
+		#update
+		self.optimizer.zero_grad()
+		loss.backward()
+		self.optimizer.step()
+
 
 	def task_parameter(self):
 		task_param = {}
@@ -157,82 +168,191 @@ class MAS(nn.Module):
 
 
 class SI(MAS):
-    """
-    @inproceedings{zenke2017continual,
-        title={Continual Learning Through Synaptic Intelligence},
-        author={Zenke, Friedemann and Poole, Ben and Ganguli, Surya},
-        booktitle={International Conference on Machine Learning},
-        year={2017},
-        url={https://arxiv.org/abs/1703.04200}
-    }
-    """
-    def __init__(self, model, args):
-        super(SI, self).__init__(model, args)
-        self.damping_factor = 0.1
-        self.w = {}
-        self.initial_params = {}
+	"""
+	@inproceedings{zenke2017continual,
+		title={Continual Learning Through Synaptic Intelligence},
+		author={Zenke, Friedemann and Poole, Ben and Ganguli, Surya},
+		booktitle={International Conference on Machine Learning},
+		year={2017},
+		url={https://arxiv.org/abs/1703.04200}
+	}
+	"""
+	def __init__(self, model, args):
+		super(SI, self).__init__(model, args)
+		self.damping_factor = 0.1
+		self.w = {}
+		self.initial_params = {}
 
-        for n, p in self.params.items():
-            self.w[n] = p.clone().detach().zero_()
-            self.initial_params[n] = p.clone().detach() # The initial_params will only be used in the first task
-
-
-    def update_model(self, inputs, targets, tasks):
-
-        unreg_gradients = {}
-        
-        # 1.Save current parameters
-        old_params = {}
-        for n, p in self.params.items():
-            old_params[n] = p.clone().detach()
-
-        # 2. Collect the gradients without regularization term
-        out = self.forward(inputs)
-        loss = self.criterion(out, targets, tasks, regularization=False)
-        self.optimizer.zero_grad()
-        loss.backward(retain_graph=True)
-        for n, p in self.params.items():
-            if p.grad is not None:
-                unreg_gradients[n] = p.grad.clone().detach()
-
-        # 3. Normal update with regularization
-        loss = self.criterion(out, targets, tasks, regularization=True)
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
-
-        # 4. Accumulate the w
-        for n, p in self.params.items():
-            delta = p.detach() - old_params[n]
-            if n in unreg_gradients.keys():  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
-                self.w[n] -= unreg_gradients[n] * delta  # w[n] is >=0
-
-        return loss.detach(), out
-
-    def calculate_importance(self, dataloader):
-        self.log('Computing SI')
-        assert self.online_reg,'SI needs online_reg=True'
-
-        # Initialize the importance matrix
-        if len(self.regularization_terms)>0: # The case of after the first task
-            importance = self.regularization_terms[1]['importance']
-            prev_params = self.regularization_terms[1]['task_param']
-        else:  # It is in the first task
-            importance = {}
-            for n, p in self.params.items():
-                importance[n] = p.clone().detach().fill_(0)  # zero initialized
-            prev_params = self.initial_params
-
-        # Calculate or accumulate the Omega (the importance matrix)
-        for n, p in importance.items():
-            delta_theta = self.params[n].detach() - prev_params[n]
-            p += self.w[n]/(delta_theta**2 + self.damping_factor)
-            self.w[n].zero_()
-
-        return importance
+		for n, p in self.params.items():
+			self.w[n] = p.clone().detach().zero_()
+			self.initial_params[n] = p.clone().detach() # The initial_params will only be used in the first task
 
 
+	def update_model(self, data, target):
+		assert self.args.method=='SI', "not using SI version" 
+		unreg_gradients = {}
+		
+		# 1.Save current parameters
+		old_params = {}
+		for n, p in self.params.items():
+			old_params[n] = p.clone().detach()
 
+		# 2. Collect the gradients without regularization term
+		out = self.forward(data)
+		loss = self.criterion(out, target)
+		self.optimizer.zero_grad()
+		loss.backward(retain_graph=True)
+		for n, p in self.params.items():
+			if p.grad is not None:
+				unreg_gradients[n] = p.grad.clone().detach()
+
+		# 3. Normal update with regularization
+		loss = self.criterion(out, target)
+		self.optimizer.zero_grad()
+		loss.backward()
+		self.optimizer.step()
+
+		# 4. Accumulate the w
+		for n, p in self.params.items():
+			delta = p.detach() - old_params[n]
+			if n in unreg_gradients.keys():  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
+				self.w[n] -= unreg_gradients[n] * delta  # w[n] is >=0
+
+		return loss.detach(), out
+
+	def calculate_importance(self, dataloader, task_num):
+		assert self.args.method=='SI', "not using SI version" 
+		# Initialize the importance matrix
+		if self.online_reg and len(self.reg_params)>0:
+			importance  = self.reg_params[0]['importance']
+			prev_params = self.reg_params[0]['task_param']
+		else:
+			importance = {}
+			for n, p in self.tmodel.named_parameters():
+				if 'head' not in n:
+					importance[n] = p.clone().detach().fill_(0)  # zero initialized
+			prev_params = self.initial_params
+
+		self.tmodel.eval()
+
+		# Data prep.
+		for i, (data, target) in enumerate(dataloader):
+			if self.args.dataset == "pMNIST":
+				data   = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
+			if self.args.use_gpu:
+				data   = data.cuda()
+				target = target.cuda()
+
+		# Calculate or accumulate the Omega (the importance matrix)
+		for n, p in importance.items():
+			delta_theta = self.params[n].detach() - prev_params[n]
+			p += self.w[n]/(delta_theta**2 + self.damping_factor)
+			self.w[n].zero_()
+		self.tmodel.train()
+		return importance
+
+
+
+
+
+class EWC(MAS):
+	"""
+	@article{kirkpatrick2017overcoming,
+		title={Overcoming catastrophic forgetting in neural networks},
+		author={Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A and Milan, Kieran and Quan, John and Ramalho, Tiago and Grabska-Barwinska, Agnieszka and others},
+		journal={Proceedings of the national academy of sciences},
+		year={2017},
+		url={https://arxiv.org/abs/1612.00796}
+	}
+	"""
+
+	def __init__(self, model, args):
+		super(EWC, self).__init__(model, args)
+		# self.online_reg = False
+		self.n_fisher_sample = None
+		self.empFI = False
+
+
+	def update_model(self, data, target):
+		assert self.args.method=='EWC', "not using EWC version"
+		#Compute loss
+		loss = self.criterion(data, target)
+		loss = self.add_l2_loss(loss) #applying l2 penalty
+		#update
+		self.optimizer.zero_grad()
+		loss.backward()
+		self.optimizer.step()
+
+	def calculate_importance(self, dataloader, tasknum):
+		assert self.args.method=='EWC', "not using EWC version" 
+
+		# Update the diag fisher information
+		# There are several ways to estimate the F matrix.
+		# We keep the implementation as simple as possible while maintaining a similar performance to the literature.
+		# self.log('Computing EWC')
+
+		# Initialize the importance matrix
+		if self.online_reg and len(self.reg_params)>0:
+			importance = self.reg_params[0]['importance']
+		else:
+			importance = {}
+			for n, p in self.params.items():
+				importance[n] = p.clone().detach().fill_(0)  # zero initialized
+
+		# Sample a subset (n_fisher_sample) of data to estimate the fisher information (batch_size=1)
+		# Otherwise it uses mini-batches for the estimation. This speeds up the process a lot with similar performance.
+		if self.n_fisher_sample is not None:
+			n_sample = min(self.n_fisher_sample, len(dataloader.dataset))
+			self.log('Sample',self.n_fisher_sample,'for estimating the F matrix.')
+			rand_ind = random.sample(list(range(len(dataloader.dataset))), n_sample)
+			subdata = torch.utils.data.Subset(dataloader.dataset, rand_ind)
+			dataloader = torch.utils.data.DataLoader(subdata, shuffle=True, num_workers=2, batch_size=1)
+
+		self.tmodel.eval()
+
+		# Accumulate the square of gradients
+		for i, (data, target) in enumerate(dataloader):
+			if self.args.dataset == "pMNIST":
+				data   = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
+			if self.args.use_gpu:
+				data   = data.cuda()
+				target = target.cuda()
+
+
+			preds = self.forward(data)
+
+			# # Sample the labels for estimating the gradients
+			# # For multi-headed model, the batch of data will be from the same task,
+			# # so we just use task[0] as the task name to fetch corresponding predictions
+			# # For single-headed model, just use the max of predictions from preds['All']
+			# task_name = task[0] if self.multihead else 'All'
+
+			# # The flag self.valid_out_dim is for handling the case of incremental class learning.
+			# # if self.valid_out_dim is an integer, it means only the first 'self.valid_out_dim' dimensions are used
+			# # in calculating the loss.
+			# pred = preds[task_name] if not isinstance(self.valid_out_dim, int) else preds[task_name][:,:self.valid_out_dim]
+
+			ind = preds.max(1)[1].flatten()  # Choose the one with max
+			if self.args.use_gpu:
+				ind = ind.cuda()
+
+			# # - Alternative ind by multinomial sampling. Its performance is similar. -
+			# # prob = torch.nn.functional.softmax(preds['All'],dim=1)
+			# # ind = torch.multinomial(prob,1).flatten()
+
+			if self.empFI:  # Use groundtruth label (default is without this)
+				ind = target
+
+			loss = self.criterion(data, ind)
+			self.optimizer.zero_grad()
+			loss.backward()
+			for n, p in importance.items():
+				if self.params[n].grad is not None:  # Some heads can have no grad if no loss applied on them.
+					p += ((self.params[n].grad ** 2) * len(data) / len(dataloader))
+
+		self.tmodel.train()
+
+		return importance
 
 
 

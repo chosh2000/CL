@@ -170,3 +170,10 @@ LTL
       + 100 tasks on CIFAR100)
 
 - [ ] Task Agnostic Test
+
+
+#### 2/22/21 ####
+- [x] SI implementation
+- [ ] test SI
+- [x] EWC implementation
+- [ ] test EWC

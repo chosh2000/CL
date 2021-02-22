@@ -35,14 +35,15 @@ def init_train(network, args, task_num, trainloader, testloader, maskloader=None
 
 		test(network, task_num, testloader, epoch)
 
-def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None):
+def train(network, args, task_num, trainloader, testloader, maskloader=None):
 	train_losses = []
 	train_counter = []
 	network.tmodel.to(network.device)
 
 
 	#Compute Inductive Fisher and apply SIM mask
-	SIM_gating(network, task_num, trainloader)
+	if args.apply_SIM:
+		SIM_gating(network, task_num, trainloader)
 	network.optimizer.zero_grad()
 	network.record_trace()
 
@@ -83,17 +84,12 @@ def train_SIM(network, args, task_num, trainloader, testloader, maskloader=None)
 				data = data.to(network.device)
 				target = target.to(network.device)
 
-				#Compute loss
-				loss = network.criterion(data, target)
-				loss = network.add_l2_loss(loss) #applying l2 penalty
-
-				#update
-				network.optimizer.zero_grad()
-				loss.backward()
-				network.optimizer.step()
+				network.update_model(data, target)
 
 			#Test at the end of each epoch
 			test(network, task_num, testloader, epoch)
+
+
 
 def test(network, task_num, testloader, epoch):
 	test_losses = []

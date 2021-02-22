@@ -6,6 +6,7 @@ import torch
 import json
 # from utils.optimizer_utils import *
 import utils.model_utils
+import utils.train_utils
 from utils.train_utils import *
 from utils.reg_utils import *
 from utils.data_prep import *
@@ -49,7 +50,7 @@ def SIM_CIFAR_train(args):
         #Re-import the dataset associated with the task_num
         trainloader, testloader = load_datasets(args, task_num)
         #Training
-        train_SIM(network, args, task_num, trainloader, testloader)
+        train(network, args, task_num, trainloader, testloader)
 
         #Inference test on past tasks
         network.tmodel.eval()
@@ -57,7 +58,8 @@ def SIM_CIFAR_train(args):
             acc_list[task_num] = []
             for loaded_task in range(task_num + 1):
                 network.load_head(loaded_task)
-                network.load_mask(loaded_task)
+                if args.apply_SIM:
+                    network.load_mask(loaded_task)
                 _, testloader = load_datasets(args, loaded_task)
                 accuracy = test(network, loaded_task, testloader, -1)
                 acc_list[task_num].append(accuracy.data.item())
@@ -71,7 +73,8 @@ def SIM_CIFAR_train(args):
             raise("not implemented yet")
         #Save data
         print("List of avg. accuracy: {}".format(acc_avg_list))
-        torch.save(network.task_masks, mask_save_path)
+        if args.apply_SIM:
+            torch.save(network.task_masks, mask_save_path)
 
     torch.save(acc_avg_list, acc_save_path)
     
@@ -115,10 +118,11 @@ def get_args(argv):
     parser.add_argument('--online_reg', type=bool, default=True, help="Flag for online regularization computation")
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
-    #masking
+    #SIM related
+    parser.add_argument('--apply_SIM', type=int, default=1, help="flag to apply SIM")
     parser.add_argument('--dropmethod', type=str, default="rho", help="Drop method (rho | prob | dist| random_even)")
     # parser.add_argument('--dist_num', type=int, default=1, help="how many hist bins to include for the dist. method")
-    parser.add_argument('--inhib', type=float, default=0.2, help="Print the log at every x iteration")
+    parser.add_argument('--inhib', type=float, default=0, help="Print the log at every x iteration")
     parser.add_argument('--rho', nargs="+", type=float, default=[1, 0.4, 0.4], help="ratio of 1 in mask")
     parser.add_argument('--xi', type=float, default=0.1, help="Xi, damping factor to avoid divison by zero")
     parser.add_argument('--alpha', type=float, default=0, help="Alpha, stability-plasticity tradeoff")

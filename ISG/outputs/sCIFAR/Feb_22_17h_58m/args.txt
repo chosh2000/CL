@@ -1,10 +1,10 @@
 {
   "use_gpu": 0,
-  "out_dir": "outputs/sCIFAR/unscripted",
+  "out_dir": "outputs/sCIFAR/Feb_22_17h_58m",
   "repeat": 1,
   "init_model": 0,
   "random_drop": 0,
-  "method": "MAS",
+  "method": "EWC",
   "model_type": "cnn",
   "mlp_size": 1000,
   "optimizer": "Adam",
@@ -15,7 +15,7 @@
   "dataset": "sCIFAR100",
   "num_task": 10,
   "schedule": [
-    60,
+    50,
     80
   ],
   "batch_size_train": 128,
@@ -24,16 +24,16 @@
   "print_freq": 10,
   "dataroot": "data",
   "padding": true,
-  "reglambda": 1,
+  "reglambda": 1.0,
   "online_reg": true,
   "omega_multiplier": 1,
-  "apply_SIM": 1,
+  "apply_SIM": 0,
   "dropmethod": "rho",
   "inhib": 0,
   "rho": [
-    1,
-    0.4,
-    0.4
+    1.0,
+    1.0,
+    1.0
   ],
   "xi": 0.1,
   "alpha": 0,
