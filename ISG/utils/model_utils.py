@@ -216,9 +216,9 @@ class SI(MAS):
 		for n, p in self.params.items():
 			delta = p.detach() - old_params[n]
 			if n in unreg_gradients.keys():  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
-				print(delta.is_cuda)
-				print(unreg_gradients[n])
-				print(unreg_gradients[n].is_cuda)
+				print(delta.device)
+				print(unreg_gradients[n].device)
+				print(w[n].device)
 				self.w[n] -= unreg_gradients[n] * delta  # w[n] is >=0
 
 		# return loss.detach(), out
