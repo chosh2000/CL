@@ -198,8 +198,8 @@ class SI(MAS):
 			old_params[n] = p.clone().detach()
 
 		# 2. Collect the gradients without regularization term
-		out = self.forward(data)
-		loss = self.criterion(out, target)
+		# out = self.forward(data)
+		loss = self.criterion(data, target)
 		self.optimizer.zero_grad()
 		loss.backward(retain_graph=True)
 		for n, p in self.params.items():
