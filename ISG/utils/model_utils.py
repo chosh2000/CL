@@ -184,7 +184,7 @@ class SI(MAS):
 		self.initial_params = {}
 
 		for n, p in self.params.items():
-			self.w[n] = p.clone().detach().zero_()
+			self.w[n] = p.clone().detach().zero_().cuda()
 			self.initial_params[n] = p.clone().detach() # The initial_params will only be used in the first task
 
 
