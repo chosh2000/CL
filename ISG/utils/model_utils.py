@@ -218,7 +218,7 @@ class SI(MAS):
 			if n in unreg_gradients.keys():  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
 				print(delta.device)
 				print(unreg_gradients[n].device)
-				print(w[n].device)
+				print(self.w[n].device)
 				self.w[n] -= unreg_gradients[n] * delta  # w[n] is >=0
 
 		# return loss.detach(), out
