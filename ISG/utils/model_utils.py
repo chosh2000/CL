@@ -198,7 +198,6 @@ class SI(MAS):
 			old_params[n] = p.clone().detach()
 
 		# 2. Collect the gradients without regularization term
-		# out = self.forward(data)
 		loss = self.criterion(data, target)
 		self.optimizer.zero_grad()
 		loss.backward(retain_graph=True)
@@ -207,7 +206,8 @@ class SI(MAS):
 				unreg_gradients[n] = p.grad.clone().detach()
 
 		# 3. Normal update with regularization
-		loss = self.criterion(out, target)
+		loss = self.criterion(data, target)
+		loss = self.add_l2_loss(loss) #applying l2 penalty
 		self.optimizer.zero_grad()
 		loss.backward()
 		self.optimizer.step()
@@ -218,7 +218,7 @@ class SI(MAS):
 			if n in unreg_gradients.keys():  # In multi-head network, some head could have no grad (lazy) since no loss go through it.
 				self.w[n] -= unreg_gradients[n] * delta  # w[n] is >=0
 
-		return loss.detach(), out
+		# return loss.detach(), out
 
 	def calculate_importance(self, dataloader, task_num):
 		assert self.args.method=='SI', "not using SI version" 
