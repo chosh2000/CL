@@ -185,7 +185,7 @@ class SI(MAS):
 
 		for n, p in self.params.items():
 			self.w[n] = p.clone().detach().zero_().cuda()
-			self.initial_params[n] = p.clone().detach() # The initial_params will only be used in the first task
+			self.initial_params[n] = p.clone().detach().cuda() # The initial_params will only be used in the first task
 
 
 	def update_model(self, data, target):
@@ -245,8 +245,6 @@ class SI(MAS):
 
 		# Calculate or accumulate the Omega (the importance matrix)
 		for n, p in importance.items():
-			print(self.params[n].device)
-			print(prev_params[n].device)
 			delta_theta = self.params[n].detach() - prev_params[n]
 			p += self.w[n]/(delta_theta**2 + self.damping_factor)
 			self.w[n].zero_()
