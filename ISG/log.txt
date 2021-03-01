@@ -177,3 +177,23 @@ LTL
 - [ ] test SI
 - [x] EWC implementation
 - [ ] test EWC
+
+
+
+#### 3/1/21 ####
+Reg calculation
+ - MAS|reg1
+     conv1.layer0.w: 7454
+     conv1.layer2.w: 13204
+     conv2.layer0.w: 13248
+     conv2.layer2.w: 11453
+ - EWC|reg1
+     conv1.layer0.w: 38
+     conv1.layer2.w: 13
+     conv2.layer0.w: 6.73
+     conv2.layer2.w: 3.66
+ - SI |reg1
+     conv1.layer0.w: 82
+     conv1.layer2.w: 146
+     conv2.layer0.w: 163
+     conv2.layer2.w: 158
