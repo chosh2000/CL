@@ -193,7 +193,8 @@ Reg calculation
      conv2.layer0.w: 6.73
      conv2.layer2.w: 3.66
  - SI |reg1
-     conv1.layer0.w: 82
-     conv1.layer2.w: 146
-     conv2.layer0.w: 163
-     conv2.layer2.w: 158
+     conv1.layer0.w: 82 -> 1362
+     conv1.layer2.w: 146 -> 2099
+     conv2.layer0.w: 163 -> 2240
+     conv2.layer2.w: 158 -> 2241
+     fc1_layer.1.w : 432 -> 8041
