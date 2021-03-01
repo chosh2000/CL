@@ -63,6 +63,11 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			task_param = network.task_parameter()
 			#3. calculate the importance for this task
 			importance = network.calculate_importance(trainloader, task_num)
+
+			for n, p in network.tmodel.named_parameters():
+				if 'head' not in n:
+					print(n,"*"*25, importance[n].sum())
+
 			#4. copy them to reg_params
 			if network.online_reg and len(network.reg_params) > 0:
 				# only one slot is used to record the reg data
