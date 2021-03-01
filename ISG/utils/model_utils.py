@@ -245,7 +245,7 @@ class SI(MAS):
 
 		# Calculate or accumulate the Omega (the importance matrix)
 		for n, p in importance.items():
-			print(params[n].device)
+			print(self.params[n].device)
 			print(prev_params[n].device)
 			delta_theta = self.params[n].detach() - prev_params[n]
 			p += self.w[n]/(delta_theta**2 + self.damping_factor)
