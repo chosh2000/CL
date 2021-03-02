@@ -1,5 +1,5 @@
 OUTDIR=outputs/sCIFAR/$(date +'%b_%d_%Hh_%Mm')
-REPEAT=1
+REPEAT=2
 mkdir -p $OUTDIR
 
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --schedule 60 100  --rho 1 0.5 0.5 	--reglambda 1   --alpha 0.5    | tee ${OUTDIR}/SIM_rho155_o1_a5.log
@@ -60,7 +60,7 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --apply_SIM 0 --rho 1 1 1 --reglambda 1 | tee ${OUTDIR}/MAS_reg1_dropout.log    
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method EWC  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --apply_SIM 0 --rho 1 1 1 --reglambda 1 | tee ${OUTDIR}/EWC_reg1_dropout.log    
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method SI   --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --apply_SIM 0 --rho 1 1 1 --reglambda 1 | tee ${OUTDIR}/SI_reg1_dropout.log    
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS   --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 0| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout.log    
+python -u ISG_sCIFAR.py --use_gpu 1 --num_task 4 --repeat $REPEAT --method MAS   --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 1  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 0| tee ${OUTDIR}/SIM_rho144_reg1_a0_dropout.log    
 
 
 #Reglambda used for resnet, CIFAR100

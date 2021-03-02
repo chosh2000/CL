@@ -11,10 +11,10 @@ from utils.train_utils import *
 from utils.reg_utils import *
 from utils.data_prep import *
 from utils.network_utils import *
+from utils.result_utils import *
 
 
-
-def SIM_CIFAR_train(args):
+def SIM_CIFAR_train(args, ob, repeat):
     #Initialize model
     model = CNN(args)
     network = utils.model_utils.__dict__[args.method](model, args)
@@ -26,8 +26,8 @@ def SIM_CIFAR_train(args):
     with open(save_path+'/args.txt', 'w') as f:
         json.dump(args.__dict__, f, indent=2)
     acc_save_path = os.path.join(save_path,"SIM_acc"+str(args.rho)+".pth" )
-    mask_save_path = os.path.join(save_path,"SIM_mask"+str(args.rho)+".pth" )
     model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
+    # mask_save_path = os.path.join(save_path,"SIM_mask"+str(args.rho)+".pth" )
 
 
     #Initialize network with CIFAR10 dataset
@@ -71,10 +71,15 @@ def SIM_CIFAR_train(args):
             print("Trained Task:{}, Avg. Accuracy: {:.1f} \n".format(task_num, acc_avg))
         else:
             raise("not implemented yet")
-        #Save data
+
+        #Save data to the observer
         print("List of avg. accuracy: {}".format(acc_avg_list))
-        if args.apply_SIM:
-            torch.save(network.task_masks, mask_save_path)
+        ob.ACC.append(acc_avg_list)
+        ob.SAT.append(network.SAT)
+
+
+        # if args.apply_SIM:
+            # torch.save(network.task_masks, mask_save_path)
 
     torch.save(acc_avg_list, acc_save_path)
     
@@ -135,6 +140,10 @@ def get_args(argv):
 
 if __name__ =="__main__":
     args = get_args(sys.argv[1:])
-    SIM_CIFAR_train(args)
-    # plot_result(num_task, save_path)
-    # clear_models()
+    ob = observer(args) #records all experimental results
+
+    for repeat in range(args.repeat):
+        SIM_CIFAR_train(args, ob, repeat)
+
+    ob.to_csv() #saves all csv files
+    # ob.plot_results()

@@ -182,20 +182,30 @@ LTL
 
 #### 3/1/21 ####
 Reg calculation
- - MAS|reg1
-     conv1_layer.0.w: 8934  ->
-     conv1_layer.2.w: 15626 ->
-     conv2_layer.0.w: 15884 ->
-     conv2_layer.2.w: 13901 ->
-     fc1_layer.1.w  : 20387 ->
- - EWC|reg1
-     conv1_layer.0.w: 38    ->
-     conv1_layer.2.w: 13    ->
-     conv2_layer.0.w: 6.73  ->
-     conv2_layer.2.w: 3.66  ->
- - SI |reg1
+ - MAS|reg1|  approx. x2.5
+     conv1_layer.0.w: 8934  -> 22667
+     conv1_layer.2.w: 15626 -> 46528
+     conv2_layer.0.w: 15884 -> 46215
+     conv2_layer.2.w: 13901 -> 40578
+     fc1_layer.1.w  : 20387 -> 66038
+     Total          : 
+ - EWC|reg1|  approx. x12
+     conv1_layer.0.w: 41    -> 509
+     conv1_layer.2.w: 13    -> 151
+     conv2_layer.0.w: 8.4   -> 80
+     conv2_layer.2.w: 4.6   -> 44
+     fc1_layer.1.w  : 1.4   -> 15
+
+ - SI |reg1|  approx. x16
      conv1_layer.0.w: 82    -> 1362
      conv1_layer.2.w: 146   -> 2099
      conv2_layer.0.w: 163   -> 2240
      conv2_layer.2.w: 158   -> 2241
      fc1_layer.1.w  : 432   -> 8041
+
+ - SIM|reg1|  approx. x3.7
+     conv1_layer.0.w: 6119  -> 19881
+     conv1_layer.2.w: 11791 -> 42972
+     conv2_layer.0.w: 11167 -> 42661
+     conv2_layer.2.w: 7173  -> 27023
+     fc1_layer.1.w  : 9444  -> 38265

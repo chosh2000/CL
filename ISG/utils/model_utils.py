@@ -22,6 +22,15 @@ class MAS(nn.Module):
 		self.task_heads = {} #{task_num:   {}}
 		self.mask_trace = {}
 		self.count      = {}
+		#below for the experimental results
+		self.ACC  = {}
+		self.LCA  = {}
+		self.FWT  = {}
+		self.BWT  = {}
+		self.SAT  = []
+		self.INT  = {}
+		self.IPK  = {}
+
 		self.criterion_fn = nn.CrossEntropyLoss()
 		self.shuffle_idx = pMNIST_shuffle(self.args)
 		self.optimizer = optim.Adam(self.tmodel.parameters(), lr=args.lr, weight_decay=args.weight_decay)
