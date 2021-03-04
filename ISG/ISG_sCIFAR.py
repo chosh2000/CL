@@ -74,8 +74,8 @@ def SIM_CIFAR_train(args, ob, repeat):
 
         #Save data to the observer
         print("List of avg. accuracy: {}".format(acc_avg_list))
-        ob.ACC.append(acc_avg_list)
-        ob.SAT.append(network.SAT)
+    ob.ACC.append(acc_avg_list)
+    ob.SAT.append(network.SAT)
 
 
         # if args.apply_SIM:
