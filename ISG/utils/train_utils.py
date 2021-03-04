@@ -49,10 +49,12 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 
 	#Training Phase
 	network.load_new_head()
+	print(network.tmodel.training)
+	p()
 	network.tmodel.train()
 
 	#Finetuning
-	network.finetune_head(task_num, trainloader, testloader)
+	acc_init = network.finetune_head(task_num, trainloader, testloader)
 
 	n_epochs = args.schedule[-1]
 	for epoch in range(n_epochs+1):
@@ -78,14 +80,14 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			#5. restore drop
 			network.lift_mask()
 
-
-
-			#Added to SAT calcualtion
+			#6. make measurementes
 			omega_sum = 0
 			for n, p in network.tmodel.named_parameters():
 				if 'head' not in n:
 					omega_sum += importance[n].sum()
 			network.SAT.append(omega_sum)
+			network.FWT.append(acc_int/acc)
+			network.Rii[task_num] = acc
 
 		else:
 			#1. Learn the parameters for the current task
@@ -100,6 +102,6 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 				network.update_model(data, target)
 
 			#Test at the end of each epoch
-			network.test(task_num, testloader, epoch)
+			acc = network.test(task_num, testloader, epoch)
 
 

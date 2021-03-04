@@ -14,10 +14,10 @@ from utils.network_utils import *
 from utils.result_utils import *
 
 
-def SIM_CIFAR_train(args, ob, repeat):
+def SIM_CIFAR_train(args, ob):
     #Initialize model
     model = CNN(args)
-    network = utils.model_utils.__dict__[args.method](model, args)
+    network = utils.model_utils.__dict__[args.method](model, args, ob)
     
     #save paths
     save_path = os.path.join(os.getcwd(),args.out_dir)
@@ -60,8 +60,9 @@ def SIM_CIFAR_train(args, ob, repeat):
                 network.load_head(loaded_task)
                 if args.apply_SIM:
                     network.load_mask(loaded_task)
-                _, testloader = load_datasets(args, loaded_task)
+                trainloader, testloader = load_datasets(args, loaded_task)
                 accuracy = network.test(loaded_task, testloader, -1)
+                acc_bwt  = network.finetune_head(loaded_task, trainloader, testloader)
                 acc_list[task_num].append(accuracy.data.item())
                 # acc_list[task_num][loaded_task] = accuracy
                 network.lift_mask()
@@ -145,7 +146,7 @@ if __name__ =="__main__":
     ob = observer(args) #records all experimental results
 
     for repeat in range(args.repeat):
-        SIM_CIFAR_train(args, ob, repeat)
+        SIM_CIFAR_train(args, ob)
 
     ob.to_csv() #saves all csv files
     # ob.plot_results()

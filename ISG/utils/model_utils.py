@@ -11,7 +11,7 @@ sys.path.append('./')
 
 
 class MAS(nn.Module):
-	def __init__(self, model, args):
+	def __init__(self, model, args, ob):
 		super(MAS, self).__init__()
 		self.args = args
 		self.tmodel = model
@@ -22,14 +22,16 @@ class MAS(nn.Module):
 		self.task_heads = {} #{task_num:   {}}
 		self.mask_trace = {}
 		self.count      = {}
-		#below for the experimental results
-		self.ACC  = {}
-		self.LCA  = {}
-		self.FWT  = {}
-		self.BWT  = {}
+		#below is for recording results
+		self.ob   = ob
+		self.ACC  = [] #[[ACC for 1st iteration], [ACC for 2nd iteration],...]
+		self.LCA  = []
+		self.FWT  = []
+		self.BWT  = []
 		self.SAT  = []
-		self.INT  = {}
-		self.IPK  = {}
+		self.INT  = []
+		self.IPK  = []
+		self.Rii  = {}
 
 		self.criterion_fn = nn.CrossEntropyLoss()
 		self.shuffle_idx = pMNIST_shuffle(self.args)
@@ -90,6 +92,8 @@ class MAS(nn.Module):
 		self.optimizer.step()
 
 	def finetune_head(self, task_num, trainloader, testloader):
+		mode = self.tmodel.training
+		self.tmodel.train()
 		for n, p in self.tmodel.named_parameters():
 			if 'head' not in n:
 				p.requires_grad = False
@@ -107,18 +111,22 @@ class MAS(nn.Module):
 				loss.backward()
 				self.optimizer.step()
 			print("Head Finetuning    :", end='')
-			self.test(task_num, testloader, epoch)
+			acc = self.test(task_num, testloader, epoch)
 
 		for n, p in self.tmodel.named_parameters():
 			p.requires_grad = True
+
+		self.tmodel.train(mode=mode)
+		return acc
 
 	def test(self, task_num, testloader, epoch):
 		test_losses = []
 		test_loss = 0
 		correct = 0
+		mode = self.tmodel.training
 		self.tmodel.eval()
-		device = self.device
-		self.tmodel.to(device)
+		# device = self.device
+		# self.tmodel.to(device)
 
 		# with torch.no_grad(): # we don't need Autograd for testing. commented out for l2_grad computation.
 		for batch_idx, (data, target) in enumerate(testloader):
@@ -139,7 +147,7 @@ class MAS(nn.Module):
 			print('Task: {},\t Epoch: {}/{},\t Avg.loss: {:.4f},\t Test Accuracy: {}/{}({:.0f}%)'.format(
 			task_num, epoch, self.args.schedule[-1], test_loss, correct, len(testloader.dataset), accuracy))
 
-		self.tmodel.train()
+		self.tmodel.train(mode=mode)
 		return accuracy
 
 	def task_parameter(self):
@@ -238,8 +246,8 @@ class SI(MAS):
 		url={https://arxiv.org/abs/1703.04200}
 	}
 	"""
-	def __init__(self, model, args):
-		super(SI, self).__init__(model, args)
+	def __init__(self, model, args, ob):
+		super(SI, self).__init__(model, args, ob)
 		self.damping_factor = 0.1
 		self.w = {}
 		self.initial_params = {}
@@ -327,8 +335,8 @@ class EWC(MAS):
 	}
 	"""
 
-	def __init__(self, model, args):
-		super(EWC, self).__init__(model, args)
+	def __init__(self, model, args, ob):
+		super(EWC, self).__init__(model, args, ob)
 		# self.online_reg = False
 		self.n_fisher_sample = None
 		self.empFI = False

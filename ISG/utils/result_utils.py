@@ -43,12 +43,12 @@ def load_and_plot(task_num):
 class observer():
 	def __init__(self, args):
 		self.ACC  = [] #[[ACC for 1st iteration], [ACC for 2nd iteration],...]
-		self.LCA  = {}
-		self.FWT  = {}
-		self.BWT  = {}
+		self.LCA  = []
+		self.FWT  = []
+		self.BWT  = []
 		self.SAT  = []
-		self.INT  = {}
-		self.IPK  = {}
+		self.INT  = []
+		self.IPK  = []
 		self.args = args
 
 	def to_csv(self):
