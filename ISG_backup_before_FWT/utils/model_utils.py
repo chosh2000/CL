@@ -89,58 +89,6 @@ class MAS(nn.Module):
 		loss.backward()
 		self.optimizer.step()
 
-	def finetune_head(self, task_num, trainloader, testloader):
-		for n, p in self.tmodel.named_parameters():
-			if 'head' not in n:
-				p.requires_grad = False
-
-		#train the head layer
-		for epoch in range(self.args.finetune_epoch):
-			for batch_idx, (data, target) in enumerate(trainloader):
-				#Permuting the data
-				if self.args.dataset == "pMNIST":
-					data = permute_MNIST(data, self.shuffle_idx, task_num, args)
-				data = data.to(self.device)
-				target = target.to(self.device)
-				loss = self.criterion(data, target)
-				self.optimizer.zero_grad()
-				loss.backward()
-				self.optimizer.step()
-			print("Head Finetuning    :", end='')
-			self.test(task_num, testloader, epoch)
-
-		for n, p in self.tmodel.named_parameters():
-			p.requires_grad = True
-
-	def test(self, task_num, testloader, epoch):
-		test_losses = []
-		test_loss = 0
-		correct = 0
-		self.tmodel.eval()
-		device = self.device
-		self.tmodel.to(device)
-
-		# with torch.no_grad(): # we don't need Autograd for testing. commented out for l2_grad computation.
-		for batch_idx, (data, target) in enumerate(testloader):
-			#Permute the MNIST data
-			if self.args.dataset == "pMNIST":
-				data = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
-			data = data.to(device)
-			target = target.to(device)
-			output = self.tmodel.forward(data)
-
-			test_loss += self.criterion_fn(output, target).item()
-			pred = output.data.max(1, keepdim=True)[1] #prediction
-			correct += pred.eq(target.data.view_as(pred)).sum() #view_as --> use same dim?
-		test_loss /= len(testloader.dataset)
-		test_losses.append(test_loss)
-		accuracy = 100.*correct/len(testloader.dataset)
-		if epoch != -1:
-			print('Task: {},\t Epoch: {}/{},\t Avg.loss: {:.4f},\t Test Accuracy: {}/{}({:.0f}%)'.format(
-			task_num, epoch, self.args.schedule[-1], test_loss, correct, len(testloader.dataset), accuracy))
-
-		self.tmodel.train()
-		return accuracy
 
 	def task_parameter(self):
 		task_param = {}

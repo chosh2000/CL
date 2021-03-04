@@ -92,7 +92,6 @@ def get_args(argv):
     parser.add_argument('--out_dir', type=str, default="outputs/sCIFAR/unscripted", help="output directory")
     parser.add_argument('--repeat', type=int, default=1, help="Repeat the experiment N times")
 
-
     #network config
     parser.add_argument('--init_model', type=int, default=0)
     parser.add_argument('--random_drop', type=int, default=0)
@@ -110,7 +109,6 @@ def get_args(argv):
     parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
     parser.add_argument('--num_task', type=int, default=10, help="number of tasks")
     parser.add_argument('--schedule', nargs="+", type=int, default=[60, 80], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
-    parser.add_argument('--finetune_epoch', type=int, default=20, help="defines the number of epochs used for finetuning the head")
     parser.add_argument('--batch_size_train', type=int, default=128)
     parser.add_argument('--batch_size_test', type=int, default=1000)
     parser.add_argument('--batch_size_fisher', type=int, default=100)

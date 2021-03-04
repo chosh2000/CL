@@ -1,0 +1,211 @@
+****************************
+QUESTIONS
+****************************
+  - [x] should bias go thru the l_2 penalty? (optimizer_utils.py/continual_SGD)
+      :yes
+  - [x] Should we  apply mask to bias?
+      :yes
+  - model_utils.py/model_init (lines 66, 67):
+    -Should final head layer bias and parameters reinitialized? No, it will create discrepancy between the previously learned knowledge 
+    in the shared parameters and the newly initialized head. We keep the head parameters from previous task.
+  - train_utils.py/train_MAS
+    -Should omega update occur only in activated parameters using intelligent_gating? Probably no if we are faithful to MAS algorithm.
+  -apply mask to the omega decay? only the selected mask will experience decay.
+  -mask applied to param_diff in continual_SGD
+  - should old head be used for calculation of l2 objectiv function during parameter selection?
+
+****************************
+Daily Logs
+****************************
+#### 9/17 ####
+  - Figured out we NEED to apply mask to gradients.
+  - We have applied mask to the error gradient, but NOT the l_2 penalty decay
+  - Sort of implemented EWC
+  - EWC should follow MAS closely
+
+
+#### 9/22 ####
+Todo:
+  -reg_utils.py/init_reg_params_across_tasks 
+    - [x] Can we ensure that group iteration "for p in group['params']" occurs in order? perhaps then we can use enumerate func.
+    - [x] reg_params[param] = param_dict   <-- tensor "param" is being used as the 'key' of the dictionary. Need to fix it. Especially in multi-head setting, param tensor is replaced with zeros for the head. It won't be able to recognize (i guess it doesn't matter?). Memory consumption can skyrocket because keep storing 
+    - [x] Same in optimizer_utils.py/omega_optim
+    - [x] Need to fix omega getting re-zeroed every task.
+    - [ ] see if line 74 gets executed.      " if "fc_head" in name and multi_head:  "
+
+  - reg_utils.py/init_reg_params_across_task :
+    - [x] Final head layer omega should remain as 0 if multi-head 
+    - [x] Final head layer mask set to 1.
+    - [x] Final head layer init does not matter if multi-head.
+    - [x] Remain same when using single-head.
+  -[x] Fix the mask function.
+  -optimizer_utils.py/omega_optim
+    -[x] batch_index=0 --> prev_size=0 --> omega=0. Omega reinitialized to zero when evaluating omega for each task.
+    -[x] implement accumulate_omega function
+  -[x] check whether train_utils.py/train_MAS(...) has to return network for changes to take effect. NO.
+  -[x] Finish Implementing EWC
+
+
+#### 9/23 ####
+TODO:
+  -[x] implement plot_result
+  -[x] toggle ISG for the training
+  -[x] toggle ISG for the inference
+  -[x] increase number of epoch
+  -[x] test pMNIST on MAS and EWC
+
+#### 9/30 ####
+  -[x] ISG_backup folder creation. ISG_backup should contain per-data-sample mask computation of pMNIST task.
+  -[x] Double check regularization methods... They have poor performance.
+    --I think the problem was at train_utils.py/train_MAS --> if epoch == n_epochs:. In here, data = permute_MNIST(...) was omitted
+    --fixed train_MAS and EWC_update_fisher_params
+  -[x] optimizer_utils.py/continual_SDG:   mask MUST be applied to param_diff as well. 
+  -[x] Parameter mask computed in the beginning of each task (used testset)
+  -[x] Parameter updates must be done with mask applied
+  -[x] At the end of training, parameters are restored. Bias is excluded.
+  -[x] If multihead, intelligent_gating does not need mask out the final layer. If singlehead, it needs to.
+    -[x] in model_utils.py finish save_mask
+    -[x] in model_utils.py finish load_mask
+    -[x] in reg_utils.py finish apply_mask
+    -[x] in reg_utils.py finish lift_mask
+  -[x] Mask for each task is stored & used during inference
+  -[x] Enable GPU functionality
+  -reg_utils.py/Intelligent_gating:
+    -[x]Increase drop_ratio 
+
+
+#### 10/7 ####
+TODO:
+  -[x] check whether dropping bias is helpful or not
+      Dropping bias significantly improved the performance
+  -[x] model_utils.py/model_init() lines 66-68: check if zeroed out head is better for each new task
+      Using zero-ed out new head sig. improved the performance.
+  -[x] check whether dropping units is better than dropping parameters
+      Dropping unit is way way better than dropping parameters. It should be the case.
+
+#### 10/15 ####
+  -[ ] implement split-CIFAR
+      + first two convolution layers are shared across all tasks (low lever features). Or at least greatly overlap.
+  -[ ] implement Adam optimizer?
+
+
+#### 10/20 ####
+  - currently working on putting the mask on CNN() model
+  - reg_utils.py/CIFAR_conv_gating:
+    + bias is not included in channel-wise conv. mask selection
+  -[x] implement fc_layer dropping
+  -[x] changed data directory to be located at "Documents" for small git size
+  -[x] test out the CIFAR system with SGD optimizer rather than MAS
+      Does not work well. Need to use Adam optimizer
+  -[x] separate CIFAR100 to 10 different tasks
+
+#### 10/23 ####
+  -[x] in continual_Adam, add the quadratic penalty term for Elastic Weight Consolidation
+  -[x] created continual_Adam in optimizer_utils.py.
+      This is becasue I need to use Adam for CIFAR dataset for fast convergence.
+
+#### 10/28 ####
+  -[ ] find a way around adam optimizer. Performance is quite bad
+
+
+############### Stopped working at #############
+-[ ] check whether we need conv mask during backpropagation
+-[ ] check split_CIFAR100_dataset
+-[ ] draw a diagram projecting higher dimensional into two lower dimensional graphs
+-[ ] use information theory to justify gating governed by the hebbian approach is natural, reasonable.
+-[ ] use a pretrained network? This could help us converge faster without using Adam
+
+
+
+#################################################################################################################
+12/27
+  - Seems to work very well. SIM performs better than MAS.
+  - [ ] store and load model pretrained on cifar10
+  - [ ] want to change the following
+    - [ ] relevance equation
+    - [ ] reg strength
+    - [ ] rho ratio
+
+
+#### 1/25 ####
+  - test the following Regularization methods.
+    look out for: training speed, accuracy, feature usage
+    -[ ] dropout vs no dropout
+         Best to apply it at the fully connected layers
+    -[ ] Batch norm
+         Best to apply it between convolution layer and RELU activation layer
+    -[ ] L2 regularization
+         We do this to reduce model complexity (simpler model = keep weights small = more even feature selection possible).
+         Look up structural risk minimization (SRM)
+    -[ ] Early stopping
+         Small number of training epoch could reduce forgetting.
+
+
+#################################################################################################################
+Experiment design on FWT, BWT, Interference(INT), memory saturation(SAT), long-term learning(LTL) "lifelong learning"
+
+ACC
+ - [ ] Average accuracy
+FWT
+ - [ ] Learning Curve Area(LCA), "Efficient Lifelong learning with a-GEM"
+      + measures learning speed
+ - [ ] Feature Saliency/Generality Test
+      + only applies to multi-head model
+      + Freeze shared layer. Only train the head layer
+BWT
+ - "Gradient Episodic Memory"
+ - [ ] We focus on Backward feature polishing/honeing/refining/shaping
+      + only applies to multi-head model
+      + freeze shared layer, retrain just the head layer(fine tuning). See if there are any Acc improvement.
+
+INT
+ - [ ] sum of parameter displacement * importance\
+      + only applies to reg. method
+SAT
+ - [ ] Accumulation of Fisher information. ratio of Acc/change_in_summed_importance over tasks.
+      + only applies to reg. method
+LTL
+ - Scalability test (information packing) with extended datasets
+      + 100 tasks on pMNIST
+      + 100 tasks on CIFAR100)
+
+- [ ] Task Agnostic Test
+
+
+#### 2/22/21 ####
+- [x] SI implementation
+- [ ] test SI
+- [x] EWC implementation
+- [ ] test EWC
+
+
+
+#### 3/1/21 ####
+Reg calculation
+ - MAS|reg1|  approx. x2.5
+     conv1_layer.0.w: 8934  -> 22667
+     conv1_layer.2.w: 15626 -> 46528
+     conv2_layer.0.w: 15884 -> 46215
+     conv2_layer.2.w: 13901 -> 40578
+     fc1_layer.1.w  : 20387 -> 66038
+     Total          : 
+ - EWC|reg1|  approx. x12
+     conv1_layer.0.w: 41    -> 509
+     conv1_layer.2.w: 13    -> 151
+     conv2_layer.0.w: 8.4   -> 80
+     conv2_layer.2.w: 4.6   -> 44
+     fc1_layer.1.w  : 1.4   -> 15
+
+ - SI |reg1|  approx. x16
+     conv1_layer.0.w: 82    -> 1362
+     conv1_layer.2.w: 146   -> 2099
+     conv2_layer.0.w: 163   -> 2240
+     conv2_layer.2.w: 158   -> 2241
+     fc1_layer.1.w  : 432   -> 8041
+
+ - SIM|reg1|  approx. x3.7
+     conv1_layer.0.w: 6119  -> 19881
+     conv1_layer.2.w: 11791 -> 42972
+     conv2_layer.0.w: 11167 -> 42661
+     conv2_layer.2.w: 7173  -> 27023
+     fc1_layer.1.w  : 9444  -> 38265
