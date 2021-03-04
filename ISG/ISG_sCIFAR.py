@@ -61,7 +61,7 @@ def SIM_CIFAR_train(args, ob, repeat):
                 if args.apply_SIM:
                     network.load_mask(loaded_task)
                 _, testloader = load_datasets(args, loaded_task)
-                accuracy = test(network, loaded_task, testloader, -1)
+                accuracy = network.test(loaded_task, testloader, -1)
                 acc_list[task_num].append(accuracy.data.item())
                 # acc_list[task_num][loaded_task] = accuracy
                 network.lift_mask()
