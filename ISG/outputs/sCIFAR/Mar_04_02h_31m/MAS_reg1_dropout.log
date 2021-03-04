@@ -1,0 +1,22 @@
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([   0., 4096.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([  0., 512.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 0,	 Epoch: 0/1,	 Avg.loss: 0.0013,	 Test Accuracy: 583/1000(58%)
+Task: 0,	 Epoch: 0/1,	 Avg.loss: 0.0008,	 Test Accuracy: 725/1000(72%)
+Trained Task:0, Loaded task:0, Accuracy:72.5%
+Trained Task:0, Avg. Accuracy: 72.5 
+
+List of avg. accuracy: [72.5]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([   0.,    0., 4096.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([  0.,   0., 512.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 1,	 Epoch: 0/1,	 Avg.loss: 0.0023,	 Test Accuracy: 203/1000(20%)
+Task: 1,	 Epoch: 0/1,	 Avg.loss: 0.0009,	 Test Accuracy: 671/1000(67%)

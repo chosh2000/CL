@@ -29,7 +29,7 @@ class MAS(nn.Module):
 		self.FWT  = []
 		self.BWT  = []
 		self.SAT  = []
-		self.INT  = []
+		self.PTB  = []
 		self.IPK  = []
 		self.Rii  = {}
 
@@ -94,6 +94,7 @@ class MAS(nn.Module):
 	def finetune_head(self, task_num, trainloader, testloader):
 		mode = self.tmodel.training
 		self.tmodel.train()
+
 		for n, p in self.tmodel.named_parameters():
 			if 'head' not in n:
 				p.requires_grad = False
@@ -125,8 +126,8 @@ class MAS(nn.Module):
 		correct = 0
 		mode = self.tmodel.training
 		self.tmodel.eval()
-		# device = self.device
-		# self.tmodel.to(device)
+		device = self.device
+		self.tmodel.to(device)
 
 		# with torch.no_grad(): # we don't need Autograd for testing. commented out for l2_grad computation.
 		for batch_idx, (data, target) in enumerate(testloader):
@@ -302,22 +303,24 @@ class SI(MAS):
 					importance[n] = p.clone().detach().fill_(0)  # zero initialized
 			prev_params = self.initial_params
 
-		self.tmodel.eval()
+		# mode =self.tmodel.training
+		# self.tmodel.eval()
 
-		# Data prep.
-		for i, (data, target) in enumerate(dataloader):
-			if self.args.dataset == "pMNIST":
-				data   = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
-			if self.args.use_gpu:
-				data   = data.cuda()
-				target = target.cuda()
+		# # Data prep.
+		# for i, (data, target) in enumerate(dataloader):
+		# 	if self.args.dataset == "pMNIST":
+		# 		data   = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
+		# 	if self.args.use_gpu:
+		# 		data   = data.cuda()
+		# 		target = target.cuda()
 
 		# Calculate or accumulate the Omega (the importance matrix)
 		for n, p in importance.items():
 			delta_theta = self.params[n].detach() - prev_params[n]
 			p += self.w[n]/(delta_theta**2 + self.damping_factor)
 			self.w[n].zero_()
-		self.tmodel.train()
+		# self.tmodel.train(mode = mode)
+
 		return importance
 
 
@@ -377,6 +380,7 @@ class EWC(MAS):
 			subdata = torch.utils.data.Subset(dataloader.dataset, rand_ind)
 			dataloader = torch.utils.data.DataLoader(subdata, shuffle=True, num_workers=2, batch_size=1)
 
+		mode = self.tmodel.training
 		self.tmodel.eval()
 
 		# Accumulate the square of gradients
@@ -419,7 +423,8 @@ class EWC(MAS):
 				if self.params[n].grad is not None:  # Some heads can have no grad if no loss applied on them.
 					p += ((self.params[n].grad ** 2) * len(data) / len(dataloader))
 
-		self.tmodel.train()
+		self.tmodel.train(mode = mode)
+
 
 		return importance
 

@@ -49,12 +49,15 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 
 	#Training Phase
 	network.load_new_head()
-	print(network.tmodel.training)
-	p()
 	network.tmodel.train()
+	param_prev = {}
+	for n, p in network.tmodel.named_parameters():
+		if 'head' not in n:
+			param_prev[n] = p.clone().detach()
 
 	#Finetuning
 	acc_init = network.finetune_head(task_num, trainloader, testloader)
+
 
 	n_epochs = args.schedule[-1]
 	for epoch in range(n_epochs+1):
@@ -69,24 +72,33 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			#3. calculate the importance for this task
 			importance = network.calculate_importance(trainloader, task_num)
 
+
 			#4. copy them to reg_params
 			if network.online_reg and len(network.reg_params) > 0:
 				# only one slot is used to record the reg data
+				importance_prev = network.reg_params[0]['importance']
 				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
 			else:
 				# task-specific parameters are all recorded
+				importance_prev = {}
+				for n, p in network.tmodel.named_parameters():
+					if 'head' not in n:
+						importance_prev[n] = p.clone().detach().fill_(0)  # zero initialized
 				network.reg_params[task_num] = {'importance': importance, 'task_param': task_param}
 
 			#5. restore drop
 			network.lift_mask()
 
 			#6. make measurementes
-			omega_sum = 0
+			sat_sum = 0
+			ptb_sum = 0
 			for n, p in network.tmodel.named_parameters():
 				if 'head' not in n:
-					omega_sum += importance[n].sum()
-			network.SAT.append(omega_sum)
-			network.FWT.append(acc_int/acc)
+					sat_sum += ((importance[n]-importance_prev[n])*param_prev[n].abs()).sum()
+					ptb_sum += (importance_prev[n]*(p-param_prev[n]).abs()).sum()
+			network.SAT.append(sat_sum)
+			network.PTB.append(ptb_sum)
+			network.FWT.append(acc_init/acc)
 			network.Rii[task_num] = acc
 
 		else:

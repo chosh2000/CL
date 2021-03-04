@@ -25,9 +25,7 @@ def SIM_CIFAR_train(args, ob):
         os.makedirs(save_path)
     with open(save_path+'/args.txt', 'w') as f:
         json.dump(args.__dict__, f, indent=2)
-    acc_save_path = os.path.join(save_path,"SIM_acc"+str(args.rho)+".pth" )
     model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
-    # mask_save_path = os.path.join(save_path,"SIM_mask"+str(args.rho)+".pth" )
 
 
     #Initialize network with CIFAR10 dataset
@@ -54,36 +52,42 @@ def SIM_CIFAR_train(args, ob):
 
         #Inference test on past tasks
         network.tmodel.eval()
-        if args.multi_head:
-            acc_list[task_num] = []
-            for loaded_task in range(task_num + 1):
-                network.load_head(loaded_task)
-                if args.apply_SIM:
-                    network.load_mask(loaded_task)
-                trainloader, testloader = load_datasets(args, loaded_task)
-                accuracy = network.test(loaded_task, testloader, -1)
+        acc_list[task_num] = []
+        BWT = 0
+        for loaded_task in range(task_num + 1):
+            network.load_head(loaded_task)
+            if args.apply_SIM:
+                network.load_mask(loaded_task)
+            trainloader, testloader = load_datasets(args, loaded_task)
+            accuracy = network.test(loaded_task, testloader, -1)
+            acc_list[task_num].append(accuracy.data.item())
+            print("Trained Task:{}, Loaded task:{}, Accuracy:{:.1f}%".format(task_num, loaded_task, accuracy))
+            #Added to BWT calculation
+            if loaded_task < task_num:
+                print("Backward (BWT) ", end='')
                 acc_bwt  = network.finetune_head(loaded_task, trainloader, testloader)
-                acc_list[task_num].append(accuracy.data.item())
-                # acc_list[task_num][loaded_task] = accuracy
-                network.lift_mask()
-                print("Trained Task:{}, Loaded task:{}, Accuracy:{:.1f}%".format(task_num, loaded_task, accuracy))
-            acc_avg = np.around(sum(acc_list[task_num])/len(acc_list[task_num]), 1)
-            acc_avg_list.append(acc_avg)
-            print("Trained Task:{}, Avg. Accuracy: {:.1f} \n".format(task_num, acc_avg))
-        else:
-            raise("not implemented yet")
+                BWT     += acc_bwt / network.Rii[loaded_task] -1
+            network.lift_mask()
 
-        #Save data to the observer
+
+        network.BWT.append(BWT)
+        ipk = (1-network.FWT[-1]+network.BWT[-1])/(network.SAT[-1]/network.PTB[-1])
+        network.IPK.append(ipk)
+        acc_avg = np.around(sum(acc_list[task_num])/len(acc_list[task_num]), 1)
+        acc_avg_list.append(acc_avg)
+        print("Trained Task:{}, Avg. Accuracy: {:.1f} \n".format(task_num, acc_avg))
         print("List of avg. accuracy: {}".format(acc_avg_list))
+
+
+    #Save data to the observer
     ob.ACC.append(acc_avg_list)
+    ob.FWT.append(network.FWT)
+    ob.BWT.append(network.BWT)
     ob.SAT.append(network.SAT)
+    ob.PTB.append(network.PTB)
+    ob.IPK.append(network.IPK)
 
 
-        # if args.apply_SIM:
-            # torch.save(network.task_masks, mask_save_path)
-
-    torch.save(acc_avg_list, acc_save_path)
-    
 
 def get_args(argv):
     parser = argparse.ArgumentParser()
@@ -92,6 +96,7 @@ def get_args(argv):
     parser.add_argument('--use_gpu', type=int, default=0, help="Use_gpu")
     parser.add_argument('--out_dir', type=str, default="outputs/sCIFAR/unscripted", help="output directory")
     parser.add_argument('--repeat', type=int, default=1, help="Repeat the experiment N times")
+    parser.add_argument('--finetune_epoch', type=int, default=20, help="defines the number of epochs used for finetuning the head")
 
 
     #network config
@@ -111,7 +116,6 @@ def get_args(argv):
     parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
     parser.add_argument('--num_task', type=int, default=10, help="number of tasks")
     parser.add_argument('--schedule', nargs="+", type=int, default=[60, 80], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
-    parser.add_argument('--finetune_epoch', type=int, default=20, help="defines the number of epochs used for finetuning the head")
     parser.add_argument('--batch_size_train', type=int, default=128)
     parser.add_argument('--batch_size_test', type=int, default=1000)
     parser.add_argument('--batch_size_fisher', type=int, default=100)
@@ -127,7 +131,7 @@ def get_args(argv):
     parser.add_argument('--omega_multiplier', type=float, default = 1, help="Determines how fast omega accumulates")
 
     #SIM related
-    parser.add_argument('--apply_SIM', type=int, default=1, help="flag to apply SIM")
+    parser.add_argument('--apply_SIM', type=int, default=0, help="flag to apply SIM")
     parser.add_argument('--dropmethod', type=str, default="rho", help="Drop method (rho | prob | dist| random_even)")
     # parser.add_argument('--dist_num', type=int, default=1, help="how many hist bins to include for the dist. method")
     parser.add_argument('--inhib', type=float, default=0, help="Print the log at every x iteration")
@@ -147,6 +151,6 @@ if __name__ =="__main__":
 
     for repeat in range(args.repeat):
         SIM_CIFAR_train(args, ob)
+        ob.to_csv() #saves all csv files
 
-    ob.to_csv() #saves all csv files
     # ob.plot_results()

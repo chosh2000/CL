@@ -41,13 +41,14 @@ def load_and_plot(task_num):
 
 
 class observer():
+	#Analytic program that overlooks the entire simulation
 	def __init__(self, args):
-		self.ACC  = [] #[[ACC for 1st iteration], [ACC for 2nd iteration],...]
+		self.ACC  = [] #[[ACC for 1st repetition], [ACC for 2nd repetition],...]
 		self.LCA  = []
 		self.FWT  = []
 		self.BWT  = []
 		self.SAT  = []
-		self.INT  = []
+		self.PTB  = []
 		self.IPK  = []
 		self.args = args
 
@@ -58,13 +59,13 @@ class observer():
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
 
-		np.savetxt(save_path+self.args.method+"_ACC.csv", np.asarray(self.ACC), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
-		np.savetxt(save_path+self.args.method+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_INT.csv", np.asarray(self.INT), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
+		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_ACC.csv", np.asarray(self.ACC), delimiter=",")
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
+		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
+		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
+		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
+		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
+		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 
 
 	def plot_results(self):
