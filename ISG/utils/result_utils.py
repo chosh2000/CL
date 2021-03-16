@@ -68,5 +68,110 @@ class observer():
 		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 
 
-	def plot_results(self):
-		return
+def plot_results():
+	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-04-2021/"
+	arr = os.listdir(result_path)
+
+	plt.figure()
+	item_list=[]
+	for item in arr:
+		print(item)
+		if 'ACC' in item:
+			item_list.append(item)
+			data = np.genfromtxt(result_path+item, delimiter=",")
+			print(data[0])
+			plt.plot(np.arange(10), data[0])
+	plt.title("ACC")
+	item_list[1] = "ours"
+	plt.legend(item_list)
+	plt.xlabel("Task, t")
+	plt.ylabel("Accuracy, ACC")
+	plt.savefig(result_path+"acc.jpg")
+	# plt.show()
+	
+	plt.figure()
+	item_list=[]
+	for item in arr:
+		print(item)
+		if 'BWT' in item:
+			item_list.append(item)
+			data = np.genfromtxt(result_path+item, delimiter=",")
+			print(data[0])
+			plt.plot(np.arange(10), data[0])
+	plt.title("BWT")
+	item_list[1] = "ours"
+	plt.legend(item_list)
+	plt.xlabel("Task, t")
+	plt.ylabel("BWT")
+	plt.savefig(result_path+"bwt.jpg")
+	# plt.show()
+	
+	plt.figure()
+	item_list=[]
+	for item in arr:
+		print(item)
+		if 'FWT' in item:
+			item_list.append(item)
+			data = np.genfromtxt(result_path+item, delimiter=",")
+			print(data[0])
+			plt.plot(np.arange(10), data[0])
+	plt.title("FWT")
+	item_list[1] = "ours"
+	plt.legend(item_list)
+	plt.xlabel("Task, t")
+	plt.ylabel("FWT")
+	plt.savefig(result_path+"fwt.jpg")
+	# plt.show()
+
+	plt.figure()
+	item_list=[]
+	for item in arr:
+		print(item)
+		if 'IPK' in item:
+			item_list.append(item)
+			data = np.genfromtxt(result_path+item, delimiter=",")
+			print(data[0])
+			plt.plot(np.arange(10), data[0])
+	plt.title("IPK")
+	item_list[1] = "ours"
+	plt.legend(item_list)
+	plt.xlabel("Task, t")
+	plt.ylabel("IPK")
+	plt.savefig(result_path+"ipk.jpg")
+	# plt.show()
+
+	plt.figure()
+	item_list=[]
+	for item in arr:
+		print(item)
+		if 'PTB' in item:
+			item_list.append(item)
+			data = np.genfromtxt(result_path+item, delimiter=",")
+			print(data[0])
+			plt.plot(np.arange(10), data[0])
+	plt.title("PTB")
+	item_list[1] = "ours"
+	plt.legend(item_list)
+	plt.xlabel("Task, t")
+	plt.ylabel("PTB")
+	plt.savefig(result_path+"ptb.jpg")
+	# plt.show()
+
+	plt.figure()
+	item_list=[]
+	for item in arr:
+		print(item)
+		if 'SAT' in item:
+			item_list.append(item)
+			data = np.genfromtxt(result_path+item, delimiter=",")
+			print(data[0])
+			plt.plot(np.arange(10), data[0])
+	plt.title("SAT")
+	item_list[1] = "ours"
+	plt.legend(item_list)
+	plt.xlabel("Task, t")
+	plt.ylabel("SAT")
+	plt.savefig(result_path+"sat.jpg")
+	# plt.show()
+	
+plot_results()
