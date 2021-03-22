@@ -64,13 +64,13 @@ def SIM_CIFAR_train(args, ob):
             print("Trained Task:{}, Loaded task:{}, Accuracy:{:.1f}%".format(task_num, loaded_task, accuracy))
             #Added to BWT calculation
             if loaded_task < task_num:
-                print("Backward (BWT) ", end='')
-                acc_bwt  = network.finetune_head(loaded_task, trainloader, testloader)
-                BWT     += acc_bwt / network.Rii[loaded_task] -1
+                # print("Backward (BWT) ", end='')
+                # acc_bwt  = network.finetune_head(loaded_task, trainloader, testloader)
+                BWT     += accuracy / network.Rii[loaded_task] -1
             network.lift_mask()
 
-
         network.BWT.append(BWT)
+        #Information Packing (IPK)
         ipk = (1-network.FWT[-1]+network.BWT[-1])/(network.SAT[-1]/network.PTB[-1])
         network.IPK.append(ipk)
         acc_avg = np.around(sum(acc_list[task_num])/len(acc_list[task_num]), 1)
