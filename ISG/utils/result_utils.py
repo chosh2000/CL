@@ -69,7 +69,7 @@ class observer():
 
 
 def plot_results():
-	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-04-2021/"
+	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-22-2021/"
 	arr = os.listdir(result_path)
 
 	plt.figure()
@@ -77,12 +77,16 @@ def plot_results():
 	for item in arr:
 		print(item)
 		if 'ACC' in item:
-			item_list.append(item)
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			print(data[0])
-			plt.plot(np.arange(10), data[0])
+			if "SIM1" in item:
+				item_list.append("SIM")
+			else:
+				item_list.append(item[:3])
+			if len(data)!=10:
+				plt.plot(np.arange(10), data[0])
+			else:
+				plt.plot(np.arange(10), data)
 	plt.title("ACC")
-	item_list[1] = "ours"
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
 	plt.ylabel("Accuracy, ACC")
@@ -94,12 +98,16 @@ def plot_results():
 	for item in arr:
 		print(item)
 		if 'BWT' in item:
-			item_list.append(item)
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			print(data[0])
-			plt.plot(np.arange(10), data[0])
+			if "SIM1" in item:
+				item_list.append("SIM")
+			else:
+				item_list.append(item[:3])
+			if len(data)!=10:
+				plt.plot(np.arange(10), data[0])
+			else:
+				plt.plot(np.arange(10), data)
 	plt.title("BWT")
-	item_list[1] = "ours"
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
 	plt.ylabel("BWT")
@@ -111,12 +119,16 @@ def plot_results():
 	for item in arr:
 		print(item)
 		if 'FWT' in item:
-			item_list.append(item)
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			print(data[0])
-			plt.plot(np.arange(10), data[0])
+			if "SIM1" in item:
+				item_list.append("SIM")
+			else:
+				item_list.append(item[:3])
+			if len(data)!=10:
+				plt.plot(np.arange(10), data[0])
+			else:
+				plt.plot(np.arange(10), data)
 	plt.title("FWT")
-	item_list[1] = "ours"
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
 	plt.ylabel("FWT")
@@ -128,12 +140,16 @@ def plot_results():
 	for item in arr:
 		print(item)
 		if 'IPK' in item:
-			item_list.append(item)
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			print(data[0])
-			plt.plot(np.arange(10), data[0])
+			if "SIM1" in item:
+				item_list.append("SIM")
+			else:
+				item_list.append(item[:3])
+			if len(data)!=10:
+				plt.plot(np.arange(10), data[0])
+			else:
+				plt.plot(np.arange(10), data)
 	plt.title("IPK")
-	item_list[1] = "ours"
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
 	plt.ylabel("IPK")
@@ -145,12 +161,16 @@ def plot_results():
 	for item in arr:
 		print(item)
 		if 'PTB' in item:
-			item_list.append(item)
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			print(data[0])
-			plt.plot(np.arange(10), data[0])
+			if "SIM1" in item:
+				item_list.append("SIM")
+			else:
+				item_list.append(item[:3])
+			if len(data)!=10:
+				plt.plot(np.arange(10), data[0])
+			else:
+				plt.plot(np.arange(10), data)
 	plt.title("PTB")
-	item_list[1] = "ours"
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
 	plt.ylabel("PTB")
@@ -162,12 +182,16 @@ def plot_results():
 	for item in arr:
 		print(item)
 		if 'SAT' in item:
-			item_list.append(item)
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			print(data[0])
-			plt.plot(np.arange(10), data[0])
+			if "SIM1" in item:
+				item_list.append("SIM")
+			else:
+				item_list.append(item[:3])
+			if len(data)!=10:
+				plt.plot(np.arange(10), data[0])
+			else:
+				plt.plot(np.arange(10), data)
 	plt.title("SAT")
-	item_list[1] = "ours"
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
 	plt.ylabel("SAT")

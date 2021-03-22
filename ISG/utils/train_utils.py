@@ -74,17 +74,20 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 
 
 			#4. copy them to reg_params
+			importance_prev = {}
 			if network.online_reg and len(network.reg_params) > 0:
+				#store importance_prev
+				for n, p in network.tmodel.named_parameters():
+					if 'head' not in n:
+						importance_prev[n] = network.reg_params[0]['importance'][n].clone().detach()
 				# only one slot is used to record the reg data
-				importance_prev = network.reg_params[0]['importance']
 				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
 			else:
 				# task-specific parameters are all recorded
-				importance_prev = {}
 				for n, p in network.tmodel.named_parameters():
 					if 'head' not in n:
 						importance_prev[n] = p.clone().detach().fill_(0)  # zero initialized
-				network.reg_params[task_num] = {'importance': importance, 'task_param': task_param}
+				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
 
 			#5. restore drop
 			network.lift_mask()

@@ -214,3 +214,6 @@ Reg calculation
 FWT, BWT: few shot training? or complete training of head layer?
 
 PTB, SAT, IPK: can't be evaluated across different frameworks because of omega. Maybe evaluate only on SIM with different configurations?
+
+
+BWT: do not finetune the head layer

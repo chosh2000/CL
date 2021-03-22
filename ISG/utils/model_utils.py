@@ -98,6 +98,10 @@ class MAS(nn.Module):
 		for n, p in self.tmodel.named_parameters():
 			if 'head' not in n:
 				p.requires_grad = False
+			else:
+				print(n)
+
+		p()
 
 		#train the head layer
 		for epoch in range(self.args.finetune_epoch):
