@@ -95,13 +95,12 @@ class MAS(nn.Module):
 		mode = self.tmodel.training
 		self.tmodel.train()
 
+		prev = {}
 		for n, p in self.tmodel.named_parameters():
 			if 'head' not in n:
 				p.requires_grad = False
 			else:
-				print(n)
-
-		p()
+				prev[n] = p.clone().detach()
 
 		#train the head layer
 		for epoch in range(self.args.finetune_epoch):
@@ -120,7 +119,10 @@ class MAS(nn.Module):
 
 		for n, p in self.tmodel.named_parameters():
 			p.requires_grad = True
-
+			if 'head' in n:
+				if self.args.revert_head:
+					p.copy_(prev[n])
+					
 		self.tmodel.train(mode=mode)
 		return acc
 
