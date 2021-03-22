@@ -209,3 +209,8 @@ Reg calculation
      conv2_layer.0.w: 11167 -> 42661
      conv2_layer.2.w: 7173  -> 27023
      fc1_layer.1.w  : 9444  -> 38265
+
+#### 3/22 ####
+FWT, BWT: few shot training? or complete training of head layer?
+
+PTB, SAT, IPK: can't be evaluated across different frameworks because of omega. Maybe evaluate only on SIM with different configurations?
