@@ -29,8 +29,10 @@ def SIM_gating(network, task_num, dataloader):
 			if n in network.tmodel.mask_list:
 				a = network.args.alpha
 				b = network.args.beta
-				x = network.args.xi 
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
+				# x = network.args.xi
+				x = F.max()/10
+				F = F+x
 				# F /= F.max()
 				if task_num == 0:
 					O = torch.zeros(F.shape).to(network.device)

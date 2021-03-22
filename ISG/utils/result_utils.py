@@ -198,4 +198,4 @@ def plot_results():
 	plt.savefig(result_path+"sat.jpg")
 	# plt.show()
 	
-plot_results()
+# plot_results()

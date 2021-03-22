@@ -213,7 +213,10 @@ Reg calculation
 #### 3/22 ####
 FWT, BWT: few shot training? or complete training of head layer?
 
-PTB, SAT, IPK: can't be evaluated across different frameworks because of omega. Maybe evaluate only on SIM with different configurations?
+- [ ] PTB, SAT, IPK: can't be evaluated across different frameworks because of omega. Maybe evaluate only on SIM with different configurations?
 
 
-BWT: do not finetune the head layer
+- [x] BWT: do not finetune the head layer
+- [x] FWT: implement args.revert_head
+- [ ] make xi to equal a portion of F.max()
+- [ ] F += F.max()/10
