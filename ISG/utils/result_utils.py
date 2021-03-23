@@ -75,7 +75,6 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		print(item)
 		if 'ACC' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			if "SIM1" in item:
@@ -96,7 +95,6 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		print(item)
 		if 'BWT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			if "SIM1" in item:
@@ -117,7 +115,6 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		print(item)
 		if 'FWT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			if "SIM1" in item:
@@ -138,7 +135,6 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		print(item)
 		if 'IPK' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			if "SIM1" in item:
@@ -159,7 +155,6 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		print(item)
 		if 'PTB' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			if "SIM1" in item:
@@ -180,7 +175,6 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		print(item)
 		if 'SAT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			if "SIM1" in item:
