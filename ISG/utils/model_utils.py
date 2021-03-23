@@ -52,7 +52,7 @@ class MAS(nn.Module):
 		assert self.args.method=='MAS', "not using MAS version"
 		# Initialize the importance matrix
 		if self.online_reg and len(self.reg_params)>0:
-			importance = self.reg_params[0]['importance'].clone().detach()
+			importance = self.reg_params[0]['importance']
 		else:
 			importance = {}
 			for n, p in self.tmodel.named_parameters():
@@ -300,8 +300,8 @@ class SI(MAS):
 		assert self.args.method=='SI', "not using SI version" 
 		# Initialize the importance matrix
 		if self.online_reg and len(self.reg_params)>0:
-			importance  = self.reg_params[0]['importance'].clone()
-			prev_params = self.reg_params[0]['task_param'].clone()
+			importance  = self.reg_params[0]['importance']
+			prev_params = self.reg_params[0]['task_param']
 		else:
 			importance = {}
 			for n, p in self.tmodel.named_parameters():
@@ -371,7 +371,7 @@ class EWC(MAS):
 
 		# Initialize the importance matrix
 		if self.online_reg and len(self.reg_params)>0:
-			importance = self.reg_params[0]['importance'].clone().detach()
+			importance = self.reg_params[0]['importance']
 		else:
 			importance = {}
 			for n, p in self.params.items():
