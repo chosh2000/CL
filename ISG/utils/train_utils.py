@@ -68,26 +68,29 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 		if epoch == n_epochs:
 			#2. Backup the weight of current task
 			network.save_head(task_num)
-			task_param = network.task_parameter()
-			#3. calculate the importance for this task
-			importance = network.calculate_importance(trainloader, task_num)
 
-
-			#4. copy them to reg_params
+			# Save previous importance
 			importance_prev = {}
 			if network.online_reg and len(network.reg_params) > 0:
-				#store importance_prev
 				for n, p in network.tmodel.named_parameters():
 					if 'head' not in n:
 						importance_prev[n] = network.reg_params[0]['importance'][n].clone().detach()
-				# only one slot is used to record the reg data
-				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
 			else:
 				# task-specific parameters are all recorded
 				for n, p in network.tmodel.named_parameters():
 					if 'head' not in n:
 						importance_prev[n] = p.clone().detach().fill_(0)  # zero initialized
+
+
+			#3. calculate the importance for this task
+			task_param = network.task_parameter()
+			importance = network.calculate_importance(trainloader, task_num)
+
+			#4. copy them to reg_params
+			if network.online_reg and len(network.reg_params) > 0:
 				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
+			else:
+				network.reg_params[task_num] = {'importance': importance, 'task_param': task_param}
 
 			#5. restore drop
 			network.lift_mask()
