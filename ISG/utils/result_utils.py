@@ -69,7 +69,7 @@ class observer():
 
 
 def plot_results():
-	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-22-2021/"
+	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-23-2021/"
 	arr = os.listdir(result_path)
 
 	plt.figure()

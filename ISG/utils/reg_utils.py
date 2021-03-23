@@ -30,10 +30,8 @@ def SIM_gating(network, task_num, dataloader):
 				a = network.args.alpha
 				b = network.args.beta
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
-				# x = network.args.xi
 				x = F.max() * network.args.xi
 				F = F+x
-				# F /= F.max()
 				if task_num == 0:
 					O = torch.zeros(F.shape).to(network.device)
 				else:
@@ -51,8 +49,6 @@ def SIM_gating(network, task_num, dataloader):
 
 				if network.args.dropmethod == "rho":
 					M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
-					# M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]*(1-network.args.inhib)))[1]
-					# M_inhib = S_sum.topk(int(S_sum.numel()* network.tmodel.rho[n]*network.args.inhib))[1]
 				elif network.args.dropmethod == "dist":
 					if 'conv1' not in n:
 						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
@@ -66,7 +62,6 @@ def SIM_gating(network, task_num, dataloader):
 				else:
 					raise "invalid drop method"
 				M[M_index] = 1 #Sailent features set to 1
-				# M[M_inhib] = 1
 				network.tmodel.mask_list[n].copy_(M) 
 
 				print("Layer        : {}".format(n))
