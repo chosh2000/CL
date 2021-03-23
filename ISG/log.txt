@@ -218,5 +218,9 @@ FWT, BWT: few shot training? or complete training of head layer?
 
 - [x] BWT: do not finetune the head layer
 - [x] FWT: implement args.revert_head
-- [ ] make xi to equal a portion of F.max()
-- [ ] F += F.max()/10
+- [x] make xi to equal a portion of F.max()
+- [x] F += F.max()/10
+
+#### 3/23 ####
+- [ ] apply SIM to conv2_layer.1, conv2_layer.2 instead? we need to try different things
+- [ ] but before that, let's test out the SIM works with MLP structure.

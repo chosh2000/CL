@@ -31,7 +31,7 @@ def SIM_gating(network, task_num, dataloader):
 				b = network.args.beta
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
 				# x = network.args.xi
-				x = F.max()/10
+				x = F.max() * network.args.xi
 				F = F+x
 				# F /= F.max()
 				if task_num == 0:
