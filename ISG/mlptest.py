@@ -36,7 +36,7 @@ if __name__ == '__main__':
   trainloader = torch.utils.data.DataLoader(dataset, batch_size=10, shuffle=True, num_workers=1)
   
   # Initialize the MLP
-  mlp = MLP()
+  mlp = MLP().cuda()
 
   
   # Define the loss function and optimizer
@@ -57,8 +57,8 @@ if __name__ == '__main__':
       
       # Get inputs
       inputs, targets = data
-      inputs = inputs
-      targets = targets
+      inputs = inputs.cuda()
+      targets = targets.cuda()
 
       # Zero the gradients
       optimizer.zero_grad()
