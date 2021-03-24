@@ -19,6 +19,7 @@ def SIM_train(args, ob):
     #Initialize model
     # model = CNN(args)
     model   = utils.network_utils.__dict__[args.model_type](args)
+    model.cuda()
     network = utils.model_utils.__dict__[args.method](model, args, ob)
     
     #save paths
