@@ -95,7 +95,7 @@ def get_args(argv):
     parser = argparse.ArgumentParser()
     
     #experiment
-    parser.add_argument('--use_gpu', type=int, default=0, help="Use_gpu")
+    parser.add_argument('--use_gpu', type=int, default=1, help="Use_gpu")
     parser.add_argument('--out_dir', type=str, default="outputs/sCIFAR/unscripted", help="output directory")
     parser.add_argument('--repeat', type=int, default=1, help="Repeat the experiment N times")
     parser.add_argument('--finetune_epoch', type=int, default=20, help="defines the number of epochs used for finetuning the head")
