@@ -3,9 +3,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class FcNet(nn.Module):
+class MLP(nn.Module):
 	def __init__(self, args, in_channel=1, img_size=28, out_dim=10):
-		super(FcNet, self).__init__()
+		super(MLP, self).__init__()
 		self.device = torch.device("cuda:0" if args.use_gpu else "cpu")
 		#Dimensions
 		if args.padding:
