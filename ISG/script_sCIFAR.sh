@@ -70,8 +70,8 @@ python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFA
 python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 1 --xi 0.01 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a1_xi001.log    
 python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 1 --xi 0.02 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a1_xi002.log    
 python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 1 --xi 0.04 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a1_xi004.log    
-
-
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 3 --xi 0.04 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a3_xi004.log 
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 6 --xi 0.04 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a6_xi004.log 
 #Reglambda used for resnet, CIFAR100
 #EWC: 100
 #EWC_online: 3000
