@@ -107,7 +107,7 @@ class MAS(nn.Module):
 			for batch_idx, (data, target) in enumerate(trainloader):
 				#Permuting the data
 				if self.args.dataset == "pMNIST":
-					data = permute_MNIST(data, self.shuffle_idx, task_num, args)
+					data = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
 				data = data.to(self.device)
 				target = target.to(self.device)
 				loss = self.criterion(data, target)
