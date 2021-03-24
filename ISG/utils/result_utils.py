@@ -59,14 +59,29 @@ class observer():
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
 
-		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_ACC.csv", np.asarray(self.ACC), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
-		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
-		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
-		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
-		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
-		np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_ACC.csv", np.asarray(self.ACC), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
+		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 
+
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
+		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
+
+
+def legend_name(item):
+	# if "SIM1" in item:
+	# 	return "SIM"
+	# else:
+	# 	return item[:3]
+	return item[:-8]
 
 def plot_results():
 	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-23-2021/"
@@ -77,10 +92,8 @@ def plot_results():
 	for item in arr:
 		if 'ACC' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			if "SIM1" in item:
-				item_list.append("SIM")
-			else:
-				item_list.append(item[:3])
+
+			item_list.append(legend_name(item))
 			if len(data)!=10:
 				plt.plot(np.arange(10), data[0])
 			else:
@@ -97,10 +110,8 @@ def plot_results():
 	for item in arr:
 		if 'BWT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			if "SIM1" in item:
-				item_list.append("SIM")
-			else:
-				item_list.append(item[:3])
+			item_list.append(legend_name(item))
+
 			if len(data)!=10:
 				plt.plot(np.arange(10), data[0])
 			else:
@@ -117,10 +128,8 @@ def plot_results():
 	for item in arr:
 		if 'FWT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			if "SIM1" in item:
-				item_list.append("SIM")
-			else:
-				item_list.append(item[:3])
+			item_list.append(legend_name(item))
+
 			if len(data)!=10:
 				plt.plot(np.arange(10), data[0])
 			else:
@@ -137,10 +146,8 @@ def plot_results():
 	for item in arr:
 		if 'IPK' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			if "SIM1" in item:
-				item_list.append("SIM")
-			else:
-				item_list.append(item[:3])
+			item_list.append(legend_name(item))
+
 			if len(data)!=10:
 				plt.plot(np.arange(10), data[0])
 			else:
@@ -157,10 +164,8 @@ def plot_results():
 	for item in arr:
 		if 'PTB' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			if "SIM1" in item:
-				item_list.append("SIM")
-			else:
-				item_list.append(item[:3])
+			item_list.append(legend_name(item))
+
 			if len(data)!=10:
 				plt.plot(np.arange(10), data[0])
 			else:
@@ -177,10 +182,8 @@ def plot_results():
 	for item in arr:
 		if 'SAT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			if "SIM1" in item:
-				item_list.append("SIM")
-			else:
-				item_list.append(item[:3])
+			item_list.append(legend_name(item))
+
 			if len(data)!=10:
 				plt.plot(np.arange(10), data[0])
 			else:
