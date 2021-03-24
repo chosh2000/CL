@@ -60,11 +60,11 @@ def load_datasets(args, task_num):
 
 		#Datasets
 		trainset = torchvision.datasets.MNIST('../../data',
-			download = False,
+			download = True,
 			train = True,
 			transform = transform)
 		testset = torchvision.datasets.MNIST('../../data',
-			download = False,
+			download = True,
 			train = False,
 			transform = transform)
 
