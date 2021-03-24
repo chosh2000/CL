@@ -7,7 +7,6 @@ import torchvision.transforms as transforms
 from copy import deepcopy
 from pathlib import Path
 from matplotlib import pyplot as plt
-import torchvision
 
 
 
