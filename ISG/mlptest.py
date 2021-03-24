@@ -32,7 +32,7 @@ if __name__ == '__main__':
   torch.manual_seed(42)
   
   # Prepare CIFAR-10 dataset
-  dataset = CIFAR10(os.getcwd(), download=True, transform=transforms.ToTensor())
+  dataset = CIFAR10(os.getcwd()+"../../data/", download=True, transform=transforms.ToTensor())
   trainloader = torch.utils.data.DataLoader(dataset, batch_size=10, shuffle=True, num_workers=1)
   
   # Initialize the MLP
