@@ -1,0 +1,41 @@
+{
+  "use_gpu": 1,
+  "out_dir": "outputs/sCIFAR/03-23-21_20h-48m",
+  "repeat": 1,
+  "finetune_epoch": 20,
+  "revert_head": 0,
+  "init_model": 0,
+  "random_drop": 0,
+  "method": "MAS",
+  "model_type": "CNN",
+  "mlp_size": 1000,
+  "optimizer": "Adam",
+  "lr": 0.001,
+  "multi_head": true,
+  "momentum": 0,
+  "weight_decay": 0,
+  "dataset": "sCIFAR100",
+  "num_task": 10,
+  "schedule": [
+    20,
+    40
+  ],
+  "batch_size_train": 128,
+  "batch_size_test": 1000,
+  "batch_size_fisher": 100,
+  "print_freq": 10,
+  "dataroot": "data",
+  "padding": true,
+  "reglambda": 1.0,
+  "online_reg": true,
+  "omega_multiplier": 1,
+  "apply_SIM": 1,
+  "dropmethod": "rho",
+  "rho": [
+    1.0,
+    0.4,
+    0.4
+  ],
+  "xi": 0.01,
+  "alpha": 1.0
+}
