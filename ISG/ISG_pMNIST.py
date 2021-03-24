@@ -103,7 +103,7 @@ def get_args(argv):
 
     #network config
     parser.add_argument('--method', type=str, default="MAS", help="Continual Learning Algorithm used")
-    parser.add_argument('--model_type', type=str, default='mlp',help="The type (mlp|lenet|vgg|resnet) of backbone network")
+    parser.add_argument('--model_type', type=str, default='MLP',help="The type (mlp|lenet|vgg|resnet) of backbone network")
     parser.add_argument('--mlp_size', type=int, default=1000)
     parser.add_argument('--optimizer', type=str, default='Adam', help="SGD|Adam|RMSprop|amsgrad|Adadelta|Adagrad|Adamax ...")
     parser.add_argument('--lr', type=float, default=0.0001, help="Learning rate")
@@ -113,7 +113,7 @@ def get_args(argv):
     parser.add_argument('--model_weights', type=str, default=None, help="The path to the file for the model weights (*.pth).")
     
     #dataset
-    parser.add_argument('--dataset', type=str, default='MNIST', help="MNIST(default)|CIFAR10|CIFAR100")
+    parser.add_argument('--dataset', type=str, default='pMNIST', help="pMNIST(default)|CIFAR10|CIFAR100")
     parser.add_argument('--num_task', type=int, default=100, help="number of tasks")
     parser.add_argument('--schedule', nargs="+", type=int, default=[10], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
     parser.add_argument('--batch_size_train', type=int, default=64)
