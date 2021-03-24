@@ -106,7 +106,7 @@ def get_args(argv):
     parser.add_argument('--random_drop', type=int, default=0)
     parser.add_argument('--method', type=str, default="MAS", help="CL algorithm (MAS|SI|EWC)")
     parser.add_argument('--model_type', type=str, default='CNN',help="The type (MLP|CNN|lenet|vgg|resnet) of backbone network")
-    parser.add_argument('--mlp_size', type=int, default=1000)
+    parser.add_argument('--mlp_size', type=int, default=100)
     parser.add_argument('--optimizer', type=str, default='Adam', help="SGD|Adam|RMSprop|amsgrad|Adadelta|Adagrad|Adamax ...")
     parser.add_argument('--lr', type=float, default=0.001, help="Learning rate")
     parser.add_argument('--multi_head', type=bool, default=True)
