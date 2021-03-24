@@ -72,7 +72,12 @@ def SIM_train(args, ob):
                 BWT     += accuracy / network.Rii[loaded_task] -1
             network.lift_mask()
 
-        network.BWT.append(BWT)
+        if len(network.BWT) == 0:
+            network.BWT.append(BWT)
+        else:
+            BWT -= sum(network.BWT)
+            network.BWT.append(BWT)
+
         #Information Packing (IPK)
         ipk = (1-network.FWT[-1]+network.BWT[-1])/(network.SAT[-1]/network.PTB[-1])
         network.IPK.append(ipk)

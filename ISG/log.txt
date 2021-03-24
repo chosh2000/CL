@@ -213,8 +213,7 @@ Reg calculation
 #### 3/22 ####
 FWT, BWT: few shot training? or complete training of head layer?
 
-- [ ] PTB, SAT, IPK: can't be evaluated across different frameworks because of omega. Maybe evaluate only on SIM with different configurations?
-
+- [x] PTB, SAT, IPK: I've formulated so that they can be evaluated across different frameworks.
 
 - [x] BWT: do not finetune the head layer
 - [x] FWT: implement args.revert_head
@@ -224,3 +223,8 @@ FWT, BWT: few shot training? or complete training of head layer?
 #### 3/23 ####
 - [ ] apply SIM to conv2_layer.1, conv2_layer.2 instead? we need to try different things
 - [ ] but before that, let's test out the SIM works with MLP structure.
+
+#### 3/24 ####
+- [ ] benefit of SIM becomes more apparent in a larger network (MLP with 2000 hidden neurons/ CNN with more channels)
+      include in the paper how # of channels in CNN affect the SIM performance.
+

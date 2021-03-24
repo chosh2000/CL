@@ -101,8 +101,8 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			for n, p in network.tmodel.named_parameters():
 				if 'head' not in n:
 					assert not importance[n].equal(importance_prev[n]), "previous importance not stored properly"
-					sat_sum += ((importance[n]-importance_prev[n])*param_prev[n].abs()).sum()
-					ptb_sum += (importance_prev[n]*(p-param_prev[n]).abs()).sum()
+					sat_sum += network.args.reglambda * ((importance[n]-importance_prev[n])*param_prev[n].abs()).sum()
+					ptb_sum += network.args.reglambda * (importance_prev[n]*(p-param_prev[n]).abs()).sum()
 			network.SAT.append(sat_sum)
 			network.PTB.append(ptb_sum)
 			network.FWT.append(acc_init/acc)
