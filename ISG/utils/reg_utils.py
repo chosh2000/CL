@@ -28,7 +28,7 @@ def SIM_gating(network, task_num, dataloader):
 		for n, p in network.tmodel.named_parameters():
 			if n in network.tmodel.mask_list:
 				a = network.args.alpha
-				b = network.args.beta
+				# b = network.args.beta
 				F = p.grad.data.abs() / len(dataloader) #Inductive Fisher
 				x = F.max() * network.args.xi
 				F = F+x
@@ -49,18 +49,19 @@ def SIM_gating(network, task_num, dataloader):
 
 				if network.args.dropmethod == "rho":
 					M_index = R_sum.topk(int(R_sum.numel()* network.tmodel.rho[n]))[1]
-				elif network.args.dropmethod == "dist":
-					if 'conv1' not in n:
-						M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
-					else:
-						M_index = R_sum.topk(R_sum.numel())[1]
-				elif network.args.dropmethod == "random_even":
-					if len(network.mask_trace) == 0:
-						network.count[n] = torch.zeros(M.shape[0])
-					M_index = network.count[n].topk(int(network.count[n].numel() * network.tmodel.rho[n]))[1]
-					network.count[n][M_index] -= 1
+				# elif network.args.dropmethod == "dist":
+				# 	if 'conv1' not in n:
+				# 		M_index = R_sum.topk(int(R_sum_hist[network.args.dist_num:10].sum()))[1]
+				# 	else:
+				# 		M_index = R_sum.topk(R_sum.numel())[1]
+				# elif network.args.dropmethod == "random_even":
+				# 	if len(network.mask_trace) == 0:
+				# 		network.count[n] = torch.zeros(M.shape[0])
+				# 	M_index = network.count[n].topk(int(network.count[n].numel() * network.tmodel.rho[n]))[1]
+				# 	network.count[n][M_index] -= 1
 				else:
 					raise "invalid drop method"
+
 				M[M_index] = 1 #Sailent features set to 1
 				network.tmodel.mask_list[n].copy_(M) 
 
