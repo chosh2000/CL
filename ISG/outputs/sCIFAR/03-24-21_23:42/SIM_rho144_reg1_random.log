@@ -1,0 +1,607 @@
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([2427., 1669.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([318., 194.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 0,	 Epoch: 0/40,	 Avg.loss: 0.0018,	 Test Accuracy: 445/1000(45%)
+Head Finetuning    :Task: 0,	 Epoch: 1/40,	 Avg.loss: 0.0016,	 Test Accuracy: 518/1000(52%)
+Head Finetuning    :Task: 0,	 Epoch: 2/40,	 Avg.loss: 0.0015,	 Test Accuracy: 543/1000(54%)
+Head Finetuning    :Task: 0,	 Epoch: 3/40,	 Avg.loss: 0.0014,	 Test Accuracy: 562/1000(56%)
+Head Finetuning    :Task: 0,	 Epoch: 4/40,	 Avg.loss: 0.0013,	 Test Accuracy: 568/1000(57%)
+Task: 0,	 Epoch: 0/40,	 Avg.loss: 0.0009,	 Test Accuracy: 687/1000(69%)
+Task: 0,	 Epoch: 1/40,	 Avg.loss: 0.0007,	 Test Accuracy: 757/1000(76%)
+Task: 0,	 Epoch: 2/40,	 Avg.loss: 0.0007,	 Test Accuracy: 763/1000(76%)
+Task: 0,	 Epoch: 3/40,	 Avg.loss: 0.0007,	 Test Accuracy: 788/1000(79%)
+Task: 0,	 Epoch: 4/40,	 Avg.loss: 0.0006,	 Test Accuracy: 790/1000(79%)
+Task: 0,	 Epoch: 5/40,	 Avg.loss: 0.0006,	 Test Accuracy: 806/1000(81%)
+Task: 0,	 Epoch: 6/40,	 Avg.loss: 0.0006,	 Test Accuracy: 814/1000(81%)
+Task: 0,	 Epoch: 7/40,	 Avg.loss: 0.0007,	 Test Accuracy: 789/1000(79%)
+Task: 0,	 Epoch: 8/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 0,	 Epoch: 9/40,	 Avg.loss: 0.0006,	 Test Accuracy: 789/1000(79%)
+Task: 0,	 Epoch: 10/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 0,	 Epoch: 11/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 0,	 Epoch: 12/40,	 Avg.loss: 0.0005,	 Test Accuracy: 825/1000(83%)
+Task: 0,	 Epoch: 13/40,	 Avg.loss: 0.0005,	 Test Accuracy: 838/1000(84%)
+Task: 0,	 Epoch: 14/40,	 Avg.loss: 0.0005,	 Test Accuracy: 829/1000(83%)
+Task: 0,	 Epoch: 15/40,	 Avg.loss: 0.0006,	 Test Accuracy: 832/1000(83%)
+Task: 0,	 Epoch: 16/40,	 Avg.loss: 0.0005,	 Test Accuracy: 829/1000(83%)
+Task: 0,	 Epoch: 17/40,	 Avg.loss: 0.0005,	 Test Accuracy: 840/1000(84%)
+Task: 0,	 Epoch: 18/40,	 Avg.loss: 0.0005,	 Test Accuracy: 849/1000(85%)
+Task: 0,	 Epoch: 19/40,	 Avg.loss: 0.0005,	 Test Accuracy: 841/1000(84%)
+Task: 0,	 Epoch: 20/40,	 Avg.loss: 0.0005,	 Test Accuracy: 849/1000(85%)
+Task: 0,	 Epoch: 21/40,	 Avg.loss: 0.0005,	 Test Accuracy: 846/1000(85%)
+Task: 0,	 Epoch: 22/40,	 Avg.loss: 0.0005,	 Test Accuracy: 852/1000(85%)
+Task: 0,	 Epoch: 23/40,	 Avg.loss: 0.0005,	 Test Accuracy: 850/1000(85%)
+Task: 0,	 Epoch: 24/40,	 Avg.loss: 0.0005,	 Test Accuracy: 854/1000(85%)
+Task: 0,	 Epoch: 25/40,	 Avg.loss: 0.0005,	 Test Accuracy: 851/1000(85%)
+Task: 0,	 Epoch: 26/40,	 Avg.loss: 0.0005,	 Test Accuracy: 848/1000(85%)
+Task: 0,	 Epoch: 27/40,	 Avg.loss: 0.0005,	 Test Accuracy: 853/1000(85%)
+Task: 0,	 Epoch: 28/40,	 Avg.loss: 0.0005,	 Test Accuracy: 850/1000(85%)
+Task: 0,	 Epoch: 29/40,	 Avg.loss: 0.0005,	 Test Accuracy: 853/1000(85%)
+Task: 0,	 Epoch: 30/40,	 Avg.loss: 0.0005,	 Test Accuracy: 853/1000(85%)
+Task: 0,	 Epoch: 31/40,	 Avg.loss: 0.0005,	 Test Accuracy: 862/1000(86%)
+Task: 0,	 Epoch: 32/40,	 Avg.loss: 0.0005,	 Test Accuracy: 855/1000(86%)
+Task: 0,	 Epoch: 33/40,	 Avg.loss: 0.0005,	 Test Accuracy: 851/1000(85%)
+Task: 0,	 Epoch: 34/40,	 Avg.loss: 0.0005,	 Test Accuracy: 852/1000(85%)
+Task: 0,	 Epoch: 35/40,	 Avg.loss: 0.0005,	 Test Accuracy: 850/1000(85%)
+Task: 0,	 Epoch: 36/40,	 Avg.loss: 0.0005,	 Test Accuracy: 851/1000(85%)
+Task: 0,	 Epoch: 37/40,	 Avg.loss: 0.0005,	 Test Accuracy: 852/1000(85%)
+Task: 0,	 Epoch: 38/40,	 Avg.loss: 0.0005,	 Test Accuracy: 856/1000(86%)
+Task: 0,	 Epoch: 39/40,	 Avg.loss: 0.0005,	 Test Accuracy: 851/1000(85%)
+Trained Task:0, Loaded task:0, Accuracy:85.1%
+Trained Task:0, Avg. Accuracy: 85.1 
+
+List of avg. accuracy: [85.1]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([1418., 2015.,  663.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([181., 252.,  79.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 1,	 Epoch: 0/40,	 Avg.loss: 0.0024,	 Test Accuracy: 156/1000(16%)
+Head Finetuning    :Task: 1,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 168/1000(17%)
+Head Finetuning    :Task: 1,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 180/1000(18%)
+Head Finetuning    :Task: 1,	 Epoch: 3/40,	 Avg.loss: 0.0022,	 Test Accuracy: 198/1000(20%)
+Head Finetuning    :Task: 1,	 Epoch: 4/40,	 Avg.loss: 0.0022,	 Test Accuracy: 207/1000(21%)
+Task: 1,	 Epoch: 0/40,	 Avg.loss: 0.0009,	 Test Accuracy: 701/1000(70%)
+Task: 1,	 Epoch: 1/40,	 Avg.loss: 0.0008,	 Test Accuracy: 723/1000(72%)
+Task: 1,	 Epoch: 2/40,	 Avg.loss: 0.0008,	 Test Accuracy: 735/1000(74%)
+Task: 1,	 Epoch: 3/40,	 Avg.loss: 0.0008,	 Test Accuracy: 752/1000(75%)
+Task: 1,	 Epoch: 4/40,	 Avg.loss: 0.0008,	 Test Accuracy: 739/1000(74%)
+Task: 1,	 Epoch: 5/40,	 Avg.loss: 0.0007,	 Test Accuracy: 743/1000(74%)
+Task: 1,	 Epoch: 6/40,	 Avg.loss: 0.0008,	 Test Accuracy: 736/1000(74%)
+Task: 1,	 Epoch: 7/40,	 Avg.loss: 0.0007,	 Test Accuracy: 759/1000(76%)
+Task: 1,	 Epoch: 8/40,	 Avg.loss: 0.0008,	 Test Accuracy: 746/1000(75%)
+Task: 1,	 Epoch: 9/40,	 Avg.loss: 0.0007,	 Test Accuracy: 754/1000(75%)
+Task: 1,	 Epoch: 10/40,	 Avg.loss: 0.0008,	 Test Accuracy: 736/1000(74%)
+Task: 1,	 Epoch: 11/40,	 Avg.loss: 0.0007,	 Test Accuracy: 757/1000(76%)
+Task: 1,	 Epoch: 12/40,	 Avg.loss: 0.0007,	 Test Accuracy: 749/1000(75%)
+Task: 1,	 Epoch: 13/40,	 Avg.loss: 0.0007,	 Test Accuracy: 769/1000(77%)
+Task: 1,	 Epoch: 14/40,	 Avg.loss: 0.0007,	 Test Accuracy: 763/1000(76%)
+Task: 1,	 Epoch: 15/40,	 Avg.loss: 0.0007,	 Test Accuracy: 762/1000(76%)
+Task: 1,	 Epoch: 16/40,	 Avg.loss: 0.0007,	 Test Accuracy: 767/1000(77%)
+Task: 1,	 Epoch: 17/40,	 Avg.loss: 0.0007,	 Test Accuracy: 763/1000(76%)
+Task: 1,	 Epoch: 18/40,	 Avg.loss: 0.0007,	 Test Accuracy: 755/1000(76%)
+Task: 1,	 Epoch: 19/40,	 Avg.loss: 0.0007,	 Test Accuracy: 772/1000(77%)
+Task: 1,	 Epoch: 20/40,	 Avg.loss: 0.0007,	 Test Accuracy: 778/1000(78%)
+Task: 1,	 Epoch: 21/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 1,	 Epoch: 22/40,	 Avg.loss: 0.0007,	 Test Accuracy: 769/1000(77%)
+Task: 1,	 Epoch: 23/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Task: 1,	 Epoch: 24/40,	 Avg.loss: 0.0007,	 Test Accuracy: 780/1000(78%)
+Task: 1,	 Epoch: 25/40,	 Avg.loss: 0.0007,	 Test Accuracy: 780/1000(78%)
+Task: 1,	 Epoch: 26/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 1,	 Epoch: 27/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 1,	 Epoch: 28/40,	 Avg.loss: 0.0007,	 Test Accuracy: 773/1000(77%)
+Task: 1,	 Epoch: 29/40,	 Avg.loss: 0.0007,	 Test Accuracy: 773/1000(77%)
+Task: 1,	 Epoch: 30/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Task: 1,	 Epoch: 31/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 1,	 Epoch: 32/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 1,	 Epoch: 33/40,	 Avg.loss: 0.0007,	 Test Accuracy: 776/1000(78%)
+Task: 1,	 Epoch: 34/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 1,	 Epoch: 35/40,	 Avg.loss: 0.0007,	 Test Accuracy: 779/1000(78%)
+Task: 1,	 Epoch: 36/40,	 Avg.loss: 0.0007,	 Test Accuracy: 776/1000(78%)
+Task: 1,	 Epoch: 37/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Task: 1,	 Epoch: 38/40,	 Avg.loss: 0.0007,	 Test Accuracy: 776/1000(78%)
+Task: 1,	 Epoch: 39/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Trained Task:1, Loaded task:0, Accuracy:85.6%
+Trained Task:1, Loaded task:1, Accuracy:77.7%
+Trained Task:1, Avg. Accuracy: 81.7 
+
+List of avg. accuracy: [85.1, 81.7]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([ 837., 1805., 1192.,  262.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([105., 221., 151.,  35.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 2,	 Epoch: 0/40,	 Avg.loss: 0.0025,	 Test Accuracy: 79/1000(8%)
+Head Finetuning    :Task: 2,	 Epoch: 1/40,	 Avg.loss: 0.0025,	 Test Accuracy: 92/1000(9%)
+Head Finetuning    :Task: 2,	 Epoch: 2/40,	 Avg.loss: 0.0024,	 Test Accuracy: 104/1000(10%)
+Head Finetuning    :Task: 2,	 Epoch: 3/40,	 Avg.loss: 0.0024,	 Test Accuracy: 112/1000(11%)
+Head Finetuning    :Task: 2,	 Epoch: 4/40,	 Avg.loss: 0.0024,	 Test Accuracy: 125/1000(13%)
+Task: 2,	 Epoch: 0/40,	 Avg.loss: 0.0008,	 Test Accuracy: 716/1000(72%)
+Task: 2,	 Epoch: 1/40,	 Avg.loss: 0.0008,	 Test Accuracy: 761/1000(76%)
+Task: 2,	 Epoch: 2/40,	 Avg.loss: 0.0007,	 Test Accuracy: 765/1000(76%)
+Task: 2,	 Epoch: 3/40,	 Avg.loss: 0.0007,	 Test Accuracy: 770/1000(77%)
+Task: 2,	 Epoch: 4/40,	 Avg.loss: 0.0007,	 Test Accuracy: 770/1000(77%)
+Task: 2,	 Epoch: 5/40,	 Avg.loss: 0.0007,	 Test Accuracy: 786/1000(79%)
+Task: 2,	 Epoch: 6/40,	 Avg.loss: 0.0006,	 Test Accuracy: 792/1000(79%)
+Task: 2,	 Epoch: 7/40,	 Avg.loss: 0.0006,	 Test Accuracy: 796/1000(80%)
+Task: 2,	 Epoch: 8/40,	 Avg.loss: 0.0006,	 Test Accuracy: 793/1000(79%)
+Task: 2,	 Epoch: 9/40,	 Avg.loss: 0.0006,	 Test Accuracy: 793/1000(79%)
+Task: 2,	 Epoch: 10/40,	 Avg.loss: 0.0006,	 Test Accuracy: 801/1000(80%)
+Task: 2,	 Epoch: 11/40,	 Avg.loss: 0.0007,	 Test Accuracy: 787/1000(79%)
+Task: 2,	 Epoch: 12/40,	 Avg.loss: 0.0006,	 Test Accuracy: 797/1000(80%)
+Task: 2,	 Epoch: 13/40,	 Avg.loss: 0.0006,	 Test Accuracy: 790/1000(79%)
+Task: 2,	 Epoch: 14/40,	 Avg.loss: 0.0006,	 Test Accuracy: 802/1000(80%)
+Task: 2,	 Epoch: 15/40,	 Avg.loss: 0.0006,	 Test Accuracy: 805/1000(81%)
+Task: 2,	 Epoch: 16/40,	 Avg.loss: 0.0006,	 Test Accuracy: 793/1000(79%)
+Task: 2,	 Epoch: 17/40,	 Avg.loss: 0.0006,	 Test Accuracy: 804/1000(80%)
+Task: 2,	 Epoch: 18/40,	 Avg.loss: 0.0006,	 Test Accuracy: 798/1000(80%)
+Task: 2,	 Epoch: 19/40,	 Avg.loss: 0.0006,	 Test Accuracy: 803/1000(80%)
+Task: 2,	 Epoch: 20/40,	 Avg.loss: 0.0006,	 Test Accuracy: 807/1000(81%)
+Task: 2,	 Epoch: 21/40,	 Avg.loss: 0.0006,	 Test Accuracy: 803/1000(80%)
+Task: 2,	 Epoch: 22/40,	 Avg.loss: 0.0006,	 Test Accuracy: 807/1000(81%)
+Task: 2,	 Epoch: 23/40,	 Avg.loss: 0.0006,	 Test Accuracy: 808/1000(81%)
+Task: 2,	 Epoch: 24/40,	 Avg.loss: 0.0006,	 Test Accuracy: 805/1000(81%)
+Task: 2,	 Epoch: 25/40,	 Avg.loss: 0.0006,	 Test Accuracy: 808/1000(81%)
+Task: 2,	 Epoch: 26/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 2,	 Epoch: 27/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 2,	 Epoch: 28/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 2,	 Epoch: 29/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 2,	 Epoch: 30/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 2,	 Epoch: 31/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 2,	 Epoch: 32/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 2,	 Epoch: 33/40,	 Avg.loss: 0.0006,	 Test Accuracy: 815/1000(82%)
+Task: 2,	 Epoch: 34/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 2,	 Epoch: 35/40,	 Avg.loss: 0.0006,	 Test Accuracy: 814/1000(81%)
+Task: 2,	 Epoch: 36/40,	 Avg.loss: 0.0006,	 Test Accuracy: 812/1000(81%)
+Task: 2,	 Epoch: 37/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 2,	 Epoch: 38/40,	 Avg.loss: 0.0006,	 Test Accuracy: 812/1000(81%)
+Task: 2,	 Epoch: 39/40,	 Avg.loss: 0.0006,	 Test Accuracy: 808/1000(81%)
+Trained Task:2, Loaded task:0, Accuracy:85.1%
+Trained Task:2, Loaded task:1, Accuracy:78.2%
+Trained Task:2, Loaded task:2, Accuracy:80.8%
+Trained Task:2, Avg. Accuracy: 81.4 
+
+List of avg. accuracy: [85.1, 81.7, 81.4]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0., 8192.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([ 500., 1424., 1453.,  611.,  108.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([ 63., 183., 175.,  76.,  15.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 3,	 Epoch: 0/40,	 Avg.loss: 0.0026,	 Test Accuracy: 68/1000(7%)
+Head Finetuning    :Task: 3,	 Epoch: 1/40,	 Avg.loss: 0.0025,	 Test Accuracy: 78/1000(8%)
+Head Finetuning    :Task: 3,	 Epoch: 2/40,	 Avg.loss: 0.0025,	 Test Accuracy: 89/1000(9%)
+Head Finetuning    :Task: 3,	 Epoch: 3/40,	 Avg.loss: 0.0024,	 Test Accuracy: 106/1000(11%)
+Head Finetuning    :Task: 3,	 Epoch: 4/40,	 Avg.loss: 0.0024,	 Test Accuracy: 116/1000(12%)
+Task: 3,	 Epoch: 0/40,	 Avg.loss: 0.0010,	 Test Accuracy: 642/1000(64%)
+Task: 3,	 Epoch: 1/40,	 Avg.loss: 0.0009,	 Test Accuracy: 701/1000(70%)
+Task: 3,	 Epoch: 2/40,	 Avg.loss: 0.0009,	 Test Accuracy: 718/1000(72%)
+Task: 3,	 Epoch: 3/40,	 Avg.loss: 0.0008,	 Test Accuracy: 716/1000(72%)
+Task: 3,	 Epoch: 4/40,	 Avg.loss: 0.0009,	 Test Accuracy: 724/1000(72%)
+Task: 3,	 Epoch: 5/40,	 Avg.loss: 0.0008,	 Test Accuracy: 747/1000(75%)
+Task: 3,	 Epoch: 6/40,	 Avg.loss: 0.0008,	 Test Accuracy: 738/1000(74%)
+Task: 3,	 Epoch: 7/40,	 Avg.loss: 0.0008,	 Test Accuracy: 729/1000(73%)
+Task: 3,	 Epoch: 8/40,	 Avg.loss: 0.0008,	 Test Accuracy: 745/1000(74%)
+Task: 3,	 Epoch: 9/40,	 Avg.loss: 0.0008,	 Test Accuracy: 759/1000(76%)
+Task: 3,	 Epoch: 10/40,	 Avg.loss: 0.0008,	 Test Accuracy: 736/1000(74%)
+Task: 3,	 Epoch: 11/40,	 Avg.loss: 0.0008,	 Test Accuracy: 748/1000(75%)
+Task: 3,	 Epoch: 12/40,	 Avg.loss: 0.0008,	 Test Accuracy: 745/1000(74%)
+Task: 3,	 Epoch: 13/40,	 Avg.loss: 0.0008,	 Test Accuracy: 749/1000(75%)
+Task: 3,	 Epoch: 14/40,	 Avg.loss: 0.0008,	 Test Accuracy: 744/1000(74%)
+Task: 3,	 Epoch: 15/40,	 Avg.loss: 0.0007,	 Test Accuracy: 751/1000(75%)
+Task: 3,	 Epoch: 16/40,	 Avg.loss: 0.0007,	 Test Accuracy: 761/1000(76%)
+Task: 3,	 Epoch: 17/40,	 Avg.loss: 0.0007,	 Test Accuracy: 761/1000(76%)
+Task: 3,	 Epoch: 18/40,	 Avg.loss: 0.0007,	 Test Accuracy: 762/1000(76%)
+Task: 3,	 Epoch: 19/40,	 Avg.loss: 0.0007,	 Test Accuracy: 761/1000(76%)
+Task: 3,	 Epoch: 20/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Task: 3,	 Epoch: 21/40,	 Avg.loss: 0.0007,	 Test Accuracy: 768/1000(77%)
+Task: 3,	 Epoch: 22/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 3,	 Epoch: 23/40,	 Avg.loss: 0.0007,	 Test Accuracy: 778/1000(78%)
+Task: 3,	 Epoch: 24/40,	 Avg.loss: 0.0007,	 Test Accuracy: 770/1000(77%)
+Task: 3,	 Epoch: 25/40,	 Avg.loss: 0.0007,	 Test Accuracy: 771/1000(77%)
+Task: 3,	 Epoch: 26/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Task: 3,	 Epoch: 27/40,	 Avg.loss: 0.0007,	 Test Accuracy: 772/1000(77%)
+Task: 3,	 Epoch: 28/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 3,	 Epoch: 29/40,	 Avg.loss: 0.0007,	 Test Accuracy: 770/1000(77%)
+Task: 3,	 Epoch: 30/40,	 Avg.loss: 0.0007,	 Test Accuracy: 769/1000(77%)
+Task: 3,	 Epoch: 31/40,	 Avg.loss: 0.0007,	 Test Accuracy: 770/1000(77%)
+Task: 3,	 Epoch: 32/40,	 Avg.loss: 0.0007,	 Test Accuracy: 766/1000(77%)
+Task: 3,	 Epoch: 33/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 3,	 Epoch: 34/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 3,	 Epoch: 35/40,	 Avg.loss: 0.0007,	 Test Accuracy: 772/1000(77%)
+Task: 3,	 Epoch: 36/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 3,	 Epoch: 37/40,	 Avg.loss: 0.0007,	 Test Accuracy: 772/1000(77%)
+Task: 3,	 Epoch: 38/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 3,	 Epoch: 39/40,	 Avg.loss: 0.0007,	 Test Accuracy: 769/1000(77%)
+Trained Task:3, Loaded task:0, Accuracy:84.5%
+Trained Task:3, Loaded task:1, Accuracy:78.3%
+Trained Task:3, Loaded task:2, Accuracy:81.0%
+Trained Task:3, Loaded task:3, Accuracy:76.9%
+Trained Task:3, Avg. Accuracy: 80.2 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0.,    0., 8192.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([ 282., 1046., 1482.,  946.,  305.,   35.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([ 40., 136., 175., 112.,  41.,   8.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 4,	 Epoch: 0/40,	 Avg.loss: 0.0024,	 Test Accuracy: 138/1000(14%)
+Head Finetuning    :Task: 4,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 155/1000(16%)
+Head Finetuning    :Task: 4,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 174/1000(17%)
+Head Finetuning    :Task: 4,	 Epoch: 3/40,	 Avg.loss: 0.0022,	 Test Accuracy: 186/1000(19%)
+Head Finetuning    :Task: 4,	 Epoch: 4/40,	 Avg.loss: 0.0022,	 Test Accuracy: 198/1000(20%)
+Task: 4,	 Epoch: 0/40,	 Avg.loss: 0.0008,	 Test Accuracy: 726/1000(73%)
+Task: 4,	 Epoch: 1/40,	 Avg.loss: 0.0008,	 Test Accuracy: 739/1000(74%)
+Task: 4,	 Epoch: 2/40,	 Avg.loss: 0.0007,	 Test Accuracy: 749/1000(75%)
+Task: 4,	 Epoch: 3/40,	 Avg.loss: 0.0007,	 Test Accuracy: 779/1000(78%)
+Task: 4,	 Epoch: 4/40,	 Avg.loss: 0.0007,	 Test Accuracy: 764/1000(76%)
+Task: 4,	 Epoch: 5/40,	 Avg.loss: 0.0007,	 Test Accuracy: 769/1000(77%)
+Task: 4,	 Epoch: 6/40,	 Avg.loss: 0.0007,	 Test Accuracy: 778/1000(78%)
+Task: 4,	 Epoch: 7/40,	 Avg.loss: 0.0006,	 Test Accuracy: 784/1000(78%)
+Task: 4,	 Epoch: 8/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 4,	 Epoch: 9/40,	 Avg.loss: 0.0007,	 Test Accuracy: 790/1000(79%)
+Task: 4,	 Epoch: 10/40,	 Avg.loss: 0.0007,	 Test Accuracy: 787/1000(79%)
+Task: 4,	 Epoch: 11/40,	 Avg.loss: 0.0006,	 Test Accuracy: 801/1000(80%)
+Task: 4,	 Epoch: 12/40,	 Avg.loss: 0.0007,	 Test Accuracy: 773/1000(77%)
+Task: 4,	 Epoch: 13/40,	 Avg.loss: 0.0007,	 Test Accuracy: 763/1000(76%)
+Task: 4,	 Epoch: 14/40,	 Avg.loss: 0.0006,	 Test Accuracy: 801/1000(80%)
+Task: 4,	 Epoch: 15/40,	 Avg.loss: 0.0006,	 Test Accuracy: 797/1000(80%)
+Task: 4,	 Epoch: 16/40,	 Avg.loss: 0.0007,	 Test Accuracy: 783/1000(78%)
+Task: 4,	 Epoch: 17/40,	 Avg.loss: 0.0006,	 Test Accuracy: 802/1000(80%)
+Task: 4,	 Epoch: 18/40,	 Avg.loss: 0.0006,	 Test Accuracy: 794/1000(79%)
+Task: 4,	 Epoch: 19/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 4,	 Epoch: 20/40,	 Avg.loss: 0.0006,	 Test Accuracy: 821/1000(82%)
+Task: 4,	 Epoch: 21/40,	 Avg.loss: 0.0006,	 Test Accuracy: 815/1000(82%)
+Task: 4,	 Epoch: 22/40,	 Avg.loss: 0.0006,	 Test Accuracy: 824/1000(82%)
+Task: 4,	 Epoch: 23/40,	 Avg.loss: 0.0006,	 Test Accuracy: 821/1000(82%)
+Task: 4,	 Epoch: 24/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 4,	 Epoch: 25/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 4,	 Epoch: 26/40,	 Avg.loss: 0.0006,	 Test Accuracy: 816/1000(82%)
+Task: 4,	 Epoch: 27/40,	 Avg.loss: 0.0006,	 Test Accuracy: 817/1000(82%)
+Task: 4,	 Epoch: 28/40,	 Avg.loss: 0.0006,	 Test Accuracy: 819/1000(82%)
+Task: 4,	 Epoch: 29/40,	 Avg.loss: 0.0006,	 Test Accuracy: 822/1000(82%)
+Task: 4,	 Epoch: 30/40,	 Avg.loss: 0.0006,	 Test Accuracy: 814/1000(81%)
+Task: 4,	 Epoch: 31/40,	 Avg.loss: 0.0006,	 Test Accuracy: 820/1000(82%)
+Task: 4,	 Epoch: 32/40,	 Avg.loss: 0.0006,	 Test Accuracy: 819/1000(82%)
+Task: 4,	 Epoch: 33/40,	 Avg.loss: 0.0006,	 Test Accuracy: 818/1000(82%)
+Task: 4,	 Epoch: 34/40,	 Avg.loss: 0.0006,	 Test Accuracy: 820/1000(82%)
+Task: 4,	 Epoch: 35/40,	 Avg.loss: 0.0006,	 Test Accuracy: 821/1000(82%)
+Task: 4,	 Epoch: 36/40,	 Avg.loss: 0.0006,	 Test Accuracy: 817/1000(82%)
+Task: 4,	 Epoch: 37/40,	 Avg.loss: 0.0006,	 Test Accuracy: 819/1000(82%)
+Task: 4,	 Epoch: 38/40,	 Avg.loss: 0.0006,	 Test Accuracy: 818/1000(82%)
+Task: 4,	 Epoch: 39/40,	 Avg.loss: 0.0006,	 Test Accuracy: 816/1000(82%)
+Trained Task:4, Loaded task:0, Accuracy:84.2%
+Trained Task:4, Loaded task:1, Accuracy:77.4%
+Trained Task:4, Loaded task:2, Accuracy:81.2%
+Trained Task:4, Loaded task:3, Accuracy:77.3%
+Trained Task:4, Loaded task:4, Accuracy:81.6%
+Trained Task:4, Avg. Accuracy: 80.3 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2, 80.3]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0.,    0.,    0., 8192.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([ 175.,  720., 1346., 1103.,  605.,  137.,   10.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([ 28.,  89., 157., 139.,  78.,  17.,   4.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 5,	 Epoch: 0/40,	 Avg.loss: 0.0026,	 Test Accuracy: 106/1000(11%)
+Head Finetuning    :Task: 5,	 Epoch: 1/40,	 Avg.loss: 0.0025,	 Test Accuracy: 121/1000(12%)
+Head Finetuning    :Task: 5,	 Epoch: 2/40,	 Avg.loss: 0.0024,	 Test Accuracy: 137/1000(14%)
+Head Finetuning    :Task: 5,	 Epoch: 3/40,	 Avg.loss: 0.0024,	 Test Accuracy: 149/1000(15%)
+Head Finetuning    :Task: 5,	 Epoch: 4/40,	 Avg.loss: 0.0023,	 Test Accuracy: 160/1000(16%)
+Task: 5,	 Epoch: 0/40,	 Avg.loss: 0.0009,	 Test Accuracy: 677/1000(68%)
+Task: 5,	 Epoch: 1/40,	 Avg.loss: 0.0008,	 Test Accuracy: 697/1000(70%)
+Task: 5,	 Epoch: 2/40,	 Avg.loss: 0.0008,	 Test Accuracy: 693/1000(69%)
+Task: 5,	 Epoch: 3/40,	 Avg.loss: 0.0007,	 Test Accuracy: 724/1000(72%)
+Task: 5,	 Epoch: 4/40,	 Avg.loss: 0.0007,	 Test Accuracy: 733/1000(73%)
+Task: 5,	 Epoch: 5/40,	 Avg.loss: 0.0007,	 Test Accuracy: 725/1000(72%)
+Task: 5,	 Epoch: 6/40,	 Avg.loss: 0.0007,	 Test Accuracy: 738/1000(74%)
+Task: 5,	 Epoch: 7/40,	 Avg.loss: 0.0007,	 Test Accuracy: 730/1000(73%)
+Task: 5,	 Epoch: 8/40,	 Avg.loss: 0.0007,	 Test Accuracy: 747/1000(75%)
+Task: 5,	 Epoch: 9/40,	 Avg.loss: 0.0007,	 Test Accuracy: 749/1000(75%)
+Task: 5,	 Epoch: 10/40,	 Avg.loss: 0.0007,	 Test Accuracy: 743/1000(74%)
+Task: 5,	 Epoch: 11/40,	 Avg.loss: 0.0007,	 Test Accuracy: 746/1000(75%)
+Task: 5,	 Epoch: 12/40,	 Avg.loss: 0.0007,	 Test Accuracy: 738/1000(74%)
+Task: 5,	 Epoch: 13/40,	 Avg.loss: 0.0007,	 Test Accuracy: 760/1000(76%)
+Task: 5,	 Epoch: 14/40,	 Avg.loss: 0.0007,	 Test Accuracy: 761/1000(76%)
+Task: 5,	 Epoch: 15/40,	 Avg.loss: 0.0007,	 Test Accuracy: 764/1000(76%)
+Task: 5,	 Epoch: 16/40,	 Avg.loss: 0.0007,	 Test Accuracy: 755/1000(76%)
+Task: 5,	 Epoch: 17/40,	 Avg.loss: 0.0007,	 Test Accuracy: 750/1000(75%)
+Task: 5,	 Epoch: 18/40,	 Avg.loss: 0.0007,	 Test Accuracy: 755/1000(76%)
+Task: 5,	 Epoch: 19/40,	 Avg.loss: 0.0007,	 Test Accuracy: 761/1000(76%)
+Task: 5,	 Epoch: 20/40,	 Avg.loss: 0.0006,	 Test Accuracy: 768/1000(77%)
+Task: 5,	 Epoch: 21/40,	 Avg.loss: 0.0006,	 Test Accuracy: 774/1000(77%)
+Task: 5,	 Epoch: 22/40,	 Avg.loss: 0.0006,	 Test Accuracy: 769/1000(77%)
+Task: 5,	 Epoch: 23/40,	 Avg.loss: 0.0006,	 Test Accuracy: 773/1000(77%)
+Task: 5,	 Epoch: 24/40,	 Avg.loss: 0.0006,	 Test Accuracy: 771/1000(77%)
+Task: 5,	 Epoch: 25/40,	 Avg.loss: 0.0006,	 Test Accuracy: 773/1000(77%)
+Task: 5,	 Epoch: 26/40,	 Avg.loss: 0.0006,	 Test Accuracy: 775/1000(78%)
+Task: 5,	 Epoch: 27/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Task: 5,	 Epoch: 28/40,	 Avg.loss: 0.0006,	 Test Accuracy: 783/1000(78%)
+Task: 5,	 Epoch: 29/40,	 Avg.loss: 0.0006,	 Test Accuracy: 780/1000(78%)
+Task: 5,	 Epoch: 30/40,	 Avg.loss: 0.0006,	 Test Accuracy: 774/1000(77%)
+Task: 5,	 Epoch: 31/40,	 Avg.loss: 0.0006,	 Test Accuracy: 774/1000(77%)
+Task: 5,	 Epoch: 32/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Task: 5,	 Epoch: 33/40,	 Avg.loss: 0.0006,	 Test Accuracy: 779/1000(78%)
+Task: 5,	 Epoch: 34/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Task: 5,	 Epoch: 35/40,	 Avg.loss: 0.0006,	 Test Accuracy: 780/1000(78%)
+Task: 5,	 Epoch: 36/40,	 Avg.loss: 0.0006,	 Test Accuracy: 776/1000(78%)
+Task: 5,	 Epoch: 37/40,	 Avg.loss: 0.0006,	 Test Accuracy: 771/1000(77%)
+Task: 5,	 Epoch: 38/40,	 Avg.loss: 0.0006,	 Test Accuracy: 781/1000(78%)
+Task: 5,	 Epoch: 39/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Trained Task:5, Loaded task:0, Accuracy:84.2%
+Trained Task:5, Loaded task:1, Accuracy:77.4%
+Trained Task:5, Loaded task:2, Accuracy:81.0%
+Trained Task:5, Loaded task:3, Accuracy:77.5%
+Trained Task:5, Loaded task:4, Accuracy:81.4%
+Trained Task:5, Loaded task:5, Accuracy:77.7%
+Trained Task:5, Avg. Accuracy: 79.9 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2, 80.3, 79.9]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0.,    0.,    0.,    0., 8192.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([  98.,  490., 1093., 1245.,  800.,  310.,   57.,    3.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([ 14.,  68., 139., 147.,  91.,  42.,  11.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 6,	 Epoch: 0/40,	 Avg.loss: 0.0028,	 Test Accuracy: 78/1000(8%)
+Head Finetuning    :Task: 6,	 Epoch: 1/40,	 Avg.loss: 0.0027,	 Test Accuracy: 87/1000(9%)
+Head Finetuning    :Task: 6,	 Epoch: 2/40,	 Avg.loss: 0.0026,	 Test Accuracy: 100/1000(10%)
+Head Finetuning    :Task: 6,	 Epoch: 3/40,	 Avg.loss: 0.0025,	 Test Accuracy: 112/1000(11%)
+Head Finetuning    :Task: 6,	 Epoch: 4/40,	 Avg.loss: 0.0025,	 Test Accuracy: 123/1000(12%)
+Task: 6,	 Epoch: 0/40,	 Avg.loss: 0.0009,	 Test Accuracy: 654/1000(65%)
+Task: 6,	 Epoch: 1/40,	 Avg.loss: 0.0009,	 Test Accuracy: 681/1000(68%)
+Task: 6,	 Epoch: 2/40,	 Avg.loss: 0.0008,	 Test Accuracy: 707/1000(71%)
+Task: 6,	 Epoch: 3/40,	 Avg.loss: 0.0008,	 Test Accuracy: 731/1000(73%)
+Task: 6,	 Epoch: 4/40,	 Avg.loss: 0.0007,	 Test Accuracy: 738/1000(74%)
+Task: 6,	 Epoch: 5/40,	 Avg.loss: 0.0007,	 Test Accuracy: 749/1000(75%)
+Task: 6,	 Epoch: 6/40,	 Avg.loss: 0.0007,	 Test Accuracy: 747/1000(75%)
+Task: 6,	 Epoch: 7/40,	 Avg.loss: 0.0007,	 Test Accuracy: 750/1000(75%)
+Task: 6,	 Epoch: 8/40,	 Avg.loss: 0.0007,	 Test Accuracy: 743/1000(74%)
+Task: 6,	 Epoch: 9/40,	 Avg.loss: 0.0007,	 Test Accuracy: 753/1000(75%)
+Task: 6,	 Epoch: 10/40,	 Avg.loss: 0.0007,	 Test Accuracy: 747/1000(75%)
+Task: 6,	 Epoch: 11/40,	 Avg.loss: 0.0007,	 Test Accuracy: 757/1000(76%)
+Task: 6,	 Epoch: 12/40,	 Avg.loss: 0.0007,	 Test Accuracy: 755/1000(76%)
+Task: 6,	 Epoch: 13/40,	 Avg.loss: 0.0007,	 Test Accuracy: 749/1000(75%)
+Task: 6,	 Epoch: 14/40,	 Avg.loss: 0.0007,	 Test Accuracy: 744/1000(74%)
+Task: 6,	 Epoch: 15/40,	 Avg.loss: 0.0007,	 Test Accuracy: 751/1000(75%)
+Task: 6,	 Epoch: 16/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 6,	 Epoch: 17/40,	 Avg.loss: 0.0007,	 Test Accuracy: 762/1000(76%)
+Task: 6,	 Epoch: 18/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 6,	 Epoch: 19/40,	 Avg.loss: 0.0007,	 Test Accuracy: 768/1000(77%)
+Task: 6,	 Epoch: 20/40,	 Avg.loss: 0.0007,	 Test Accuracy: 771/1000(77%)
+Task: 6,	 Epoch: 21/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Task: 6,	 Epoch: 22/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Task: 6,	 Epoch: 23/40,	 Avg.loss: 0.0006,	 Test Accuracy: 770/1000(77%)
+Task: 6,	 Epoch: 24/40,	 Avg.loss: 0.0006,	 Test Accuracy: 772/1000(77%)
+Task: 6,	 Epoch: 25/40,	 Avg.loss: 0.0006,	 Test Accuracy: 776/1000(78%)
+Task: 6,	 Epoch: 26/40,	 Avg.loss: 0.0006,	 Test Accuracy: 775/1000(78%)
+Task: 6,	 Epoch: 27/40,	 Avg.loss: 0.0006,	 Test Accuracy: 778/1000(78%)
+Task: 6,	 Epoch: 28/40,	 Avg.loss: 0.0007,	 Test Accuracy: 771/1000(77%)
+Task: 6,	 Epoch: 29/40,	 Avg.loss: 0.0006,	 Test Accuracy: 774/1000(77%)
+Task: 6,	 Epoch: 30/40,	 Avg.loss: 0.0006,	 Test Accuracy: 773/1000(77%)
+Task: 6,	 Epoch: 31/40,	 Avg.loss: 0.0006,	 Test Accuracy: 775/1000(78%)
+Task: 6,	 Epoch: 32/40,	 Avg.loss: 0.0006,	 Test Accuracy: 774/1000(77%)
+Task: 6,	 Epoch: 33/40,	 Avg.loss: 0.0006,	 Test Accuracy: 772/1000(77%)
+Task: 6,	 Epoch: 34/40,	 Avg.loss: 0.0006,	 Test Accuracy: 772/1000(77%)
+Task: 6,	 Epoch: 35/40,	 Avg.loss: 0.0006,	 Test Accuracy: 775/1000(78%)
+Task: 6,	 Epoch: 36/40,	 Avg.loss: 0.0006,	 Test Accuracy: 777/1000(78%)
+Task: 6,	 Epoch: 37/40,	 Avg.loss: 0.0006,	 Test Accuracy: 770/1000(77%)
+Task: 6,	 Epoch: 38/40,	 Avg.loss: 0.0006,	 Test Accuracy: 771/1000(77%)
+Task: 6,	 Epoch: 39/40,	 Avg.loss: 0.0006,	 Test Accuracy: 773/1000(77%)
+Trained Task:6, Loaded task:0, Accuracy:84.2%
+Trained Task:6, Loaded task:1, Accuracy:77.9%
+Trained Task:6, Loaded task:2, Accuracy:81.2%
+Trained Task:6, Loaded task:3, Accuracy:76.8%
+Trained Task:6, Loaded task:4, Accuracy:81.7%
+Trained Task:6, Loaded task:5, Accuracy:77.8%
+Trained Task:6, Loaded task:6, Accuracy:77.3%
+Trained Task:6, Avg. Accuracy: 79.6 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2, 80.3, 79.9, 79.6]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0.,    0.,    0.,    0.,    0., 8192.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([6.3000e+01, 3.1000e+02, 8.8800e+02, 1.1750e+03, 9.5000e+02, 5.2900e+02,
+        1.5300e+02, 2.7000e+01, 1.0000e+00, 0.0000e+00, 0.0000e+00],
+       device='cuda:0')
+fc1_layer.1.weight: 	 tensor([  8.,  51., 105., 148., 119.,  51.,  25.,   5.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 7,	 Epoch: 0/40,	 Avg.loss: 0.0026,	 Test Accuracy: 98/1000(10%)
+Head Finetuning    :Task: 7,	 Epoch: 1/40,	 Avg.loss: 0.0025,	 Test Accuracy: 115/1000(12%)
+Head Finetuning    :Task: 7,	 Epoch: 2/40,	 Avg.loss: 0.0024,	 Test Accuracy: 140/1000(14%)
+Head Finetuning    :Task: 7,	 Epoch: 3/40,	 Avg.loss: 0.0023,	 Test Accuracy: 153/1000(15%)
+Head Finetuning    :Task: 7,	 Epoch: 4/40,	 Avg.loss: 0.0023,	 Test Accuracy: 189/1000(19%)
+Task: 7,	 Epoch: 0/40,	 Avg.loss: 0.0010,	 Test Accuracy: 636/1000(64%)
+Task: 7,	 Epoch: 1/40,	 Avg.loss: 0.0010,	 Test Accuracy: 671/1000(67%)
+Task: 7,	 Epoch: 2/40,	 Avg.loss: 0.0009,	 Test Accuracy: 709/1000(71%)
+Task: 7,	 Epoch: 3/40,	 Avg.loss: 0.0009,	 Test Accuracy: 697/1000(70%)
+Task: 7,	 Epoch: 4/40,	 Avg.loss: 0.0008,	 Test Accuracy: 701/1000(70%)
+Task: 7,	 Epoch: 5/40,	 Avg.loss: 0.0008,	 Test Accuracy: 701/1000(70%)
+Task: 7,	 Epoch: 6/40,	 Avg.loss: 0.0008,	 Test Accuracy: 722/1000(72%)
+Task: 7,	 Epoch: 7/40,	 Avg.loss: 0.0008,	 Test Accuracy: 722/1000(72%)
+Task: 7,	 Epoch: 8/40,	 Avg.loss: 0.0008,	 Test Accuracy: 746/1000(75%)
+Task: 7,	 Epoch: 9/40,	 Avg.loss: 0.0008,	 Test Accuracy: 728/1000(73%)
+Task: 7,	 Epoch: 10/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 11/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 12/40,	 Avg.loss: 0.0008,	 Test Accuracy: 719/1000(72%)
+Task: 7,	 Epoch: 13/40,	 Avg.loss: 0.0008,	 Test Accuracy: 739/1000(74%)
+Task: 7,	 Epoch: 14/40,	 Avg.loss: 0.0008,	 Test Accuracy: 726/1000(73%)
+Task: 7,	 Epoch: 15/40,	 Avg.loss: 0.0008,	 Test Accuracy: 735/1000(74%)
+Task: 7,	 Epoch: 16/40,	 Avg.loss: 0.0008,	 Test Accuracy: 737/1000(74%)
+Task: 7,	 Epoch: 17/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 18/40,	 Avg.loss: 0.0008,	 Test Accuracy: 727/1000(73%)
+Task: 7,	 Epoch: 19/40,	 Avg.loss: 0.0008,	 Test Accuracy: 727/1000(73%)
+Task: 7,	 Epoch: 20/40,	 Avg.loss: 0.0008,	 Test Accuracy: 728/1000(73%)
+Task: 7,	 Epoch: 21/40,	 Avg.loss: 0.0008,	 Test Accuracy: 729/1000(73%)
+Task: 7,	 Epoch: 22/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 23/40,	 Avg.loss: 0.0008,	 Test Accuracy: 732/1000(73%)
+Task: 7,	 Epoch: 24/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 25/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 26/40,	 Avg.loss: 0.0008,	 Test Accuracy: 735/1000(74%)
+Task: 7,	 Epoch: 27/40,	 Avg.loss: 0.0008,	 Test Accuracy: 733/1000(73%)
+Task: 7,	 Epoch: 28/40,	 Avg.loss: 0.0008,	 Test Accuracy: 734/1000(73%)
+Task: 7,	 Epoch: 29/40,	 Avg.loss: 0.0007,	 Test Accuracy: 739/1000(74%)
+Task: 7,	 Epoch: 30/40,	 Avg.loss: 0.0007,	 Test Accuracy: 734/1000(73%)
+Task: 7,	 Epoch: 31/40,	 Avg.loss: 0.0007,	 Test Accuracy: 738/1000(74%)
+Task: 7,	 Epoch: 32/40,	 Avg.loss: 0.0007,	 Test Accuracy: 739/1000(74%)
+Task: 7,	 Epoch: 33/40,	 Avg.loss: 0.0008,	 Test Accuracy: 736/1000(74%)
+Task: 7,	 Epoch: 34/40,	 Avg.loss: 0.0007,	 Test Accuracy: 739/1000(74%)
+Task: 7,	 Epoch: 35/40,	 Avg.loss: 0.0007,	 Test Accuracy: 742/1000(74%)
+Task: 7,	 Epoch: 36/40,	 Avg.loss: 0.0008,	 Test Accuracy: 740/1000(74%)
+Task: 7,	 Epoch: 37/40,	 Avg.loss: 0.0007,	 Test Accuracy: 744/1000(74%)
+Task: 7,	 Epoch: 38/40,	 Avg.loss: 0.0007,	 Test Accuracy: 740/1000(74%)
+Task: 7,	 Epoch: 39/40,	 Avg.loss: 0.0008,	 Test Accuracy: 741/1000(74%)
+Trained Task:7, Loaded task:0, Accuracy:83.7%
+Trained Task:7, Loaded task:1, Accuracy:77.2%
+Trained Task:7, Loaded task:2, Accuracy:81.7%
+Trained Task:7, Loaded task:3, Accuracy:76.8%
+Trained Task:7, Loaded task:4, Accuracy:81.7%
+Trained Task:7, Loaded task:5, Accuracy:77.4%
+Trained Task:7, Loaded task:6, Accuracy:77.3%
+Trained Task:7, Loaded task:7, Accuracy:74.1%
+Trained Task:7, Avg. Accuracy: 78.7 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2, 80.3, 79.9, 79.6, 78.7]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0., 8192.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([  33.,  231.,  650., 1016., 1076.,  694.,  312.,   73.,   11.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([  6.,  33.,  90., 117., 145.,  75.,  32.,  13.,   1.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 8,	 Epoch: 0/40,	 Avg.loss: 0.0027,	 Test Accuracy: 112/1000(11%)
+Head Finetuning    :Task: 8,	 Epoch: 1/40,	 Avg.loss: 0.0026,	 Test Accuracy: 120/1000(12%)
+Head Finetuning    :Task: 8,	 Epoch: 2/40,	 Avg.loss: 0.0025,	 Test Accuracy: 133/1000(13%)
+Head Finetuning    :Task: 8,	 Epoch: 3/40,	 Avg.loss: 0.0024,	 Test Accuracy: 145/1000(15%)
+Head Finetuning    :Task: 8,	 Epoch: 4/40,	 Avg.loss: 0.0024,	 Test Accuracy: 158/1000(16%)
+Task: 8,	 Epoch: 0/40,	 Avg.loss: 0.0008,	 Test Accuracy: 700/1000(70%)
+Task: 8,	 Epoch: 1/40,	 Avg.loss: 0.0007,	 Test Accuracy: 733/1000(73%)
+Task: 8,	 Epoch: 2/40,	 Avg.loss: 0.0007,	 Test Accuracy: 765/1000(76%)
+Task: 8,	 Epoch: 3/40,	 Avg.loss: 0.0007,	 Test Accuracy: 764/1000(76%)
+Task: 8,	 Epoch: 4/40,	 Avg.loss: 0.0007,	 Test Accuracy: 753/1000(75%)
+Task: 8,	 Epoch: 5/40,	 Avg.loss: 0.0007,	 Test Accuracy: 773/1000(77%)
+Task: 8,	 Epoch: 6/40,	 Avg.loss: 0.0007,	 Test Accuracy: 773/1000(77%)
+Task: 8,	 Epoch: 7/40,	 Avg.loss: 0.0007,	 Test Accuracy: 776/1000(78%)
+Task: 8,	 Epoch: 8/40,	 Avg.loss: 0.0007,	 Test Accuracy: 780/1000(78%)
+Task: 8,	 Epoch: 9/40,	 Avg.loss: 0.0007,	 Test Accuracy: 776/1000(78%)
+Task: 8,	 Epoch: 10/40,	 Avg.loss: 0.0007,	 Test Accuracy: 775/1000(78%)
+Task: 8,	 Epoch: 11/40,	 Avg.loss: 0.0007,	 Test Accuracy: 780/1000(78%)
+Task: 8,	 Epoch: 12/40,	 Avg.loss: 0.0006,	 Test Accuracy: 784/1000(78%)
+Task: 8,	 Epoch: 13/40,	 Avg.loss: 0.0007,	 Test Accuracy: 771/1000(77%)
+Task: 8,	 Epoch: 14/40,	 Avg.loss: 0.0007,	 Test Accuracy: 774/1000(77%)
+Task: 8,	 Epoch: 15/40,	 Avg.loss: 0.0006,	 Test Accuracy: 797/1000(80%)
+Task: 8,	 Epoch: 16/40,	 Avg.loss: 0.0007,	 Test Accuracy: 791/1000(79%)
+Task: 8,	 Epoch: 17/40,	 Avg.loss: 0.0006,	 Test Accuracy: 799/1000(80%)
+Task: 8,	 Epoch: 18/40,	 Avg.loss: 0.0006,	 Test Accuracy: 782/1000(78%)
+Task: 8,	 Epoch: 19/40,	 Avg.loss: 0.0007,	 Test Accuracy: 784/1000(78%)
+Task: 8,	 Epoch: 20/40,	 Avg.loss: 0.0006,	 Test Accuracy: 808/1000(81%)
+Task: 8,	 Epoch: 21/40,	 Avg.loss: 0.0006,	 Test Accuracy: 806/1000(81%)
+Task: 8,	 Epoch: 22/40,	 Avg.loss: 0.0006,	 Test Accuracy: 807/1000(81%)
+Task: 8,	 Epoch: 23/40,	 Avg.loss: 0.0006,	 Test Accuracy: 804/1000(80%)
+Task: 8,	 Epoch: 24/40,	 Avg.loss: 0.0006,	 Test Accuracy: 806/1000(81%)
+Task: 8,	 Epoch: 25/40,	 Avg.loss: 0.0006,	 Test Accuracy: 807/1000(81%)
+Task: 8,	 Epoch: 26/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 8,	 Epoch: 27/40,	 Avg.loss: 0.0006,	 Test Accuracy: 806/1000(81%)
+Task: 8,	 Epoch: 28/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 8,	 Epoch: 29/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 8,	 Epoch: 30/40,	 Avg.loss: 0.0006,	 Test Accuracy: 805/1000(81%)
+Task: 8,	 Epoch: 31/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 8,	 Epoch: 32/40,	 Avg.loss: 0.0006,	 Test Accuracy: 814/1000(81%)
+Task: 8,	 Epoch: 33/40,	 Avg.loss: 0.0006,	 Test Accuracy: 811/1000(81%)
+Task: 8,	 Epoch: 34/40,	 Avg.loss: 0.0006,	 Test Accuracy: 806/1000(81%)
+Task: 8,	 Epoch: 35/40,	 Avg.loss: 0.0006,	 Test Accuracy: 804/1000(80%)
+Task: 8,	 Epoch: 36/40,	 Avg.loss: 0.0006,	 Test Accuracy: 809/1000(81%)
+Task: 8,	 Epoch: 37/40,	 Avg.loss: 0.0006,	 Test Accuracy: 815/1000(82%)
+Task: 8,	 Epoch: 38/40,	 Avg.loss: 0.0006,	 Test Accuracy: 808/1000(81%)
+Task: 8,	 Epoch: 39/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Trained Task:8, Loaded task:0, Accuracy:83.7%
+Trained Task:8, Loaded task:1, Accuracy:77.4%
+Trained Task:8, Loaded task:2, Accuracy:81.6%
+Trained Task:8, Loaded task:3, Accuracy:76.8%
+Trained Task:8, Loaded task:4, Accuracy:81.4%
+Trained Task:8, Loaded task:5, Accuracy:77.7%
+Trained Task:8, Loaded task:6, Accuracy:77.6%
+Trained Task:8, Loaded task:7, Accuracy:74.0%
+Trained Task:8, Loaded task:8, Accuracy:81.3%
+Trained Task:8, Avg. Accuracy: 79.1 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2, 80.3, 79.9, 79.6, 78.7, 79.1]
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+        8192.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([  20.,  141.,  519.,  810., 1077.,  868.,  451.,  165.,   39.,    6.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([  3.,  24.,  62., 118., 118., 106.,  53.,  21.,   6.,   1.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 9,	 Epoch: 0/40,	 Avg.loss: 0.0026,	 Test Accuracy: 148/1000(15%)
+Head Finetuning    :Task: 9,	 Epoch: 1/40,	 Avg.loss: 0.0024,	 Test Accuracy: 179/1000(18%)
+Head Finetuning    :Task: 9,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 201/1000(20%)
+Head Finetuning    :Task: 9,	 Epoch: 3/40,	 Avg.loss: 0.0023,	 Test Accuracy: 231/1000(23%)
+Head Finetuning    :Task: 9,	 Epoch: 4/40,	 Avg.loss: 0.0022,	 Test Accuracy: 247/1000(25%)
+Task: 9,	 Epoch: 0/40,	 Avg.loss: 0.0008,	 Test Accuracy: 745/1000(74%)
+Task: 9,	 Epoch: 1/40,	 Avg.loss: 0.0007,	 Test Accuracy: 771/1000(77%)
+Task: 9,	 Epoch: 2/40,	 Avg.loss: 0.0007,	 Test Accuracy: 773/1000(77%)
+Task: 9,	 Epoch: 3/40,	 Avg.loss: 0.0006,	 Test Accuracy: 793/1000(79%)
+Task: 9,	 Epoch: 4/40,	 Avg.loss: 0.0007,	 Test Accuracy: 777/1000(78%)
+Task: 9,	 Epoch: 5/40,	 Avg.loss: 0.0006,	 Test Accuracy: 792/1000(79%)
+Task: 9,	 Epoch: 6/40,	 Avg.loss: 0.0006,	 Test Accuracy: 795/1000(80%)
+Task: 9,	 Epoch: 7/40,	 Avg.loss: 0.0006,	 Test Accuracy: 815/1000(82%)
+Task: 9,	 Epoch: 8/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 9,	 Epoch: 9/40,	 Avg.loss: 0.0006,	 Test Accuracy: 791/1000(79%)
+Task: 9,	 Epoch: 10/40,	 Avg.loss: 0.0006,	 Test Accuracy: 806/1000(81%)
+Task: 9,	 Epoch: 11/40,	 Avg.loss: 0.0006,	 Test Accuracy: 814/1000(81%)
+Task: 9,	 Epoch: 12/40,	 Avg.loss: 0.0006,	 Test Accuracy: 801/1000(80%)
+Task: 9,	 Epoch: 13/40,	 Avg.loss: 0.0006,	 Test Accuracy: 807/1000(81%)
+Task: 9,	 Epoch: 14/40,	 Avg.loss: 0.0006,	 Test Accuracy: 818/1000(82%)
+Task: 9,	 Epoch: 15/40,	 Avg.loss: 0.0006,	 Test Accuracy: 810/1000(81%)
+Task: 9,	 Epoch: 16/40,	 Avg.loss: 0.0006,	 Test Accuracy: 814/1000(81%)
+Task: 9,	 Epoch: 17/40,	 Avg.loss: 0.0007,	 Test Accuracy: 797/1000(80%)
+Task: 9,	 Epoch: 18/40,	 Avg.loss: 0.0006,	 Test Accuracy: 813/1000(81%)
+Task: 9,	 Epoch: 19/40,	 Avg.loss: 0.0006,	 Test Accuracy: 817/1000(82%)
+Task: 9,	 Epoch: 20/40,	 Avg.loss: 0.0005,	 Test Accuracy: 827/1000(83%)
+Task: 9,	 Epoch: 21/40,	 Avg.loss: 0.0005,	 Test Accuracy: 826/1000(83%)
+Task: 9,	 Epoch: 22/40,	 Avg.loss: 0.0005,	 Test Accuracy: 829/1000(83%)
+Task: 9,	 Epoch: 23/40,	 Avg.loss: 0.0005,	 Test Accuracy: 831/1000(83%)
+Task: 9,	 Epoch: 24/40,	 Avg.loss: 0.0005,	 Test Accuracy: 826/1000(83%)
+Task: 9,	 Epoch: 25/40,	 Avg.loss: 0.0005,	 Test Accuracy: 826/1000(83%)
+Task: 9,	 Epoch: 26/40,	 Avg.loss: 0.0005,	 Test Accuracy: 830/1000(83%)
+Task: 9,	 Epoch: 27/40,	 Avg.loss: 0.0005,	 Test Accuracy: 821/1000(82%)
+Task: 9,	 Epoch: 28/40,	 Avg.loss: 0.0005,	 Test Accuracy: 832/1000(83%)
+Task: 9,	 Epoch: 29/40,	 Avg.loss: 0.0005,	 Test Accuracy: 828/1000(83%)
+Task: 9,	 Epoch: 30/40,	 Avg.loss: 0.0005,	 Test Accuracy: 825/1000(83%)
+Task: 9,	 Epoch: 31/40,	 Avg.loss: 0.0005,	 Test Accuracy: 827/1000(83%)
+Task: 9,	 Epoch: 32/40,	 Avg.loss: 0.0005,	 Test Accuracy: 825/1000(83%)
+Task: 9,	 Epoch: 33/40,	 Avg.loss: 0.0005,	 Test Accuracy: 823/1000(82%)
+Task: 9,	 Epoch: 34/40,	 Avg.loss: 0.0005,	 Test Accuracy: 828/1000(83%)
+Task: 9,	 Epoch: 35/40,	 Avg.loss: 0.0005,	 Test Accuracy: 830/1000(83%)
+Task: 9,	 Epoch: 36/40,	 Avg.loss: 0.0005,	 Test Accuracy: 833/1000(83%)
+Task: 9,	 Epoch: 37/40,	 Avg.loss: 0.0005,	 Test Accuracy: 831/1000(83%)
+Task: 9,	 Epoch: 38/40,	 Avg.loss: 0.0005,	 Test Accuracy: 832/1000(83%)
+Task: 9,	 Epoch: 39/40,	 Avg.loss: 0.0005,	 Test Accuracy: 831/1000(83%)
+Trained Task:9, Loaded task:0, Accuracy:83.9%
+Trained Task:9, Loaded task:1, Accuracy:77.9%
+Trained Task:9, Loaded task:2, Accuracy:81.5%
+Trained Task:9, Loaded task:3, Accuracy:76.8%
+Trained Task:9, Loaded task:4, Accuracy:81.6%
+Trained Task:9, Loaded task:5, Accuracy:78.3%
+Trained Task:9, Loaded task:6, Accuracy:77.5%
+Trained Task:9, Loaded task:7, Accuracy:73.5%
+Trained Task:9, Loaded task:8, Accuracy:80.7%
+Trained Task:9, Loaded task:9, Accuracy:83.1%
+Trained Task:9, Avg. Accuracy: 79.5 
+
+List of avg. accuracy: [85.1, 81.7, 81.4, 80.2, 80.3, 79.9, 79.6, 78.7, 79.1, 79.5]
+PATH:     /home/sanghyun/Documents/CL/ISG/results/03-24-2021-00:00/
