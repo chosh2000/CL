@@ -122,9 +122,7 @@ class MAS(nn.Module):
 			if 'head' in n:
 				if self.args.revert_head:
 					with torch.no_grad():
-						pp = p.clone()
 						p.copy_(prev[n])
-						assert not pp.equal(p)
 					
 		self.tmodel.train(mode=mode)
 		return acc
