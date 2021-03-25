@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import sys
 import os
+import glob
 import torch
 import numpy as np
 from datetime import date
@@ -84,7 +85,10 @@ def legend_name(item):
 	return item[:-8]
 
 def plot_results():
-	result_path = "/home/sanghyun/Documents/CL/ISG/results/03-23-2021/"
+	# Find n'th latest directory by modification date
+	result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
+	# result_path = "/home/sanghyun/Documents/CL/ISG/results/03-23-2021/"
+	print("PATH:    ", result_path)
 	arr = os.listdir(result_path)
 
 	plt.figure()
@@ -195,4 +199,4 @@ def plot_results():
 	plt.savefig(result_path+"sat.jpg")
 	# plt.show()
 	
-plot_results()
+# plot_results()
