@@ -1,4 +1,4 @@
-OUTDIR=outputs/sCIFAR/$(date +'%m-%d-%y_%Hh-%Mm')
+OUTDIR=outputs/sCIFAR/$(date +'%m-%d-%y_%H:%M')
 REPEAT=1
 mkdir -p $OUTDIR
 

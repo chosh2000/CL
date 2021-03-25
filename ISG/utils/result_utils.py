@@ -55,7 +55,7 @@ class observer():
 
 	def to_csv(self):
 		today = date.today()
-		t = today.strftime("%m-%d-%Y")
+		t = today.strftime("%m-%d-%Y-%H:%M")
 		save_path = "./results/"+t+"/"
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
