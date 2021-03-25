@@ -1,0 +1,15 @@
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([2392., 1704.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([314., 198.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 0,	 Epoch: 0/40,	 Avg.loss: 0.0019,	 Test Accuracy: 439/1000(44%)
+Head Finetuning    :Task: 0,	 Epoch: 1/40,	 Avg.loss: 0.0017,	 Test Accuracy: 520/1000(52%)
+Head Finetuning    :Task: 0,	 Epoch: 2/40,	 Avg.loss: 0.0015,	 Test Accuracy: 556/1000(56%)
+Head Finetuning    :Task: 0,	 Epoch: 3/40,	 Avg.loss: 0.0014,	 Test Accuracy: 578/1000(58%)
+Head Finetuning    :Task: 0,	 Epoch: 4/40,	 Avg.loss: 0.0014,	 Test Accuracy: 585/1000(59%)
+Task: 0,	 Epoch: 0/40,	 Avg.loss: 0.0012,	 Test Accuracy: 611/1000(61%)
+Task: 0,	 Epoch: 1/40,	 Avg.loss: 0.0009,	 Test Accuracy: 696/1000(70%)
+Task: 0,	 Epoch: 2/40,	 Avg.loss: 0.0008,	 Test Accuracy: 719/1000(72%)
