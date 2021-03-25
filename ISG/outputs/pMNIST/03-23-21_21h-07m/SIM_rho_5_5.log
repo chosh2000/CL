@@ -1,0 +1,57 @@
+Layer        : fc1.weight
+R.histogram  : tensor([456., 232., 157.,  75.,  33.,  22.,  12.,   3.,   7.,   3.],
+       device='cuda:0')
+R_sum max/min: 28890.6/1054.1
+F max  		: 0.0008235240820795298
+O masx 		: 0.0
+Layer        : fc2.weight
+R.histogram  : tensor([407., 211., 164.,  84.,  72.,  27.,  20.,  10.,   1.,   4.],
+       device='cuda:0')
+R_sum max/min: 21753.8/1006.6
+F max  		: 0.000978814554400742
+O masx 		: 0.0
+Mask histogram
+fc1.weight: 	 tensor([500., 500.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+fc2.weight: 	 tensor([500., 500.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+Head Finetuning    :Task: 0,	 Epoch: 0/30,	 Avg.loss: 0.0018,	 Test Accuracy: 7408/10000(74%)
+Head Finetuning    :Task: 0,	 Epoch: 1/30,	 Avg.loss: 0.0014,	 Test Accuracy: 7874/10000(79%)
+Head Finetuning    :Task: 0,	 Epoch: 2/30,	 Avg.loss: 0.0012,	 Test Accuracy: 8101/10000(81%)
+Head Finetuning    :Task: 0,	 Epoch: 3/30,	 Avg.loss: 0.0010,	 Test Accuracy: 8233/10000(82%)
+Head Finetuning    :Task: 0,	 Epoch: 4/30,	 Avg.loss: 0.0009,	 Test Accuracy: 8324/10000(83%)
+Head Finetuning    :Task: 0,	 Epoch: 5/30,	 Avg.loss: 0.0008,	 Test Accuracy: 8411/10000(84%)
+Head Finetuning    :Task: 0,	 Epoch: 6/30,	 Avg.loss: 0.0007,	 Test Accuracy: 8487/10000(85%)
+Head Finetuning    :Task: 0,	 Epoch: 7/30,	 Avg.loss: 0.0007,	 Test Accuracy: 8563/10000(86%)
+Head Finetuning    :Task: 0,	 Epoch: 8/30,	 Avg.loss: 0.0006,	 Test Accuracy: 8619/10000(86%)
+Head Finetuning    :Task: 0,	 Epoch: 9/30,	 Avg.loss: 0.0006,	 Test Accuracy: 8671/10000(87%)
+Head Finetuning    :Task: 0,	 Epoch: 10/30,	 Avg.loss: 0.0006,	 Test Accuracy: 8683/10000(87%)
+Head Finetuning    :Task: 0,	 Epoch: 11/30,	 Avg.loss: 0.0006,	 Test Accuracy: 8738/10000(87%)
+Head Finetuning    :Task: 0,	 Epoch: 12/30,	 Avg.loss: 0.0005,	 Test Accuracy: 8765/10000(88%)
+Head Finetuning    :Task: 0,	 Epoch: 13/30,	 Avg.loss: 0.0005,	 Test Accuracy: 8787/10000(88%)
+Head Finetuning    :Task: 0,	 Epoch: 14/30,	 Avg.loss: 0.0005,	 Test Accuracy: 8808/10000(88%)
+Head Finetuning    :Task: 0,	 Epoch: 15/30,	 Avg.loss: 0.0005,	 Test Accuracy: 8852/10000(89%)
+Head Finetuning    :Task: 0,	 Epoch: 16/30,	 Avg.loss: 0.0005,	 Test Accuracy: 8868/10000(89%)
+Head Finetuning    :Task: 0,	 Epoch: 17/30,	 Avg.loss: 0.0005,	 Test Accuracy: 8876/10000(89%)
+Head Finetuning    :Task: 0,	 Epoch: 18/30,	 Avg.loss: 0.0004,	 Test Accuracy: 8895/10000(89%)
+Head Finetuning    :Task: 0,	 Epoch: 19/30,	 Avg.loss: 0.0004,	 Test Accuracy: 8921/10000(89%)
+Task: 0,	 Epoch: 0/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9731/10000(97%)
+Task: 0,	 Epoch: 1/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9760/10000(98%)
+Task: 0,	 Epoch: 2/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9779/10000(98%)
+Task: 0,	 Epoch: 3/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9799/10000(98%)
+Task: 0,	 Epoch: 4/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9805/10000(98%)
+Task: 0,	 Epoch: 5/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9810/10000(98%)
+Task: 0,	 Epoch: 6/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9803/10000(98%)
+Task: 0,	 Epoch: 7/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9821/10000(98%)
+Task: 0,	 Epoch: 8/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9818/10000(98%)
+Task: 0,	 Epoch: 9/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9810/10000(98%)
+Task: 0,	 Epoch: 10/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9795/10000(98%)
+Task: 0,	 Epoch: 11/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9817/10000(98%)
+Task: 0,	 Epoch: 12/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9827/10000(98%)
+Task: 0,	 Epoch: 13/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9832/10000(98%)
+Task: 0,	 Epoch: 14/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9819/10000(98%)
+Task: 0,	 Epoch: 15/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9809/10000(98%)
+Task: 0,	 Epoch: 16/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9825/10000(98%)
+Task: 0,	 Epoch: 17/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9820/10000(98%)
+Task: 0,	 Epoch: 18/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9819/10000(98%)
+Task: 0,	 Epoch: 19/30,	 Avg.loss: 0.0001,	 Test Accuracy: 9806/10000(98%)

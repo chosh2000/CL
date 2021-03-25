@@ -1,4 +1,4 @@
-OUTDIR=outputs/sCIFAR/$(date +'%m-%d-%y_%Hh-%Mm')
+OUTDIR=outputs/sCIFAR/$(date +'%m-%d-%y_%H:%M')
 REPEAT=1
 mkdir -p $OUTDIR
 
@@ -57,13 +57,25 @@ mkdir -p $OUTDIR
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.4 --reglambda 1 --alpha 0.0	--beta 0.9	| tee ${OUTDIR}/SIM_rho144_reg1_a0_b09_dropout_inhib04.log
 # python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --init_model 0 --out_dir $OUTDIR  --schedule 50 80  --dropmethod rho --rho 1 0.4 0.4 --inhib 0.5 --reglambda 1 --alpha 0.0	--beta 0.9	| tee ${OUTDIR}/SIM_rho144_reg1_a0_b09_dropout_inhib05.log
 
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 0.1 --alpha 0| tee ${OUTDIR}/SIM_rho144_reg01_a0_dropout.log    
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 0.1   | tee ${OUTDIR}/MAS_reg01_dropout.log    
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method EWC  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 100   | tee ${OUTDIR}/EWC_reg100_dropout.log    
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method SI   --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 10    | tee ${OUTDIR}/SI_reg10_dropout.log    
-python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 0     | tee ${OUTDIR}/ANN_reg0_dropout.log    
 
 
+# python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 0.1 --alpha 1 --xi 1| tee ${OUTDIR}/SIM_rho144_reg01_a0_dropout.log    
+# python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 0.1 --alpha 1 --xi 1| tee ${OUTDIR}/SIM_rho144_reg01_a0_dropout.log    
+# python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 0.1   | tee ${OUTDIR}/MAS_reg01_dropout.log    
+# python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method EWC  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 100   | tee ${OUTDIR}/EWC_reg100_dropout.log    
+# python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method SI   --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 10    | tee ${OUTDIR}/SI_reg10_dropout.log    
+# python -u ISG_sCIFAR.py --use_gpu 1 --repeat $REPEAT --method MAS  --dataset sCIFAR100 --init_model 0 --out_dir $OUTDIR  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 0     | tee ${OUTDIR}/ANN_reg0_dropout.log    
+
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --random_drop 1 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_random.log
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 0 --random_drop 0 --revert_head 1| tee ${OUTDIR}/ANN_rho111_reg0.log
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 1 --random_drop 0 --revert_head 1| tee ${OUTDIR}/MAS_rho111_reg1.log
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method SI   --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 80 --random_drop 0 --revert_head 1| tee ${OUTDIR}/SI_rho111_reg80.log
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method EWC  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 0 --rho 1 1 1     --reglambda 1000 --random_drop 0 --revert_head 1| tee ${OUTDIR}/EWC_rho111_reg1000.log
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 1 --xi 0.01 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a1_xi001.log    
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 1 --xi 0.02 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a1_xi002.log    
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 1 --xi 0.04 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a1_xi004.log    
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 3 --xi 0.04 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a3_xi004.log 
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset sCIFAR100  --method MAS  --model_type CNN  --init_model 0  --schedule 20 40  --apply_SIM 1 --rho 1 0.4 0.4 --reglambda 1 --alpha 6 --xi 0.04 --revert_head 0| tee ${OUTDIR}/SIM_rho144_reg1_a6_xi004.log 
 #Reglambda used for resnet, CIFAR100
 #EWC: 100
 #EWC_online: 3000

@@ -95,16 +95,19 @@ class MAS(nn.Module):
 		mode = self.tmodel.training
 		self.tmodel.train()
 
+		prev = {}
 		for n, p in self.tmodel.named_parameters():
 			if 'head' not in n:
 				p.requires_grad = False
+			else:
+				prev[n] = p.clone().detach()
 
 		#train the head layer
 		for epoch in range(self.args.finetune_epoch):
 			for batch_idx, (data, target) in enumerate(trainloader):
 				#Permuting the data
 				if self.args.dataset == "pMNIST":
-					data = permute_MNIST(data, self.shuffle_idx, task_num, args)
+					data = permute_MNIST(data, self.shuffle_idx, task_num, self.args)
 				data = data.to(self.device)
 				target = target.to(self.device)
 				loss = self.criterion(data, target)
@@ -116,7 +119,10 @@ class MAS(nn.Module):
 
 		for n, p in self.tmodel.named_parameters():
 			p.requires_grad = True
-
+			if 'head' in n:
+				if self.args.revert_head:
+					p.copy_(prev[n])
+					
 		self.tmodel.train(mode=mode)
 		return acc
 

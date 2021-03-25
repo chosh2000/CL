@@ -1,0 +1,5 @@
+Mask histogram
+fc1.weight: 	 tensor([46., 54.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+fc2.weight: 	 tensor([49., 51.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+Head Finetuning    :Task: 0,	 Epoch: 0/10,	 Avg.loss: 0.0023,	 Test Accuracy: 2202/10000(22%)
+Head Finetuning    :Task: 0,	 Epoch: 1/10,	 Avg.loss: 0.0022,	 Test Accuracy: 3803/10000(38%)

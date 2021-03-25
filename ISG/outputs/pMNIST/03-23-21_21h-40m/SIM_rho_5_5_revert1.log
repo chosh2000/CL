@@ -1,0 +1,35 @@
+Layer        : fc1.weight
+R.histogram  : tensor([33., 24., 11., 10.,  8.,  5.,  2.,  3.,  1.,  3.], device='cuda:0')
+R_sum max/min: 25608.6/1117.1
+F max  		: 0.004996515344828367
+O masx 		: 0.0
+Layer        : fc2.weight
+R.histogram  : tensor([38., 20., 15., 13.,  7.,  3.,  2.,  0.,  1.,  1.], device='cuda:0')
+R_sum max/min: 2966.0/100.9
+F max  		: 0.005325930193066597
+O masx 		: 0.0
+Mask histogram
+fc1.weight: 	 tensor([50., 50.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
+       device='cuda:0')
+fc2.weight: 	 tensor([50., 50.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
+       device='cuda:0')
+Head Finetuning    :Task: 0,	 Epoch: 0/10,	 Avg.loss: 0.0022,	 Test Accuracy: 3320/10000(33%)
+Head Finetuning    :Task: 0,	 Epoch: 1/10,	 Avg.loss: 0.0022,	 Test Accuracy: 4620/10000(46%)
+Head Finetuning    :Task: 0,	 Epoch: 2/10,	 Avg.loss: 0.0021,	 Test Accuracy: 5058/10000(51%)
+Head Finetuning    :Task: 0,	 Epoch: 3/10,	 Avg.loss: 0.0021,	 Test Accuracy: 5275/10000(53%)
+Head Finetuning    :Task: 0,	 Epoch: 4/10,	 Avg.loss: 0.0021,	 Test Accuracy: 5427/10000(54%)
+Head Finetuning    :Task: 0,	 Epoch: 5/10,	 Avg.loss: 0.0020,	 Test Accuracy: 5492/10000(55%)
+Head Finetuning    :Task: 0,	 Epoch: 6/10,	 Avg.loss: 0.0020,	 Test Accuracy: 5581/10000(56%)
+Head Finetuning    :Task: 0,	 Epoch: 7/10,	 Avg.loss: 0.0019,	 Test Accuracy: 5639/10000(56%)
+Head Finetuning    :Task: 0,	 Epoch: 8/10,	 Avg.loss: 0.0019,	 Test Accuracy: 5699/10000(57%)
+Head Finetuning    :Task: 0,	 Epoch: 9/10,	 Avg.loss: 0.0019,	 Test Accuracy: 5736/10000(57%)
+Head Finetuning    :Task: 0,	 Epoch: 10/10,	 Avg.loss: 0.0018,	 Test Accuracy: 5783/10000(58%)
+Head Finetuning    :Task: 0,	 Epoch: 11/10,	 Avg.loss: 0.0018,	 Test Accuracy: 5821/10000(58%)
+Head Finetuning    :Task: 0,	 Epoch: 12/10,	 Avg.loss: 0.0018,	 Test Accuracy: 5861/10000(59%)
+Head Finetuning    :Task: 0,	 Epoch: 13/10,	 Avg.loss: 0.0017,	 Test Accuracy: 5878/10000(59%)
+Head Finetuning    :Task: 0,	 Epoch: 14/10,	 Avg.loss: 0.0017,	 Test Accuracy: 5922/10000(59%)
+Head Finetuning    :Task: 0,	 Epoch: 15/10,	 Avg.loss: 0.0017,	 Test Accuracy: 5944/10000(59%)
+Head Finetuning    :Task: 0,	 Epoch: 16/10,	 Avg.loss: 0.0017,	 Test Accuracy: 5966/10000(60%)
+Head Finetuning    :Task: 0,	 Epoch: 17/10,	 Avg.loss: 0.0016,	 Test Accuracy: 5990/10000(60%)
+Head Finetuning    :Task: 0,	 Epoch: 18/10,	 Avg.loss: 0.0016,	 Test Accuracy: 6005/10000(60%)
+Head Finetuning    :Task: 0,	 Epoch: 19/10,	 Avg.loss: 0.0016,	 Test Accuracy: 6017/10000(60%)

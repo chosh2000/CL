@@ -1,0 +1,17 @@
+Layer        : fc1.weight
+R.histogram  : tensor([500., 229., 125.,  63.,  45.,  23.,   8.,   4.,   2.,   1.],
+       device='cuda:0')
+R_sum max/min: 27318.0/1059.6
+F max  		: 0.0010668229078873992
+O masx 		: 0.0
+Layer        : fc2.weight
+R.histogram  : tensor([481., 233., 133.,  77.,  41.,  24.,   7.,   2.,   1.,   1.],
+       device='cuda:0')
+R_sum max/min: 25661.4/1000.9
+F max  		: 0.0010814781999215484
+O masx 		: 0.0
+Mask histogram
+fc1.weight: 	 tensor([500., 500.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+fc2.weight: 	 tensor([500., 500.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')

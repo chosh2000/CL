@@ -68,22 +68,28 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 		if epoch == n_epochs:
 			#2. Backup the weight of current task
 			network.save_head(task_num)
-			task_param = network.task_parameter()
-			#3. calculate the importance for this task
-			importance = network.calculate_importance(trainloader, task_num)
 
-
-			#4. copy them to reg_params
+			# Save previous importance
+			importance_prev = {}
 			if network.online_reg and len(network.reg_params) > 0:
-				# only one slot is used to record the reg data
-				importance_prev = network.reg_params[0]['importance']
-				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
+				for n, p in network.tmodel.named_parameters():
+					if 'head' not in n:
+						importance_prev[n] = network.reg_params[0]['importance'][n].clone().detach()
 			else:
 				# task-specific parameters are all recorded
-				importance_prev = {}
 				for n, p in network.tmodel.named_parameters():
 					if 'head' not in n:
 						importance_prev[n] = p.clone().detach().fill_(0)  # zero initialized
+
+
+			#3. calculate the importance for this task
+			task_param = network.task_parameter()
+			importance = network.calculate_importance(trainloader, task_num)
+
+			#4. copy them to reg_params
+			if network.online_reg and len(network.reg_params) > 0:
+				network.reg_params[0] = {'importance': importance, 'task_param': task_param}
+			else:
 				network.reg_params[task_num] = {'importance': importance, 'task_param': task_param}
 
 			#5. restore drop
@@ -94,8 +100,9 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			ptb_sum = 0
 			for n, p in network.tmodel.named_parameters():
 				if 'head' not in n:
-					sat_sum += ((importance[n]-importance_prev[n])*param_prev[n].abs()).sum()
-					ptb_sum += (importance_prev[n]*(p-param_prev[n]).abs()).sum()
+					assert not importance[n].equal(importance_prev[n]), "previous importance not stored properly"
+					sat_sum += network.args.reglambda * ((importance[n]-importance_prev[n])*param_prev[n].abs()).sum()
+					ptb_sum += network.args.reglambda * (importance_prev[n]*(p-param_prev[n]).abs()).sum()
 			network.SAT.append(sat_sum)
 			network.PTB.append(ptb_sum)
 			network.FWT.append(acc_init/acc)

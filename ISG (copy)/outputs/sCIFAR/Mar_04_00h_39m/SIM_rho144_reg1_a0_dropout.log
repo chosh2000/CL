@@ -1,0 +1,27 @@
+Layer        : conv1_layer.2.weight
+R.histogram  : tensor([4., 6., 6., 5., 2., 1., 3., 1., 1., 3.], device='cuda:0')
+R_sum max/min: 53.6/1.4
+F.num_zeros  : 0/9216
+W.num_zeros  : 0/9216
+O.num_zeros  : 0/9216
+Layer        : conv2_layer.2.weight
+R.histogram  : tensor([11., 14.,  7.,  9.,  5.,  2.,  5.,  3.,  4.,  4.], device='cuda:0')
+R_sum max/min: 58.8/0.0
+F.num_zeros  : 4109/36864
+W.num_zeros  : 0/36864
+O.num_zeros  : 0/36864
+Layer        : fc1_layer.1.weight
+R.histogram  : tensor([303., 133.,  48.,  18.,   1.,   3.,   2.,   2.,   1.,   1.],
+       device='cuda:0')
+R_sum max/min: 698.5/0.0
+F.num_zeros  : 919379/2097152
+W.num_zeros  : 0/2097152
+O.num_zeros  : 0/2097152
+Mask histogram
+conv1_layer.2.weight: 	 tensor([   0., 8192.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+conv2_layer.2.weight: 	 tensor([2496., 1600.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,    0.,
+           0.], device='cuda:0')
+fc1_layer.1.weight: 	 tensor([308., 204.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
+       device='cuda:0')
+False
