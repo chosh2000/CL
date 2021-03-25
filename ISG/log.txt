@@ -209,3 +209,8 @@ Reg calculation
      conv2_layer.0.w: 11167 -> 42661
      conv2_layer.2.w: 7173  -> 27023
      fc1_layer.1.w  : 9444  -> 38265
+
+
+#### 3/21/2021 ####
+What to include in the paper:
+Sparsity in neural network favors learning compact and disentangled representations. While lateral inhibition in parameter isolation method enforces paramter sparsity, it is important to leave free neurons for learning future representations. Regepresentation sparsity is more beneficial than the parameter sparsity (Aljundi - selfless sequential learning), because sparse representation is less sensitive to a novel representation and deploying a free neuron for learning this pattern incurs less interfernece to past knowledge. Therefore, SIM increase the representational sparsity in the network by masking neuron outputs with lowest level of inductive Fisher information received from incident connections rather than masking connections itself. While reusing similar representaitons across different tasks slow down the rate of memory saturation, cumulated parameter importance is also taken into the account during the selection process to ensure level of interference on past tasks does not exceed the benefit of memory packing.
