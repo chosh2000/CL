@@ -121,8 +121,8 @@ class MAS(nn.Module):
 			p.requires_grad = True
 			if 'head' in n:
 				if self.args.revert_head:
-					with torch.no_grad():
-						p.copy_(prev[n])
+					# with torch.no_grad():
+					p.copy_(prev[n])
 					
 		self.tmodel.train(mode=mode)
 		return acc
