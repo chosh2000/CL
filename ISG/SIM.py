@@ -30,19 +30,21 @@ def SIM_train(args, ob):
         json.dump(args.__dict__, f, indent=2)
 
     if args.model_type == 'CNN':
+        print("*"*25)
         model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
         #Initialize network with CIFAR10 dataset
         if args.init_model:
+            print("*"*25)
             task_num = -1
             trainloader, testloader = load_datasets(args, task_num)
             init_train(network, args, task_num, trainloader, testloader)
             torch.save(network.tmodel.state_dict(), model_save_path)
             
         #Load initialized model
-        # if args.use_gpu:
-        #     network.tmodel.load_state_dict(torch.load(model_save_path))
-        # else:
-        #     network.tmodel.load_state_dict(torch.load(model_save_path, map_location=torch.device('cpu')))
+        if args.use_gpu:
+            network.tmodel.load_state_dict(torch.load(model_save_path))
+        else:
+            network.tmodel.load_state_dict(torch.load(model_save_path, map_location=torch.device('cpu')))
 
     #Training split CIFAR100
     acc_list = {}
