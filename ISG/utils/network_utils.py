@@ -105,7 +105,7 @@ class CNN(nn.Module):
 		# FC layer
 		self.fc1_layer = nn.Sequential(
 			# nn.Dropout(p=0.1),   ############## commented out for nodropout
-			nn.Linear(self.conv2_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
+			nn.Linear(self.conv4_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
 			)
 
@@ -126,7 +126,6 @@ class CNN(nn.Module):
 		# fc layer
 		x = x.view(x.size(0), -1) # output: [channel, 8192] or [batch_size, 4096]
 		x = self.fc1_layer(x) # output: [batch_size, 1024]
-		print(x.shape)
 		x = x * self.fc1_mask
 
 		# head layer
