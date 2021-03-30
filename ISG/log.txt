@@ -235,11 +235,12 @@ FWT, BWT: few shot training? or complete training of head layer?
       include in the paper how # of channels in CNN affect the SIM performance.
 
 #### 3/30 ####
-Places I added with torch.no_grad()
-model_utils.py
-- load_mask()
-- random_mask()
-
 Things changed:
 - CNN fc1_layer dropout is removed (we need to reinit the model)
-- 
+- Added "with torch.no_grad()"
+    model_utils.py
+      load_mask()
+      random_mask()
+- network_utils.py
+    Changed to conv1, conv2, conv3, conv4 layers
+- [x] testing rho 11888 - 11444  (a5, x001)

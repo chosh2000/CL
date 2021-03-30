@@ -4,7 +4,7 @@ import os
 import glob
 import torch
 import numpy as np
-from datetime import date
+from datetime import datetime
 
 def load_and_plot(task_num):
 	result_path = os.path.join(os.getcwd(), "../results")
@@ -54,8 +54,8 @@ class observer():
 		self.args = args
 
 	def to_csv(self):
-		today = date.today()
-		t = today.strftime("%m-%d-%Y-%H:%M")
+		now = datetime.now()
+		t = now.strftime("%m-%d-%Y-%H:%M")
 		save_path = "./results/"+t+"/"
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
