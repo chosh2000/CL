@@ -64,7 +64,6 @@ class observer():
 					"_"+self.args.method+ \
 					"_SIM"+str(self.args.apply_SIM)+ \
 					"_r"+str(self.args.rho)+ \
-					"_size"+str(self.args.)
 					"_rand"+str(self.args.random_drop)+ \
 					"_reg"+str(self.args.reglambda)+ \
 					"_a"+str(self.args.alpha)+ \
