@@ -215,7 +215,8 @@ class MAS(nn.Module):
 
 	def load_mask(self, task_num):
 		for n,p in self.tmodel.mask_list.items():
-			self.tmodel.mask_list[n].copy_(self.task_masks[task_num][n])
+			with torch.no_grad():
+				self.tmodel.mask_list[n].copy_(self.task_masks[task_num][n])
 
 
 	def lift_mask(self):
@@ -225,7 +226,8 @@ class MAS(nn.Module):
 	def random_mask(self):
 		for n,p in self.tmodel.mask_list.items():
 			mask = torch.FloatTensor(p.shape).uniform_() > (1-self.tmodel.rho[n])
-			p.copy_(mask)	
+			with torch.no_grad():
+				p.copy_(mask)
 
 
 	def record_trace(self):
