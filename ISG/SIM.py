@@ -33,6 +33,7 @@ def SIM_train(args, ob):
         model_save_path = os.path.join(os.getcwd(), "models", "model_pretrained_cifar10.pth")
         #Initialize network with CIFAR10 dataset
         if args.init_model:
+            print("*"*20)
             task_num = -1
             trainloader, testloader = load_datasets(args, task_num)
             init_train(network, args, task_num, trainloader, testloader)
