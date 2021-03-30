@@ -88,7 +88,7 @@ class CNN(nn.Module):
 
 		# FC layer
 		self.fc1_layer = nn.Sequential(
-			# nn.Dropout(p=0.1),   ############## commented out for nodropout
+			nn.Dropout(p=0.1),   ############## commented out for nodropout
 			nn.Linear(self.conv2_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
 			)
