@@ -126,6 +126,7 @@ class CNN(nn.Module):
 		# fc layer
 		x = x.view(x.size(0), -1) # output: [channel, 8192] or [batch_size, 4096]
 		x = self.fc1_layer(x) # output: [batch_size, 1024]
+		print(x.shape)
 		x = x * self.fc1_mask
 
 		# head layer
