@@ -109,7 +109,7 @@ def get_args(argv):
     parser.add_argument('--revert_head', type=int, default = 1, help="revert finetuning of headlayer during FWT computation ")
 
     #network config
-    parser.add_argument('--init_model', type=int, default=0)
+    parser.add_argument('--init_model', type=int, default=1)
     parser.add_argument('--random_drop', type=int, default=0)
     parser.add_argument('--method', type=str, default="MAS", help="CL algorithm (MAS|SI|EWC)")
     parser.add_argument('--model_type', type=str, default='CNN',help="The type (MLP|CNN|lenet|vgg|resnet) of backbone network")
