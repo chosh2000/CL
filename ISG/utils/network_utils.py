@@ -69,7 +69,7 @@ class CNN(nn.Module):
 							'conv2_layer.0.weight':self.conv2_mask,
 							'conv3_layer.0.weight':self.conv3_mask,
 							'conv4_layer.0.weight':self.conv4_mask,
-							'fc1_layer.1.weight'  :self.fc1_mask,
+							'fc1_layer.0.weight'  :self.fc1_mask,
 						}
 		assert len(self.args.rho) == len(self.mask_list), "make sure mask number matches"
 		for i, key in enumerate(self.mask_list.keys()):
@@ -104,7 +104,7 @@ class CNN(nn.Module):
 
 		# FC layer
 		self.fc1_layer = nn.Sequential(
-			nn.Dropout(p=0.1),   ############## commented out for nodropout
+			# nn.Dropout(p=0.1),   ############## commented out for nodropout
 			nn.Linear(self.conv2_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
 			)
