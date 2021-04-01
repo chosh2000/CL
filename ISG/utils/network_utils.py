@@ -52,14 +52,24 @@ class CNN(nn.Module):
 		super(CNN, self).__init__()
 		self.args = args
 		self.device = torch.device("cuda:0" if args.use_gpu else "cpu")
-		self.conv1_mask = torch.ones([32, 16, 16]).to(self.device)
-		self.conv2_mask = torch.ones([64, 8, 8]).to(self.device)
+		self.conv1_feat = 32
+		self.conv2_feat = 32
+		self.conv3_feat = 64
+		self.conv4_feat = 64
+
+		self.conv1_mask = torch.ones([self.conv1_feat, 32, 32]).to(self.device)
+		self.conv2_mask = torch.ones([self.conv2_feat, 16, 16]).to(self.device)
+		self.conv3_mask = torch.ones([self.conv3_feat, 16, 16]).to(self.device)
+		self.conv4_mask = torch.ones([self.conv4_feat, 8, 8]).to(self.device)
+
 		self.fc1_mask = torch.ones(512).to(self.device)
 		self.rho = {}
 		self.mask_list = {
-							'conv1_layer.2.weight':self.conv1_mask, 
-							'conv2_layer.2.weight':self.conv2_mask,
-							'fc1_layer.1.weight':self.fc1_mask,
+							'conv1_layer.0.weight':self.conv1_mask, 
+							'conv2_layer.0.weight':self.conv2_mask,
+							'conv3_layer.0.weight':self.conv3_mask,
+							'conv4_layer.0.weight':self.conv4_mask,
+							'fc1_layer.0.weight'  :self.fc1_mask,
 						}
 		assert len(self.args.rho) == len(self.mask_list), "make sure mask number matches"
 		for i, key in enumerate(self.mask_list.keys()):
@@ -67,20 +77,26 @@ class CNN(nn.Module):
 
 		# Conv Layer block 1
 		self.conv1_layer = nn.Sequential(
-			nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, padding=1),
+			nn.Conv2d(in_channels=3, out_channels=self.conv1_feat, kernel_size=3, padding=1),
 			# nn.BatchNorm2d(32),
 			nn.ReLU(),
-			nn.Conv2d(in_channels=32, out_channels=32, kernel_size=3, padding=1),
+			)
+
+		self.conv2_layer = nn.Sequential(
+			nn.Conv2d(in_channels=self.conv1_feat, out_channels=self.conv2_feat, kernel_size=3, padding=1),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 			)
 		
 		# Conv Layer block 2
-		self.conv2_layer = nn.Sequential(
-			nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1),
+		self.conv3_layer = nn.Sequential(
+			nn.Conv2d(in_channels=self.conv2_feat, out_channels=self.conv3_feat, kernel_size=3, padding=1),
 			# nn.BatchNorm2d(64),
 			nn.ReLU(),
-			nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, padding=1),
+			)
+
+		self.conv4_layer = nn.Sequential(
+			nn.Conv2d(in_channels=self.conv3_feat, out_channels=self.conv4_feat, kernel_size=3, padding=1),
 			nn.ReLU(),
 			nn.MaxPool2d(kernel_size=2, stride=2),
 			# nn.Dropout2d(p=0.05),
@@ -88,8 +104,8 @@ class CNN(nn.Module):
 
 		# FC layer
 		self.fc1_layer = nn.Sequential(
-			nn.Dropout(p=0.1),   ############## commented out for nodropout
-			nn.Linear(self.conv2_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
+			# nn.Dropout(p=0.1),   ############## commented out for nodropout
+			nn.Linear(self.conv4_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
 			)
 
@@ -98,10 +114,14 @@ class CNN(nn.Module):
 
 	def forward(self, x):
 		# conv layers
-		x = self.conv1_layer(x) # output: [batch_size, 64, 16, 16]
+		x = self.conv1_layer(x)
 		x = x * self.conv1_mask
-		x = self.conv2_layer(x) # output: [batch_size, 128, 8, 8]
+		x = self.conv2_layer(x)
 		x = x * self.conv2_mask
+		x = self.conv3_layer(x)
+		x = x * self.conv3_mask
+		x = self.conv4_layer(x)
+		x = x * self.conv4_mask
 
 		# fc layer
 		x = x.view(x.size(0), -1) # output: [channel, 8192] or [batch_size, 4096]
@@ -116,6 +136,8 @@ class CNN(nn.Module):
 	def SIM_forward(self, x):
 		x = self.conv1_layer(x)
 		x = self.conv2_layer(x)
+		x = self.conv3_layer(x)
+		x = self.conv4_layer(x)
 		x = x.view(x.size(0), -1)
 		x = self.fc1_layer(x)
 		# x = self.fc_head(x) # does not have the head layer

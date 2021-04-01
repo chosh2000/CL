@@ -4,7 +4,7 @@ import os
 import glob
 import torch
 import numpy as np
-from datetime import date
+from datetime import datetime
 
 def load_and_plot(task_num):
 	result_path = os.path.join(os.getcwd(), "../results")
@@ -54,27 +54,28 @@ class observer():
 		self.args = args
 
 	def to_csv(self):
-		today = date.today()
-		t = today.strftime("%m-%d-%Y-%H:%M")
+		now = datetime.now()
+		t = now.strftime("%m-%d-%Y-%H:%M")
 		save_path = "./results/"+t+"/"
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
 
-		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_ACC.csv", np.asarray(self.ACC), delimiter=",")
-		# np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
-		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
-		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
-		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
-		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
-		np.savetxt(save_path+self.args.dataset+"_"+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_r"+str(self.args.rho)+"_rand"+str(self.args.random_drop)+"_reg"+str(self.args.reglambda)+"_a"+str(self.args.alpha)+"_x"+str(self.args.xi)+"_a"+str(self.args.alpha)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
+		save_string = self.args.dataset+ \
+					"_"+self.args.method+ \
+					"_SIM"+str(self.args.apply_SIM)+ \
+					"_r"+str(self.args.rho)+ \
+					"_rand"+str(self.args.random_drop)+ \
+					"_reg"+str(self.args.reglambda)+ \
+					"_a"+str(self.args.alpha)+ \
+					"_x"+str(self.args.xi)
 
-
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
-		# np.savetxt(save_path+self.args.method+"_SIM"+str(self.args.apply_SIM)+"_reg"+str(self.args.reglambda)+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
+		np.savetxt(save_path+save_string+"_ACC.csv", np.asarray(self.ACC), delimiter=",")
+		# np.savetxt(save_path+save_string+"_LCA.csv", np.asarray(self.LCA), delimiter=",")
+		np.savetxt(save_path+save_string+"_FWT.csv", np.asarray(self.FWT), delimiter=",")
+		np.savetxt(save_path+save_string+"_BWT.csv", np.asarray(self.BWT), delimiter=",")
+		np.savetxt(save_path+save_string+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
+		np.savetxt(save_path+save_string+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
+		np.savetxt(save_path+save_string+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 
 
 def legend_name(item):

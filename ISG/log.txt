@@ -234,4 +234,13 @@ FWT, BWT: few shot training? or complete training of head layer?
 - [ ] benefit of SIM becomes more apparent in a larger network (MLP with 2000 hidden neurons/ CNN with more channels)
       include in the paper how # of channels in CNN affect the SIM performance.
 
->>>>>>> 1748de9a4c4fa15de9d9b98082821dedda2c3c00
+#### 3/30 ####
+Things changed:
+- CNN fc1_layer dropout is removed (we need to reinit the model)
+- Added "with torch.no_grad()"
+    model_utils.py
+      load_mask()
+      random_mask()
+- network_utils.py
+    Changed to conv1, conv2, conv3, conv4 layers
+- [x] testing rho 11888 - 11444  (a5, x001)
