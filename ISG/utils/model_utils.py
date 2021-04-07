@@ -241,7 +241,7 @@ class MAS(nn.Module):
 		#print
 		print("Mask histogram")
 		for n,p in self.mask_trace.items():
-			print("{}: \n {}".format(n, torch.histc(p, bins=11, min=0, max=11)))
+			print("{}: \n {}".format(n, torch.histc(p.numpy(), bins=11, min=0, max=11)))
 
 
 
