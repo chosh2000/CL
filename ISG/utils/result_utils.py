@@ -52,10 +52,10 @@ class observer():
 		self.PTB  = []
 		self.IPK  = []
 		self.args = args
+		self.now  = datetime.now()
 
 	def to_csv(self):
-		now = datetime.now()
-		t = now.strftime("%m-%d-%Y-%H:%M")
+		t = self.now.strftime("%m-%d-%Y-%H:%M")
 		save_path = "./results/"+t+"/"
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
@@ -79,19 +79,19 @@ class observer():
 
 
 def legend_name(item):
-	if "SIM1" in item:
-		return "ours"
-	elif "EWC" in item:
-		return "EWC"
-	elif "SI_" in item:
-		return "SI"
-	elif "reg0.0" in item:
-		return "ANN"
-	elif "MAS" and "reg1.0" in item:
-		return "MAS"
-	# else:
-		# return item[:3]
-	# return item[:-8]
+	# if "SIM1" in item:
+	# 	return "ours"
+	# elif "EWC" in item:
+	# 	return "EWC"
+	# elif "SI_" in item:
+	# 	return "SI"
+	# elif "reg0.0" in item:
+	# 	return "ANN"
+	# elif "MAS" and "reg1.0" in item:
+	# 	return "MAS"
+	# # else:
+	# 	# return item[:3]
+	return item[:-8]
 
 def plot_results():
 	# Find n'th latest directory by modification date
