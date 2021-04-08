@@ -65,11 +65,11 @@ def SIM_gating(network, task_num, dataloader):
 				M[M_index] = 1 #Sailent features set to 1
 				network.tmodel.mask_list[n].copy_(M) 
 
-				print("Layer        : {}".format(n))
-				print("R.histogram  : {}".format(R_sum_hist))
-				print("R_sum max/min: {:.1f}/{:.1f}".format(R_sum.max(), R_sum.min()))
-				print("F max  		: {}".format(F.max()))
-				print("O masx 		: {}".format(O.max()))
+				# print("Layer        : {}".format(n))
+				# print("R.histogram  : {}".format(R_sum_hist))
+				# print("R_sum max/min: {:.1f}/{:.1f}".format(R_sum.max(), R_sum.min()))
+				# print("F max  		: {}".format(F.max()))
+				# print("O masx 		: {}".format(O.max()))
 				# print("F.num_zeros  : {}/{}".format(F.numel()-F.nonzero().size(0), F.numel()))
 				# print("W.num_zeros  : {}/{}".format(p.data.numel()-p.data.nonzero().size(0), p.data.numel()))
 				# print("O.num_zeros  : {}/{}".format(O.numel()-O.nonzero().size(0), O.numel()))				

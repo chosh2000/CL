@@ -52,17 +52,18 @@ class CNN(nn.Module):
 		super(CNN, self).__init__()
 		self.args = args
 		self.device = torch.device("cuda:0" if args.use_gpu else "cpu")
-		self.conv1_feat = 32
-		self.conv2_feat = 32
-		self.conv3_feat = 64
-		self.conv4_feat = 64
+		self.conv1_feat = 32 * args.cnn_size
+		self.conv2_feat = 32 * args.cnn_size
+		self.conv3_feat = 64 * args.cnn_size
+		self.conv4_feat = 64 * args.cnn_size
+		self.fc1_feat   = 512* args.cnn_size
 
 		self.conv1_mask = torch.ones([self.conv1_feat, 32, 32]).to(self.device)
 		self.conv2_mask = torch.ones([self.conv2_feat, 16, 16]).to(self.device)
 		self.conv3_mask = torch.ones([self.conv3_feat, 16, 16]).to(self.device)
 		self.conv4_mask = torch.ones([self.conv4_feat, 8, 8]).to(self.device)
 
-		self.fc1_mask = torch.ones(512).to(self.device)
+		self.fc1_mask = torch.ones(self.fc1_feat).to(self.device)
 		self.rho = {}
 		self.mask_list = {
 							'conv1_layer.0.weight':self.conv1_mask, 
@@ -105,12 +106,12 @@ class CNN(nn.Module):
 		# FC layer
 		self.fc1_layer = nn.Sequential(
 			# nn.Dropout(p=0.1),   ############## commented out for nodropout
-			nn.Linear(self.conv4_mask.numel(), 512),  #nn.Linear(4096,1024) with 3 conv layers
+			nn.Linear(self.conv4_mask.numel(), self.fc1_feat),  #nn.Linear(4096,1024) with 3 conv layers
 			nn.ReLU(),
 			)
 
 		# Head layer
-		self.fc_head = nn.Linear(512, 10)
+		self.fc_head = nn.Linear(self.fc1_feat, 10)
 
 	def forward(self, x):
 		# conv layers

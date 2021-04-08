@@ -1,0 +1,21 @@
+Mask histogram
+conv1_layer.0.weight: 
+ [26299.  6469.     0.     0.     0.     0.     0.     0.     0.     0.
+     0.]
+conv2_layer.0.weight: 
+ [6531. 1661.    0.    0.    0.    0.    0.    0.    0.    0.    0.]
+conv3_layer.0.weight: 
+ [13145.  3239.     0.     0.     0.     0.     0.     0.     0.     0.
+     0.]
+conv4_layer.0.weight: 
+ [3310.  786.    0.    0.    0.    0.    0.    0.    0.    0.    0.]
+fc1_layer.0.weight: 
+ [416.  96.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+Head Finetuning    :Task: 0,	 Epoch: 0/40,	 Avg.loss: 0.0023,	 Test Accuracy: 140/1000(14%)
+Head Finetuning    :Task: 0,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 110/1000(11%)
+Head Finetuning    :Task: 0,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 176/1000(18%)
+Head Finetuning    :Task: 0,	 Epoch: 3/40,	 Avg.loss: 0.0023,	 Test Accuracy: 175/1000(18%)
+Head Finetuning    :Task: 0,	 Epoch: 4/40,	 Avg.loss: 0.0023,	 Test Accuracy: 174/1000(17%)
+Head Finetuning    :Task: 0,	 Epoch: 5/40,	 Avg.loss: 0.0023,	 Test Accuracy: 162/1000(16%)
+Head Finetuning    :Task: 0,	 Epoch: 6/40,	 Avg.loss: 0.0023,	 Test Accuracy: 180/1000(18%)
+Head Finetuning    :Task: 0,	 Epoch: 7/40,	 Avg.loss: 0.0023,	 Test Accuracy: 157/1000(16%)
