@@ -22,7 +22,20 @@ mkdir -p $OUTDIR
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST  --method MAS  --model_type MLP  --mlp_size 100 --num_task 10 --print_freq 200 --schedule 10 --apply_SIM 1 --random_drop 0 --rho 0.5 0.5  --lr 0.0001 --reglambda 0.01  --alpha 1 --xi 0.01 --revert_head 1    | tee ${OUTDIR}/SIM_rho_5_5_revert1.log
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST  --method MAS  --model_type MLP  --mlp_size 100 --num_task 10 --print_freq 200 --schedule 10 --apply_SIM 1 --random_drop 0 --rho 0.5 0.5  --lr 0.0001 --reglambda 0.01  --alpha 1 --xi 0.01 --revert_head 0    | tee ${OUTDIR}/SIM_rho_5_5_revert0.log
 
+#ISG random
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 1 --random_drop 1 --rho 0.2 0.2  --lr 0.0001 --reglambda 0.01  --alpha 1 --xi 0.01 --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/SIM_rho22_reg001_random.log
+#ANN
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0     --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/ANN_reg0.log
+#MAS
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.01  --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/MAS_reg001.log
+#SI
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.01  --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/SI_reg001.log
+#EWC
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.01  --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/EWC_reg001.log
 
-python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 10 --print_freq 200 --schedule 10 20 --apply_SIM 1 --random_drop 1 --rho 0.2 0.2  --lr 0.0001 --reglambda 0.01  --alpha 1 --xi 0.01 --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/SIM_rho_22_random.log
+
+
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 10 --print_freq 200 --schedule 10 20 --apply_SIM 1 --random_drop 0 --rho 0.2 0.2  --lr 0.0001 --reglambda 0.01  --alpha 0.2 --xi 0.01 --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/SIM_r22_a02_x001.log
+
 
 
