@@ -27,7 +27,7 @@
   "print_freq": 200.0,
   "dataroot": "data",
   "padding": true,
-  "reglambda": 0.8,
+  "reglambda": 10.0,
   "online_reg": true,
   "omega_multiplier": 1,
   "apply_SIM": 0,
