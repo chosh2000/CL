@@ -158,8 +158,8 @@ if __name__ =="__main__":
     args = get_args(sys.argv[1:])
     ob = observer(args) #records all experimental results
 
-    for repeat in range(args.repeat):
-        SIM_train(args, ob)
-        ob.to_csv() #saves all csv files
+    # for repeat in range(args.repeat):
+    #     SIM_train(args, ob)
+    #     ob.to_csv() #saves all csv files
 
-    # plot_results()
+    ob.plot_results()

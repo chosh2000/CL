@@ -52,11 +52,11 @@ class observer():
 		self.PTB  = []
 		self.IPK  = []
 		self.args = args
-		self.now  = datetime.now()
+		self.now  = datetime.now().strftime("%m-%d-%Y-%H:%M")
 
 	def to_csv(self):
-		t = self.now.strftime("%m-%d-%Y-%H:%M")
-		save_path = "./results/"+t+"/"
+		t = self.now
+		save_path = "./results/"+self.args.dataset+"_"+t+"/"
 		if not os.path.isdir(save_path):
 			os.makedirs(save_path)
 
@@ -77,128 +77,128 @@ class observer():
 		np.savetxt(save_path+save_string+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
 		np.savetxt(save_path+save_string+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 
+	def legend_name(self,item):
+		if "SIM1" in item and "rand1" not in item:
+			return "SIM"
+		elif "MAS" in item and "rand1" not in item:
+			return "MAS"
+		elif "SI_" in item:
+			return "SI"
+		elif "EWC" in item:
+			return "EWC"
+		elif "ANN" in item:
+			return "ANN"
+		elif "rand1" in item:
+			return "RAND"
 
-def legend_name(item):
-	if "SIM_" in item:
-		return "SIM"
-	elif "MAS" in item:
-		return "MAS"
-	elif "SI_" in item:
-		return "SI"
-	elif "EWC" in item:
-		return "EWC"
-	elif "ANN" in item:
-		return "ANN"
-	elif "RAND" in item:
-		return "RAND"
+		# # else:
+		# 	# return item[:3]
+		return item[:-8]
 
-	# # else:
-	# 	# return item[:3]
-	return item[:-8]
+	def plot_results(self):
+		# Find n'th latest directory by modification date
+		# result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
+		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
+		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
+		print("PATH:    ", result_path)
+		arr = os.listdir(result_path)
+		c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'y', "ANN":"k", "RAND":"c"}
 
-def plot_results():
-	# Find n'th latest directory by modification date
-	# result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
-	result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots/"
-	print("PATH:    ", result_path)
-	arr = os.listdir(result_path)
-	c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'orange', "ANN":"k", "RAND":"p"}
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'ACC' in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'ACC' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+		plt.title("ACC")
+		plt.legend(item_list)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel("ACC")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_acc.jpg")
+		# plt.show()
+		
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'BWT' in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-	plt.title("ACC")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("Accuracy, ACC")
-	plt.savefig(result_path+"acc.jpg")
-	# plt.show()
-	
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'BWT' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+		plt.title("BWT")
+		plt.legend(item_list)
+		plt.xlabel("Task, t")
+		plt.ylabel("BWT")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_bwt.jpg")
+		# plt.show()
+		
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'FWT' in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-	plt.title("BWT")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("BWT")
-	plt.savefig(result_path+"bwt.jpg")
-	# plt.show()
-	
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'FWT' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+		plt.title("FWT")
+		plt.legend(item_list)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel("FWT")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_fwt.jpg")
+		# plt.show()
 
-	plt.title("FWT")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("FWT")
-	plt.savefig(result_path+"fwt.jpg")
-	# plt.show()
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'IPK' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'IPK' in item and "ANN" not in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+		plt.title("IPK")
+		plt.legend(item_list)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel("IPK")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_ipk.jpg")
+		# plt.show()
 
-	plt.title("IPK")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("IPK")
-	plt.savefig(result_path+"ipk.jpg")
-	# plt.show()
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'PTB' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'PTB' in item and "ANN" not in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+		plt.title("PTB")
+		plt.legend(item_list)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel("PTB")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_ptb.jpg")
+		# plt.show()
 
-	plt.title("PTB")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("PTB")
-	plt.savefig(result_path+"ptb.jpg")
-	# plt.show()
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'SAT' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
 
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'SAT' in item and "ANN" not in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
+				# #comment out below if not accumulating SAT
+				# data_sum = 0
+				# for i, d in enumerate(data):
+				# 	data_sum += d
+				# 	data[i] = data_sum
 
-			# #comment out below if not accumulating SAT
-			# data_sum = 0
-			# for i, d in enumerate(data):
-			# 	data_sum += d
-			# 	data[i] = data_sum
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-			item_list.append(legend_name(item))
-			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
-
-	plt.title("SAT")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("SAT")
-	plt.savefig(result_path+"sat.jpg")
-	# plt.show()
+		plt.title("SAT")
+		plt.legend(item_list)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel("SAT")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
+		# plt.show()
 	
 # plot_results()
