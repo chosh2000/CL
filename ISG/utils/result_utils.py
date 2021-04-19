@@ -79,26 +79,30 @@ class observer():
 
 
 def legend_name(item):
-	# if "SIM1" in item:
-	# 	return "ours"
-	# elif "EWC" in item:
-	# 	return "EWC"
-	# elif "SI_" in item:
-	# 	return "SI"
-	# elif "reg0.0" in item:
-	# 	return "ANN"
-	# elif "MAS" and "reg1.0" in item:
-	# 	return "MAS"
+	if "SIM_" in item:
+		return "SIM"
+	elif "MAS" in item:
+		return "MAS"
+	elif "SI_" in item:
+		return "SI"
+	elif "EWC" in item:
+		return "EWC"
+	elif "ANN" in item:
+		return "ANN"
+	elif "RAND" in item:
+		return "RAND"
+
 	# # else:
 	# 	# return item[:3]
 	return item[:-8]
 
 def plot_results():
 	# Find n'th latest directory by modification date
-	result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
-	# result_path = "/home/sanghyun/Documents/CL/ISG/results/03-23-2021/"
+	# result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
+	result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots/"
 	print("PATH:    ", result_path)
 	arr = os.listdir(result_path)
+	c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'orange', "ANN":"k", "RAND":"p"}
 
 	plt.figure()
 	item_list=[]
@@ -106,15 +110,8 @@ def plot_results():
 		if 'ACC' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			item_list.append(legend_name(item))
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+
 	plt.title("ACC")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -128,16 +125,8 @@ def plot_results():
 		if 'BWT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			item_list.append(legend_name(item))
+			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
 	plt.title("BWT")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -151,16 +140,8 @@ def plot_results():
 		if 'FWT' in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			item_list.append(legend_name(item))
+			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
 	plt.title("FWT")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -171,19 +152,11 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		if 'IPK' in item:
+		if 'IPK' in item and "ANN" not in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			item_list.append(legend_name(item))
+			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
 	plt.title("IPK")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -194,19 +167,11 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		if 'PTB' in item:
+		if 'PTB' in item and "ANN" not in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
 			item_list.append(legend_name(item))
+			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
 
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
 	plt.title("PTB")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -217,19 +182,18 @@ def plot_results():
 	plt.figure()
 	item_list=[]
 	for item in arr:
-		if 'SAT' in item:
+		if 'SAT' in item and "ANN" not in item:
 			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
 
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			# #comment out below if not accumulating SAT
+			# data_sum = 0
+			# for i, d in enumerate(data):
+			# 	data_sum += d
+			# 	data[i] = data_sum
+
+			item_list.append(legend_name(item))
+			plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+
 	plt.title("SAT")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
