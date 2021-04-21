@@ -122,7 +122,7 @@ def get_args(argv):
     # parser.add_argument('--model_weights', type=str, default=None, help="The path to the file for the model weights (*.pth).")
     
     #dataset
-    parser.add_argument('--dataset', type=str, default='sCIFAR100', help="pMNIST|CIFAR10|sCIFAR100")
+    parser.add_argument('--dataset', type=str, default='pMNIST', help="pMNIST|CIFAR10|sCIFAR100")
     parser.add_argument('--num_task', type=int, default=10, help="number of tasks")
     parser.add_argument('--schedule', nargs="+", type=int, default=[60, 80], help="The list of epoch numbers to reduce learning rate by factor of 0.1. Last number is the end epoch")
     parser.add_argument('--batch_size_train', type=int, default=128)
@@ -155,15 +155,11 @@ def get_args(argv):
 
 
 if __name__ =="__main__":
-    # args = get_args(sys.argv[1:])
-    # ob = observer(args) #records all experimental results
+    args = get_args(sys.argv[1:])
+    ob = observer(args) #records all experimental results
 
-    # for repeat in range(args.repeat):
-    #     SIM_train(args, ob)
-    #     ob.to_csv() #saves all csv files
+    for repeat in range(args.repeat):
+        SIM_train(args, ob)
+        ob.to_csv() #saves all csv files
 
-<<<<<<< HEAD
-    plot_results()
-=======
-    ob.plot_results()
->>>>>>> dcbfd6863cf7b513464d37ff07c78e4b06aa03b5
+    # ob.plot_results()

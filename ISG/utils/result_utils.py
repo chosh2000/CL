@@ -77,154 +77,6 @@ class observer():
 		np.savetxt(save_path+save_string+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
 		np.savetxt(save_path+save_string+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 
-<<<<<<< HEAD
-
-def legend_name(item):
-	if "SIM1" in item:
-		return "ours"
-	elif "EWC" in item:
-		return "EWC"
-	elif "SI_" in item:
-		return "SI"
-	elif "ANN" in item:
-		return "ANN"
-	elif "MAS" in item:
-		return "MAS"
-	# # else:
-	# 	# return item[:3]
-	return item[:-8]
-
-def plot_results():
-	# Find n'th latest directory by modification date
-	result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
-	# result_path = "/home/sanghyun/Documents/CL/ISG/results/03-23-2021/"
-	print("PATH:    ", result_path)
-	arr = os.listdir(result_path)
-
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'ACC' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-
-			plt.plot(np.arange(data.size), data)
-			# plt.plot(np.arange(10), data, color = c)
-	plt.title("ACC")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("Accuracy, ACC")
-	plt.savefig(result_path+"acc.jpg")
-	# plt.show()
-	
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'BWT' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			plt.plot(np.arange(data.size), data)
-			# plt.plot(np.arange(10), data, color = c)
-	plt.title("BWT")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("BWT")
-	plt.savefig(result_path+"bwt.jpg")
-	# plt.show()
-	
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'FWT' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			plt.plot(np.arange(data.size), data)
-			# plt.plot(np.arange(10), data, color = c)
-	plt.title("FWT")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("FWT")
-	plt.savefig(result_path+"fwt.jpg")
-	# plt.show()
-
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'IPK' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			plt.plot(np.arange(data.size), data)
-			# plt.plot(np.arange(10), data, color = c)
-	plt.title("IPK")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("IPK")
-	plt.savefig(result_path+"ipk.jpg")
-	# plt.show()
-
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'PTB' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if item_list[-1] != "ANN":
-				print(item_list[0])
-				plt.plot(np.arange(data.size), data)
-			# plt.plot(np.arange(10), data, color = c)
-
-	plt.title("PTB")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("PTB")
-	plt.savefig(result_path+"ptb.jpg")
-	# plt.show()
-
-	plt.figure()
-	item_list=[]
-	for item in arr:
-		if 'SAT' in item:
-			data = np.genfromtxt(result_path+item, delimiter=",")
-			item_list.append(legend_name(item))
-
-			if item_list[-1] == "ours":
-				c = 'r'
-			else:
-				c = np.random.rand(3,)
-			if item_list[-1] != "ANN":
-				plt.plot(np.arange(data.size), data)
-			# plt.plot(np.arange(10), data, color = c)
-	plt.title("SAT")
-	plt.legend(item_list)
-	plt.xlabel("Task, t")
-	plt.ylabel("SAT")
-	plt.savefig(result_path+"sat.jpg")
-	# plt.show()
-=======
 	def legend_name(self,item):
 		if "SIM1" in item and "rand1" not in item:
 			return "SIM"
@@ -246,8 +98,8 @@ def plot_results():
 	def plot_results(self):
 		# Find n'th latest directory by modification date
 		# result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
-		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
-		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
+		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
+		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
 		print("PATH:    ", result_path)
 		arr = os.listdir(result_path)
 		c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'y', "ANN":"k", "RAND":"c"}
@@ -348,6 +200,5 @@ def plot_results():
 		plt.ylabel("SAT")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
 		# plt.show()
->>>>>>> dcbfd6863cf7b513464d37ff07c78e4b06aa03b5
 	
 # plot_results()
