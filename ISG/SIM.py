@@ -162,4 +162,8 @@ if __name__ =="__main__":
     #     SIM_train(args, ob)
     #     ob.to_csv() #saves all csv files
 
+<<<<<<< HEAD
     plot_results()
+=======
+    ob.plot_results()
+>>>>>>> dcbfd6863cf7b513464d37ff07c78e4b06aa03b5
