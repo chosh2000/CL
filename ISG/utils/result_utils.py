@@ -79,16 +79,16 @@ class observer():
 
 
 def legend_name(item):
-	# if "SIM1" in item:
-	# 	return "ours"
-	# elif "EWC" in item:
-	# 	return "EWC"
-	# elif "SI_" in item:
-	# 	return "SI"
-	# elif "reg0.0" in item:
-	# 	return "ANN"
-	# elif "MAS" and "reg1.0" in item:
-	# 	return "MAS"
+	if "SIM1" in item:
+		return "ours"
+	elif "EWC" in item:
+		return "EWC"
+	elif "SI_" in item:
+		return "SI"
+	elif "ANN" in item:
+		return "ANN"
+	elif "MAS" in item:
+		return "MAS"
 	# # else:
 	# 	# return item[:3]
 	return item[:-8]
@@ -110,11 +110,9 @@ def plot_results():
 				c = 'r'
 			else:
 				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+
+			plt.plot(np.arange(data.size), data)
+			# plt.plot(np.arange(10), data, color = c)
 	plt.title("ACC")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -133,11 +131,8 @@ def plot_results():
 				c = 'r'
 			else:
 				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			plt.plot(np.arange(data.size), data)
+			# plt.plot(np.arange(10), data, color = c)
 	plt.title("BWT")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -156,11 +151,8 @@ def plot_results():
 				c = 'r'
 			else:
 				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			plt.plot(np.arange(data.size), data)
+			# plt.plot(np.arange(10), data, color = c)
 	plt.title("FWT")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -179,11 +171,8 @@ def plot_results():
 				c = 'r'
 			else:
 				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			plt.plot(np.arange(data.size), data)
+			# plt.plot(np.arange(10), data, color = c)
 	plt.title("IPK")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -202,11 +191,11 @@ def plot_results():
 				c = 'r'
 			else:
 				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			if item_list[-1] != "ANN":
+				print(item_list[0])
+				plt.plot(np.arange(data.size), data)
+			# plt.plot(np.arange(10), data, color = c)
+
 	plt.title("PTB")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
@@ -225,11 +214,9 @@ def plot_results():
 				c = 'r'
 			else:
 				c = np.random.rand(3,)
-			if len(data)!=10:
-				plt.plot(np.arange(10), data[0])
-			else:
-				print(item_list[-1])
-				plt.plot(np.arange(10), data, color = c)
+			if item_list[-1] != "ANN":
+				plt.plot(np.arange(data.size), data)
+			# plt.plot(np.arange(10), data, color = c)
 	plt.title("SAT")
 	plt.legend(item_list)
 	plt.xlabel("Task, t")
