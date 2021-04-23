@@ -365,7 +365,7 @@ class EWC(MAS):
 		loss.backward()
 		self.optimizer.step()
 
-	def calculate_importance(self, dataloader, tasknum):
+	def calculate_importance(self, dataloader, task_num):
 		assert self.args.method=='EWC', "not using EWC version" 
 
 		# Update the diag fisher information
