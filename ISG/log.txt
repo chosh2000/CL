@@ -244,3 +244,22 @@ Things changed:
 - network_utils.py
     Changed to conv1, conv2, conv3, conv4 layers
 - [x] testing rho 11888 - 11444  (a5, x001)
+
+
+#### 4/23 ####
+Things to do:
+- Update pMNIST data (EWC + SI) on overleaf (run some more experiments depending on the result)
+- Implement LCA learning curve. (Review "Efficient  lifelong  learning  with  a-gem")
+- Implement weight usage (%) computation
+- find an optimal configuration for sCIFAR
+- run a comprehensive experiment on sCIFAR with repetitions
+- Let's do without dropout
+
+Ablation studies:
+- Effects of model capacity
+- Parameter isolation configurations (Layerwise proportion p)
+- Effects of Regularization (L2/dropout)
+- Task Agnostic Mask selection
+
+
+
