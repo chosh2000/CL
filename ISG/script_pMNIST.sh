@@ -1,7 +1,6 @@
 OUTDIR=outputs/pMNIST/$(date +'%m-%d-%y_%Hh-%Mm')
 REPEAT=1
 mkdir -p $OUTDIR
-sleep 1s
 # python -u ISG_pMNIST.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --num_task 100 --schedule 10 --batch_size_train 128   --rho 1 1  --lr 0.0001 --reglambda 0.01           | tee ${OUTDIR}/SIM_rho_10_10.log
 
 # python -u ISG_pMNIST.py --use_gpu True --repeat $REPEAT --out_dir $OUTDIR  --num_task 100 --schedule 10 --batch_size_train 128   --rho 0.5 1  --lr 0.0001 --reglambda 0.01           | tee ${OUTDIR}/SIM_rho_5_10.log
@@ -27,8 +26,8 @@ sleep 1s
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 1 --random_drop 0 --rho 0.2 0.2  --lr 0.0001 --reglambda 0.01  --alpha 1 --xi 0.01 --revert_head 0 --finetune_epoch 20   | tee ${OUTDIR}/SIM_rho22_reg001.log
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0     --revert_head 1 --finetune_epoch 20   | tee ${OUTDIR}/ANN_reg0.log
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.01  --revert_head 1 --finetune_epoch 20   | tee ${OUTDIR}/MAS_reg001.log
-python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method SI   --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.8  --revert_head 1  --finetune_epoch 20   | tee ${OUTDIR}/SI_reg08.log
-sleep 5m
+# python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method SI   --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.8  --revert_head 1  --finetune_epoch 20   | tee ${OUTDIR}/SI_reg08.log
+# sleep 5m
 python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method EWC  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 1  --revert_head 1  --finetune_epoch 20   | tee ${OUTDIR}/EWC_reg1.log
 
 
