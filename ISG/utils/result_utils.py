@@ -5,6 +5,7 @@ import glob
 import torch
 import numpy as np
 from datetime import datetime
+import re
 
 def load_and_plot(task_num):
 	result_path = os.path.join(os.getcwd(), "../results")
@@ -202,3 +203,134 @@ class observer():
 		# plt.show()
 	
 # plot_results()
+
+def pMNIST_weight_usage_plot():
+	result_path = "/home/sanghyun/Documents/CL/ISG/outputs/pMNIST/04-16-21_13h-19m/"
+	save_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
+
+	arr = os.listdir(result_path)
+	for item in arr:
+		if 'log' in item:
+			f = open(result_path+item, "r")
+			count = {}
+			for line in f:
+				if re.search(".weight",  line):
+					layer = line[:3]
+					if layer not in count:
+						count[layer] = {}
+				if re.search("tensor", line):
+					a = line[9:-3].split(',')
+					b = [int(num) for num in a]
+					c = []
+					for i in range(1, len(b)):
+						c.append( (sum(b[i:])+(2000 - sum(b)))/2000  )
+					for i in range(len(c)):
+						if i not in count[layer]:
+							count[layer][i] = [c[i]]
+						else:
+							count[layer][i].append(c[i])
+
+	#Line Graph
+	for layer, item in count.items():
+		plt.figure()
+		# plt.axis([1, 100, 0, 1])
+		plt.title(r"Number of Tasks Encoded per Parameter, "+layer)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel('Parameter Count (%)')
+		for key, data in item.items():
+			plt.plot(np.arange(len(data)), data, label=r'$\geq$'+str(key+1)+' tasks')
+		plt.legend()
+		plt.savefig(save_path+"pMNIST_"+layer+"_Param_usage.jpg")
+
+	#Bar Graph
+	plt.figure()
+	plt.title(r"Number of Tasks Encoded per Parameter")
+	# plt.xlabel("Task Sequence, t")
+	plt.ylabel('Parameter Count (%)')
+	category = ['FC1', 'FC2']
+	data_list = []
+	for layer, item in count.items():
+		# plt.axis([1, 100, 0, 1])
+		print(layer)
+		datas = []
+		for key, data in item.items():
+			datas.append(data[-1])
+		data_list.append(datas)
+	for i in range(10):
+		plt.bar(np.arange(2)+0.07*i, [data_list[0][i], data_list[1][i]], 0.07,  label=r'$\geq$'+str(i+1)+' tasks')
+		# plt.bar(np.arange(2)+0.04, data_list[1], 0.04, label = i)
+	plt.xticks([0.3, 1.3], category)
+	plt.legend()
+	plt.savefig(save_path+"bar_pMNIST_"+layer+"_Param_usage.jpg")
+
+def sCIFAR_weight_usage_plot():
+	result_path = "/home/sanghyun/Documents/CL/ISG/outputs/sCIFAR/04-07-21_17:29/"
+	save_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
+
+	arr = os.listdir(result_path)
+	for item in arr:
+		if '55555' in item:
+			f = open(result_path+item, "r")
+			count = {}
+			for line in f:
+				if re.search(".weight",  line):
+					layer = line[:5]
+					if layer not in count:
+						count[layer] = {}
+				if re.search("tensor", line):
+					a = line[9:-3].split(',')
+					b = [int(num) for num in a]
+					c = []
+					# print(layer)
+					# print("Layer :",layer," , b: ",b)
+					# print(sum(b[1:])/sum(b))
+					# p()
+					for i in range(1, len(b)):
+						c.append( sum(b[i:])/sum(b) )
+					for i in range(len(c)):
+						if i not in count[layer]:
+							count[layer][i] = [c[i]]
+						else:
+							count[layer][i].append(c[i])
+
+	#Line Graph
+	for layer, item in count.items():
+		plt.figure()
+		# plt.axis([1, 10, 0, 1])
+		plt.title(r"Number of Tasks Encoded per Parameter, "+layer)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel('Parameter Count (%)')
+		for used_count, data in item.items():
+			data.insert(0, 0)
+			plt.plot(np.arange(len(data)), data, label=r'$\geq$'+str(used_count+1)+' tasks')
+		plt.legend()
+		plt.savefig(save_path+"sCIFAR_"+layer+"_Param_usage.jpg")
+	# plt.show()
+
+	#Bar Graph
+	plt.figure()
+	plt.title(r"Number of Tasks Encoded per Parameter")
+	# plt.xlabel("Task Sequence, t")
+	plt.ylabel('Parameter Count (%)')
+	category = ['Conv.4', 'Dense']
+	data_list = []
+	for layer, item in count.items():
+		# plt.axis([1, 100, 0, 1])
+		print(layer)
+		datas = []
+		for key, data in item.items():
+			datas.append(data[-1])
+		data_list.append(datas)
+	width = 0.09
+	# data_list[3] = [0.999267578125, 0.948525390625, 0.90921875, 0.808857421875, 0.6401171875, 0.4079296875, 0.198212890625, 0.09419921875, 0.01056640625, 0.004765625]
+	# data_list[4] = [1.0, 0.994140625, 0.96484375, 0.837890625, 0.595703125, 0.35546875, 0.16015625, 0.044921875, 0.0078125, 0.00390625]
+	for i in range(10):
+		plt.bar(np.arange(2)+width*i, [data_list[3][i], data_list[4][i]], width,  label=r'$\geq$'+str(i+1)+' tasks')
+		# plt.bar(np.arange(2)+0.04, data_list[1], 0.04, label = i)
+	plt.xticks([0.3, 1.3], category)
+	plt.legend()
+	plt.savefig(save_path+"bar_sCIFAR_"+layer+"_Param_usage.jpg")
+
+
+# pMNIST_weight_usage_plot()
+sCIFAR_weight_usage_plot()
