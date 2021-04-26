@@ -1,19 +1,14 @@
 Mask histogram
 conv1_layer.0.weight: 
- tensor([16300, 16468,     0,     0,     0,     0,     0,     0,     0,     0,
-            0], device='cuda:0', dtype=torch.int32)
+ tensor([16300, 16468,     0,     0,     0,     0,     0,     0,     0,     0,    0])
 conv2_layer.0.weight: 
- tensor([4123, 4069,    0,    0,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([4123, 4069,    0,    0,    0,    0,    0,    0,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([8068, 8316,    0,    0,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([8068, 8316,    0,    0,    0,    0,    0,    0,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([2124, 1972,    0,    0,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([2124, 1972,    0,    0,    0,    0,    0,    0,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([254, 258,   0,   0,   0,   0,   0,   0,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([254, 258,   0,   0,   0,   0,   0,   0,   0,   0,   0])
 Head Finetuning    :Task: 0,	 Epoch: 0/40,	 Avg.loss: 0.0022,	 Test Accuracy: 366/1000(37%)
 Head Finetuning    :Task: 0,	 Epoch: 1/40,	 Avg.loss: 0.0020,	 Test Accuracy: 444/1000(44%)
 Head Finetuning    :Task: 0,	 Epoch: 2/40,	 Avg.loss: 0.0019,	 Test Accuracy: 477/1000(48%)
@@ -75,20 +70,15 @@ Trained Task:0, Avg. Accuracy: 78.2
 List of avg. accuracy: [78.2]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([ 8219, 16258,  8291,     0,     0,     0,     0,     0,     0,     0,
-            0], device='cuda:0', dtype=torch.int32)
+ tensor([ 8219, 16258,  8291,     0,     0,     0,     0,     0,     0,     0,     0])
 conv2_layer.0.weight: 
- tensor([2078, 4115, 1999,    0,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([2078, 4115, 1999,    0,    0,    0,    0,    0,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([4011, 8172, 4201,    0,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([4011, 8172, 4201,    0,    0,    0,    0,    0,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([1078, 2074,  944,    0,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([1078, 2074,  944,    0,    0,    0,    0,    0,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([134, 245, 133,   0,   0,   0,   0,   0,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([134, 245, 133,   0,   0,   0,   0,   0,   0,   0,   0])
 Head Finetuning    :Task: 1,	 Epoch: 0/40,	 Avg.loss: 0.0023,	 Test Accuracy: 132/1000(13%)
 Head Finetuning    :Task: 1,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 140/1000(14%)
 Head Finetuning    :Task: 1,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 150/1000(15%)
@@ -151,20 +141,15 @@ Trained Task:1, Avg. Accuracy: 75.4
 List of avg. accuracy: [78.2, 75.4]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([ 4081, 12345, 12153,  4189,     0,     0,     0,     0,     0,     0,
-            0], device='cuda:0', dtype=torch.int32)
+ tensor([ 4081, 12345, 12153,  4189,     0,     0,     0,     0,     0,     0,     0])
 conv2_layer.0.weight: 
- tensor([1042, 3112, 3014, 1024,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([1042, 3112, 3014, 1024,    0,    0,    0,    0,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([2023, 6056, 6169, 2136,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([2023, 6056, 6169, 2136,    0,    0,    0,    0,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([ 542, 1582, 1491,  481,    0,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 542, 1582, 1491,  481,    0,    0,    0,    0,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([ 60, 196, 186,  70,   0,   0,   0,   0,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 60, 196, 186,  70,   0,   0,   0,   0,   0,   0,   0])
 Head Finetuning    :Task: 2,	 Epoch: 0/40,	 Avg.loss: 0.0023,	 Test Accuracy: 143/1000(14%)
 Head Finetuning    :Task: 2,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 155/1000(16%)
 Head Finetuning    :Task: 2,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 166/1000(17%)
@@ -228,20 +213,15 @@ Trained Task:2, Avg. Accuracy: 76.0
 List of avg. accuracy: [78.2, 75.4, 76.0]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([ 2055,  8093, 12465,  7995,  2160,     0,     0,     0,     0,     0,
-            0], device='cuda:0', dtype=torch.int32)
+ tensor([ 2055,  8093, 12465,  7995,  2160,     0,     0,     0,     0,     0,     0])
 conv2_layer.0.weight: 
- tensor([ 512, 2119, 2999, 2081,  481,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 512, 2119, 2999, 2081,  481,    0,    0,    0,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([ 972, 4099, 6167, 4081, 1065,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 972, 4099, 6167, 4081, 1065,    0,    0,    0,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([ 230, 1120, 1502,  988,  256,    0,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 230, 1120, 1502,  988,  256,    0,    0,    0,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([ 32, 133, 198, 117,  32,   0,   0,   0,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 32, 133, 198, 117,  32,   0,   0,   0,   0,   0,   0])
 Head Finetuning    :Task: 3,	 Epoch: 0/40,	 Avg.loss: 0.0024,	 Test Accuracy: 98/1000(10%)
 Head Finetuning    :Task: 3,	 Epoch: 1/40,	 Avg.loss: 0.0024,	 Test Accuracy: 114/1000(11%)
 Head Finetuning    :Task: 3,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 114/1000(11%)
@@ -306,20 +286,15 @@ Trained Task:3, Avg. Accuracy: 75.7
 List of avg. accuracy: [78.2, 75.4, 76.0, 75.7]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([ 1019,  5133, 10254, 10267,  5000,  1095,     0,     0,     0,     0,
-            0], device='cuda:0', dtype=torch.int32)
+ tensor([ 1019,  5133, 10254, 10267,  5000,  1095,     0,     0,     0,     0,     0])
 conv2_layer.0.weight: 
- tensor([ 261, 1351, 2501, 2579, 1245,  255,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 261, 1351, 2501, 2579, 1245,  255,    0,    0,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([ 478, 2501, 5163, 5153, 2553,  536,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 478, 2501, 5163, 5153, 2553,  536,    0,    0,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([ 113,  688, 1342, 1206,  611,  136,    0,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 113,  688, 1342, 1206,  611,  136,    0,    0,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([ 13,  87, 165, 156,  78,  13,   0,   0,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 13,  87, 165, 156,  78,  13,   0,   0,   0,   0,   0])
 Head Finetuning    :Task: 4,	 Epoch: 0/40,	 Avg.loss: 0.0024,	 Test Accuracy: 81/1000(8%)
 Head Finetuning    :Task: 4,	 Epoch: 1/40,	 Avg.loss: 0.0024,	 Test Accuracy: 93/1000(9%)
 Head Finetuning    :Task: 4,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 104/1000(10%)
@@ -385,20 +360,15 @@ Trained Task:4, Avg. Accuracy: 74.9
 List of avg. accuracy: [78.2, 75.4, 76.0, 75.7, 74.9]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([  487,  3165,  7533, 10351,  7658,  3031,   543,     0,     0,     0,
-            0], device='cuda:0', dtype=torch.int32)
+ tensor([  487,  3165,  7533, 10351,  7658,  3031,   543,     0,     0,     0,     0])
 conv2_layer.0.weight: 
- tensor([ 135,  813, 1905, 2525, 1901,  772,  141,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 135,  813, 1905, 2525, 1901,  772,  141,    0,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([ 235, 1544, 3761, 5147, 3863, 1557,  277,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 235, 1544, 3761, 5147, 3863, 1557,  277,    0,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([  52,  383,  997, 1324,  908,  364,   68,    0,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  52,  383,  997, 1324,  908,  364,   68,    0,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([  5,  46, 130, 162, 116,  48,   5,   0,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  5,  46, 130, 162, 116,  48,   5,   0,   0,   0,   0])
 Head Finetuning    :Task: 5,	 Epoch: 0/40,	 Avg.loss: 0.0024,	 Test Accuracy: 124/1000(12%)
 Head Finetuning    :Task: 5,	 Epoch: 1/40,	 Avg.loss: 0.0024,	 Test Accuracy: 146/1000(15%)
 Head Finetuning    :Task: 5,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 171/1000(17%)
@@ -465,20 +435,15 @@ Trained Task:5, Avg. Accuracy: 74.8
 List of avg. accuracy: [78.2, 75.4, 76.0, 75.7, 74.9, 74.8]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([ 246, 1827, 5287, 8984, 8981, 5360, 1799,  284,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 246, 1827, 5287, 8984, 8981, 5360, 1799,  284,    0,    0,    0])
 conv2_layer.0.weight: 
- tensor([  58,  489, 1338, 2243, 2261, 1293,  451,   59,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  58,  489, 1338, 2243, 2261, 1293,  451,   59,    0,    0,    0])
 conv3_layer.0.weight: 
- tensor([ 126,  876, 2652, 4476, 4484, 2679,  951,  140,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 126,  876, 2652, 4476, 4484, 2679,  951,  140,    0,    0,    0])
 conv4_layer.0.weight: 
- tensor([  25,  206,  699, 1163, 1113,  641,  214,   35,    0,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  25,  206,  699, 1163, 1113,  641,  214,   35,    0,    0,    0])
 fc1_layer.0.weight: 
- tensor([  2,  23,  95, 140, 137,  89,  23,   3,   0,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  2,  23,  95, 140, 137,  89,  23,   3,   0,   0,   0])
 Head Finetuning    :Task: 6,	 Epoch: 0/40,	 Avg.loss: 0.0025,	 Test Accuracy: 96/1000(10%)
 Head Finetuning    :Task: 6,	 Epoch: 1/40,	 Avg.loss: 0.0024,	 Test Accuracy: 112/1000(11%)
 Head Finetuning    :Task: 6,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 136/1000(14%)
@@ -546,20 +511,15 @@ Trained Task:6, Avg. Accuracy: 75.1
 List of avg. accuracy: [78.2, 75.4, 76.0, 75.7, 74.9, 74.8, 75.1]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([ 122, 1044, 3568, 7041, 8957, 7222, 3637, 1044,  133,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([ 122, 1044, 3568, 7041, 8957, 7222, 3637, 1044,  133,    0,    0])
 conv2_layer.0.weight: 
- tensor([  29,  286,  921, 1768, 2219, 1825,  888,  225,   31,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  29,  286,  921, 1768, 2219, 1825,  888,  225,   31,    0,    0])
 conv3_layer.0.weight: 
- tensor([  73,  478, 1768, 3588, 4491, 3622, 1739,  556,   69,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  73,  478, 1768, 3588, 4491, 3622, 1739,  556,   69,    0,    0])
 conv4_layer.0.weight: 
- tensor([  14,  111,  462,  900, 1165,  861,  440,  122,   21,    0,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  14,  111,  462,  900, 1165,  861,  440,  122,   21,    0,    0])
 fc1_layer.0.weight: 
- tensor([  2,  12,  58, 117, 133, 120,  56,  12,   2,   0,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  2,  12,  58, 117, 133, 120,  56,  12,   2,   0,   0])
 Head Finetuning    :Task: 7,	 Epoch: 0/40,	 Avg.loss: 0.0024,	 Test Accuracy: 93/1000(9%)
 Head Finetuning    :Task: 7,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 117/1000(12%)
 Head Finetuning    :Task: 7,	 Epoch: 2/40,	 Avg.loss: 0.0023,	 Test Accuracy: 153/1000(15%)
@@ -628,20 +588,15 @@ Trained Task:7, Avg. Accuracy: 74.3
 List of avg. accuracy: [78.2, 75.4, 76.0, 75.7, 74.9, 74.8, 75.1, 74.3]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([  63,  603, 2241, 5315, 8027, 8097, 5446, 2316,  587,   73,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  63,  603, 2241, 5315, 8027, 8097, 5446, 2316,  587,   73,    0])
 conv2_layer.0.weight: 
- tensor([  15,  156,  595, 1337, 2022, 2007, 1340,  585,  122,   13,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  15,  156,  595, 1337, 2022, 2007, 1340,  585,  122,   13,    0])
 conv3_layer.0.weight: 
- tensor([  39,  273, 1117, 2684, 4022, 4070, 2688, 1120,  339,   32,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  39,  273, 1117, 2684, 4022, 4070, 2688, 1120,  339,   32,    0])
 conv4_layer.0.weight: 
- tensor([   6,   66,  284,  665, 1050, 1006,  648,  301,   59,   11,    0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([   6,   66,  284,  665, 1050, 1006,  648,  301,   59,   11,    0])
 fc1_layer.0.weight: 
- tensor([  0,   4,  35,  97, 128, 121,  84,  35,   6,   2,   0],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  0,   4,  35,  97, 128, 121,  84,  35,   6,   2,   0])
 Head Finetuning    :Task: 8,	 Epoch: 0/40,	 Avg.loss: 0.0023,	 Test Accuracy: 120/1000(12%)
 Head Finetuning    :Task: 8,	 Epoch: 1/40,	 Avg.loss: 0.0023,	 Test Accuracy: 144/1000(14%)
 Head Finetuning    :Task: 8,	 Epoch: 2/40,	 Avg.loss: 0.0022,	 Test Accuracy: 162/1000(16%)
@@ -711,20 +666,15 @@ Trained Task:8, Avg. Accuracy: 74.2
 List of avg. accuracy: [78.2, 75.4, 76.0, 75.7, 74.9, 74.8, 75.1, 74.3, 74.2]
 Mask histogram
 conv1_layer.0.weight: 
- tensor([  27,  339, 1414, 3756, 6752, 7999, 6735, 3928, 1448,  334,   36],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  27,  339, 1414, 3756, 6752, 7999, 6735, 3928, 1448,  334,   36])
 conv2_layer.0.weight: 
- tensor([   6,   89,  374,  973, 1654, 2015, 1695,  948,  361,   73,    4],
-       device='cuda:0', dtype=torch.int32)
+ tensor([   6,   89,  374,  973, 1654, 2015, 1695,  948,  361,   73,    4])
 conv3_layer.0.weight: 
- tensor([  13,  161,  713, 1841, 3415, 4033, 3454, 1832,  706,  198,   18],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  13,  161,  713, 1841, 3415, 4033, 3454, 1832,  706,  198,   18])
 conv4_layer.0.weight: 
- tensor([  3,  44, 161, 493, 855, 992, 859, 467, 189,  29,   4],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  3,  44, 161, 493, 855, 992, 859, 467, 189,  29,   4])
 fc1_layer.0.weight: 
- tensor([  0,   3,  15,  65, 124, 123, 100,  59,  19,   2,   2],
-       device='cuda:0', dtype=torch.int32)
+ tensor([  0,   3,  15,  65, 124, 123, 100,  59,  19,   2,   2])
 Head Finetuning    :Task: 9,	 Epoch: 0/40,	 Avg.loss: 0.0026,	 Test Accuracy: 104/1000(10%)
 Head Finetuning    :Task: 9,	 Epoch: 1/40,	 Avg.loss: 0.0025,	 Test Accuracy: 121/1000(12%)
 Head Finetuning    :Task: 9,	 Epoch: 2/40,	 Avg.loss: 0.0024,	 Test Accuracy: 157/1000(16%)
