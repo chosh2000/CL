@@ -183,7 +183,7 @@ class observer():
 		plt.figure()
 		item_list=[]
 		for item in arr:
-			if 'SAT' in item and "ANN" not in item:
+			if 'SAT' in item and "ANN" not in item and "EWC" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 
 				# #comment out below if not accumulating SAT

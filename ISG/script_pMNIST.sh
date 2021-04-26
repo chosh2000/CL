@@ -28,7 +28,7 @@ mkdir -p $OUTDIR
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method MAS  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.01  --revert_head 1 --finetune_epoch 20   | tee ${OUTDIR}/MAS_reg001.log
 # python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method SI   --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 0.8  --revert_head 1  --finetune_epoch 20   | tee ${OUTDIR}/SI_reg08.log
 # sleep 5m
-python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method EWC  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 5000  --revert_head 1  --finetune_epoch 20   | tee ${OUTDIR}/EWC_reg5000.log
+python -u SIM.py --use_gpu 1 --repeat $REPEAT --out_dir $OUTDIR  --dataset pMNIST   --method EWC  --model_type MLP  --mlp_size 2000 --num_task 100 --print_freq 200 --schedule 10 20 --apply_SIM 0 --random_drop 0 --rho 1 1  --lr 0.0001 --reglambda 5  --revert_head 1  --finetune_epoch 20   | tee ${OUTDIR}/EWC_reg5.log
 
 
 
