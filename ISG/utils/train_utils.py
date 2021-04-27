@@ -120,6 +120,9 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 
 				network.update_model(data, target)
 
+				if epoch == 0 and batch_idx%5 == 0 and batch_idx < 21:
+					print("Batch_idx: {},    ".format(batch_idx), end='')
+					network.test(task_num, testloader, epoch)
 			#Test at the end of each epoch
 			acc = network.test(task_num, testloader, epoch)
 
