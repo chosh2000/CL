@@ -1,0 +1,41 @@
+{
+  "use_gpu": 1,
+  "out_dir": "outputs/pMNIST/04-26-21_15h-58m",
+  "repeat": 1,
+  "finetune_epoch": 20,
+  "revert_head": 1,
+  "cnn_size": 1,
+  "init_model": 0,
+  "random_drop": 0,
+  "method": "EWC",
+  "model_type": "MLP",
+  "mlp_size": 2000,
+  "optimizer": "Adam",
+  "lr": 0.0001,
+  "multi_head": true,
+  "momentum": 0,
+  "weight_decay": 0,
+  "dataset": "pMNIST",
+  "num_task": 100,
+  "schedule": [
+    10,
+    20
+  ],
+  "batch_size_train": 128,
+  "batch_size_test": 1000,
+  "batch_size_fisher": 100,
+  "print_freq": 200.0,
+  "dataroot": "data",
+  "padding": true,
+  "reglambda": 5.0,
+  "online_reg": true,
+  "omega_multiplier": 1,
+  "apply_SIM": 0,
+  "dropmethod": "rho",
+  "rho": [
+    1.0,
+    1.0
+  ],
+  "xi": 1,
+  "alpha": 1
+}
