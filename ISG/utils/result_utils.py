@@ -175,7 +175,6 @@ class observer():
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel(r"$FWT_f$")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_few.jpg")
-		# plt.show()
 
 
 		#LCS
@@ -209,7 +208,6 @@ class observer():
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("IPK")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_ipk.jpg")
-		# plt.show()
 
 
 		#PTB
@@ -226,14 +224,9 @@ class observer():
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("PTB")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_ptb.jpg")
-		# plt.show()
 
 
-
-
-
-
-
+		#EWC
 		plt.figure()
 		item_list=[]
 		#below is used to create a discontinued y-axis for outlier
@@ -273,9 +266,7 @@ class observer():
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("SAT")
 		f.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
-		# plt.show()
 	
-# plot_results()
 
 def pMNIST_weight_usage_plot():
 	result_path = "/home/sanghyun/Documents/CL/ISG/outputs/pMNIST/04-16-21_13h-19m/"
