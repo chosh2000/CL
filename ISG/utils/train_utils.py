@@ -107,6 +107,8 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			network.PTB.append(ptb_sum)
 			network.FWT.append(acc_init/acc)
 			network.Rii[task_num] = acc
+			network.FEW.append((acc10-acc0)/acc)
+			# network.LCA.append((acc10-acc0)/acc) 
 
 		else:
 			#1. Learn the parameters for the current task
@@ -121,8 +123,11 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 				network.update_model(data, target)
 
 				if epoch == 0 and batch_idx%5 == 0 and batch_idx < 31:
-					print("Batch_idx: {},    ".format(batch_idx), end='')
-					network.test(task_num, testloader, epoch)
+					acc = network.test(task_num, testloader, epoch)
+					if batch_idx == 0:
+						acc0 = acc
+					elif batch_idx == 10:
+						acc10 = acc
 			#Test at the end of each epoch
 			acc = network.test(task_num, testloader, epoch)
 

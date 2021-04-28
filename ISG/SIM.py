@@ -15,7 +15,7 @@ from utils.network_utils import *
 from utils.result_utils import *
 
 
-def SIM_train(args, ob):
+def SIM_train(args, ob, repeat):
     #Initialize model
     # model = CNN(args)
     model   = utils.network_utils.__dict__[args.model_type](args)
@@ -94,7 +94,7 @@ def SIM_train(args, ob):
     ob.SAT.append(network.SAT)
     ob.PTB.append(network.PTB)
     ob.IPK.append(network.IPK)
-
+    ob.FEW.append(network.FEW)
 
 
 def get_args(argv):
@@ -159,7 +159,7 @@ if __name__ =="__main__":
     ob = observer(args) #records all experimental results
 
     for repeat in range(args.repeat):
-        SIM_train(args, ob)
+        SIM_train(args, ob, repeat)
         ob.to_csv() #saves all csv files
 
     # ob.plot_results()

@@ -49,6 +49,7 @@ class observer():
 		self.ACC  = [] #[[ACC for 1st repetition], [ACC for 2nd repetition],...]
 		self.LCA  = []
 		self.FWT  = []
+		self.FEW  = []
 		self.BWT  = []
 		self.SAT  = []
 		self.PTB  = []
@@ -78,6 +79,7 @@ class observer():
 		np.savetxt(save_path+save_string+"_SAT.csv", np.asarray(self.SAT), delimiter=",")
 		np.savetxt(save_path+save_string+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
 		np.savetxt(save_path+save_string+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
+		np.savetxt(save_path+save_string+"_FEW.csv", np.asarray(self.FEW), delimiter=",")
 
 	def legend_name(self,item):
 		if "SIM1" in item and "rand1" not in item:
@@ -108,6 +110,8 @@ class observer():
 		arr = os.listdir(result_path)
 		c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'y', "SGD":"k", "RAND":"c", "JT":'k--'}
 
+
+		#ACC
 		plt.figure()
 		item_list=[]
 		for item in arr:
@@ -116,13 +120,14 @@ class observer():
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-		plt.title("ACC")
+		plt.title(r"ACC$(\uparrow)$")
 		plt.legend(item_list)
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("ACC")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_acc.jpg")
-		# plt.show()
 		
+
+		#BWT
 		plt.figure()
 		item_list=[]
 		for item in arr:
@@ -131,13 +136,15 @@ class observer():
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-		plt.title("BWT")
+		plt.title(r"BWT$(\uparrow)$")
 		plt.legend(item_list)
 		plt.xlabel("Task, t")
 		plt.ylabel("BWT")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_bwt.jpg")
 		# plt.show()
 		
+
+		#FWT_z
 		plt.figure()
 		item_list=[]
 		for item in arr:
@@ -146,13 +153,49 @@ class observer():
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-		plt.title(r"$FWT_z$")
+		plt.title(r"$FWT_z(\uparrow)$")
 		plt.legend(item_list)
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel(r"$FWT_z$")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_fwt.jpg")
 		# plt.show()
 
+
+		#FWT_f
+		plt.figure()
+		item_list=[]
+		for item in arr:
+			if 'FEW' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
+
+		plt.title(r"$FWT_f(\uparrow)$")
+		plt.legend(item_list)
+		plt.xlabel("Task Sequence, t")
+		plt.ylabel(r"$FWT_f$")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_few.jpg")
+		# plt.show()
+
+
+		#LCS
+		plt.figure()
+		item_list=[]
+		lcs_list = []
+		for item in arr:
+			if 'FEW' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				item_list.append(self.legend_name(item))
+				lcs = sum(data)/len(data)/10
+				lcs_list.append(lcs)
+
+		plt.bar(np.arange(len(item_list)), lcs_list, 1) 
+		plt.xticks(np.arange(len(item_list)), item_list)
+		plt.legend()
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_LCS.jpg")
+
+
+		#IPK
 		plt.figure()
 		item_list=[]
 		for item in arr:
@@ -161,13 +204,15 @@ class observer():
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-		plt.title("IPK")
+		plt.title(r"IPK$(\uparrow)$")
 		plt.legend(item_list)
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("IPK")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_ipk.jpg")
 		# plt.show()
 
+
+		#PTB
 		plt.figure()
 		item_list=[]
 		for item in arr:
@@ -176,7 +221,7 @@ class observer():
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-		plt.title("PTB")
+		plt.title(r"PTB$(\downarrow)$")
 		plt.legend(item_list)
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("PTB")
@@ -194,7 +239,6 @@ class observer():
 		#below is used to create a discontinued y-axis for outlier
 		f, (ax, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':[1,2]})
 
-		ax.set_title("SAT")
 		ax.set_ylim(250, 2300)
 		ax2.set_ylim(0, 40)
 		ax.spines['bottom'].set_visible(False)
@@ -219,7 +263,8 @@ class observer():
 				ax2.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
 
 				# plt.plot(np.arange(len(data)), data, c[item_list[-1]])
-		# plt.title("SAT")
+
+		ax.set_title(r"SAT$(\downarrow)$")
 		legend_elements = [Line2D([0],[0],color='y', label='EWC'),
 							Line2D([0],[0],color='r', label='SIM'),
 							Line2D([0],[0],color='b', label='SI'),
