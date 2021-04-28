@@ -6,6 +6,7 @@ import torch
 import numpy as np
 from datetime import datetime
 import re
+from matplotlib.lines import Line2D
 
 def load_and_plot(task_num):
 	result_path = os.path.join(os.getcwd(), "../results")
@@ -88,9 +89,11 @@ class observer():
 		elif "EWC" in item:
 			return "EWC"
 		elif "ANN" in item:
-			return "ANN"
+			return "SGD"
 		elif "rand1" in item:
 			return "RAND"
+		elif "JT" in item:
+			return "JT"
 
 		# # else:
 		# 	# return item[:3]
@@ -103,7 +106,7 @@ class observer():
 		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
 		print("PATH:    ", result_path)
 		arr = os.listdir(result_path)
-		c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'y', "ANN":"k", "RAND":"c"}
+		c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'y', "SGD":"k", "RAND":"c", "JT":'k--'}
 
 		plt.figure()
 		item_list=[]
@@ -111,7 +114,7 @@ class observer():
 			if 'ACC' in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
-				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
 		plt.title("ACC")
 		plt.legend(item_list)
@@ -123,10 +126,10 @@ class observer():
 		plt.figure()
 		item_list=[]
 		for item in arr:
-			if 'BWT' in item:
+			if 'BWT' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
-				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
 		plt.title("BWT")
 		plt.legend(item_list)
@@ -138,15 +141,15 @@ class observer():
 		plt.figure()
 		item_list=[]
 		for item in arr:
-			if 'FWT' in item:
+			if 'FWT' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
-				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-		plt.title("FWT")
+		plt.title(r"$FWT_z$")
 		plt.legend(item_list)
 		plt.xlabel("Task Sequence, t")
-		plt.ylabel("FWT")
+		plt.ylabel(r"$FWT_z$")
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_fwt.jpg")
 		# plt.show()
 
@@ -156,7 +159,7 @@ class observer():
 			if 'IPK' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
-				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
 		plt.title("IPK")
 		plt.legend(item_list)
@@ -171,7 +174,7 @@ class observer():
 			if 'PTB' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
-				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
 		plt.title("PTB")
 		plt.legend(item_list)
@@ -180,26 +183,51 @@ class observer():
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_ptb.jpg")
 		# plt.show()
 
+
+
+
+
+
+
 		plt.figure()
 		item_list=[]
+		#below is used to create a discontinued y-axis for outlier
+		f, (ax, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':[1,2]})
+
+		ax.set_title("SAT")
+		ax.set_ylim(250, 2300)
+		ax2.set_ylim(0, 40)
+		ax.spines['bottom'].set_visible(False)
+		ax2.spines['top'].set_visible(False)
+		ax.xaxis.tick_top()
+		ax.tick_params(labeltop=False)
+		ax2.xaxis.tick_bottom()
+		d = .015  # how big to make the diagonal lines in axes coordinates
+		# arguments to pass to plot, just so we don't keep repeating them
+		kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
+		ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
+		ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
+		kwargs.update(transform=ax2.transAxes)  # switch to the bottom axes
+		ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
+		ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
+
 		for item in arr:
 			if 'SAT' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
-
-				# #comment out below if not accumulating SAT
-				# data_sum = 0
-				# for i, d in enumerate(data):
-				# 	data_sum += d
-				# 	data[i] = data_sum
-
 				item_list.append(self.legend_name(item))
-				plt.plot(np.arange(len(data)), data, color = c[item_list[-1]])
+				ax.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
+				ax2.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
 
-		plt.title("SAT")
-		plt.legend(item_list)
+				# plt.plot(np.arange(len(data)), data, c[item_list[-1]])
+		# plt.title("SAT")
+		legend_elements = [Line2D([0],[0],color='y', label='EWC'),
+							Line2D([0],[0],color='r', label='SIM'),
+							Line2D([0],[0],color='b', label='SI'),
+							Line2D([0],[0],color='g', label='MAS'),]
+		ax.legend(handles=legend_elements)
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("SAT")
-		plt.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
+		f.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
 		# plt.show()
 	
 # plot_results()
@@ -332,5 +360,5 @@ def sCIFAR_weight_usage_plot():
 	plt.savefig(save_path+"bar_sCIFAR_"+layer+"_Param_usage.jpg")
 
 
-# pMNIST_weight_usage_plot()
-sCIFAR_weight_usage_plot()
+pMNIST_weight_usage_plot()
+# sCIFAR_weight_usage_plot()

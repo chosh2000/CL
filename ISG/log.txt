@@ -249,8 +249,8 @@ Things changed:
 #### 4/23 ####
 Things to do:
 - Sun[x] Implement weight usage (%) computation
-- Mon[] Update pMNIST data (EWC + SI) on overleaf (run some more experiments depending on the result)
-- Mon[] Implement LCA learning curve. (Review "Efficient  lifelong  learning  with  a-gem")
+- Mon[x] Update pMNIST data (EWC + SI) on overleaf (run some more experiments depending on the result)
+- Mon[x] Implement LCS learning curve. (Review "Efficient  lifelong  learning  with  a-gem")
 - Tue[] find an optimal configuration for sCIFAR
 - Tue[] run a comprehensive experiment on sCIFAR with repetitions
 - Tue[] Let's do without dropout
