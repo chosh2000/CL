@@ -27,6 +27,7 @@ class MAS(nn.Module):
 		self.ACC  = [] #[[ACC for 1st iteration], [ACC for 2nd iteration],...]
 		self.LCA  = []
 		self.FWT  = []
+		self.FEW  = []
 		self.BWT  = []
 		self.SAT  = []
 		self.PTB  = []
