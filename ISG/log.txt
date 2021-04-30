@@ -264,4 +264,5 @@ Ablation studies:
 - [] Task Agnostic Mask selection
 
 
-
+#### Apr 30
+- run CIFAR100_baseline.py and add to the scifar100_acc graph
