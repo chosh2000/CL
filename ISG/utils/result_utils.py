@@ -183,28 +183,54 @@ class observer():
 
 		#LCS
 		plt.figure()
-		lcs_list = []
-		i5 = 0
-		i10 = 0
-		i100 = 0
+		width = 0.1
+		sim_list = [1, 2, 3]
+		mas_list = [1, 2, 3]
+		si_list  = [1, 2, 3]
+		ewc_list = [1, 2, 3]
 		for item in arr:
-			if 'FEW5' in item and "ANN" not in item:
+			legend = self.legend_name(item)
+			if legend == 'SIM':
 				data = np.genfromtxt(result_path+item, delimiter=",")
-				lcs = sum(data)/len(data)/5
-				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
-				i5 += 0.2
-			if 'FEW10' in item and "ANN" not in item and 'FEW100' not in item:
+				if 'FEW5' in item:
+					sim_list[0] = sum(data)/len(data)/5
+				if 'FEW10' in item and '100' not in item:
+					sim_list[1] = sum(data)/len(data)/10
+				if 'FEW100' in item:
+					sim_list[2] = sum(data)/len(data)/100
+			if legend == 'MAS':
 				data = np.genfromtxt(result_path+item, delimiter=",")
-				lcs = sum(data)/len(data)/10
-				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
-				i5 += 0.2
-			if 'FEW100' in item and "ANN" not in item:
+				if 'FEW5' in item:
+					mas_list[0] = sum(data)/len(data)/5
+				if 'FEW10' in item and '100' not in item:
+					mas_list[1] = sum(data)/len(data)/10
+				if 'FEW100' in item:
+					mas_list[2] = sum(data)/len(data)/100
+			if legend == 'SI':
 				data = np.genfromtxt(result_path+item, delimiter=",")
-				lcs = sum(data)/len(data)/100
-				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
-				i5 += 0.2
-
-		plt.xticks([0,1,2], [r'$LCS_{5}$', r'$LCS_{10}$', r'$LCS_{100}$'])
+				if 'FEW5' in item:
+					si_list[0] = sum(data)/len(data)/5
+				if 'FEW10' in item and '100' not in item:
+					si_list[1] = sum(data)/len(data)/10
+				if 'FEW100' in item:
+					si_list[2] = sum(data)/len(data)/100
+			if legend == 'EWC':
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				if 'FEW5' in item:
+					ewc_list[0] = sum(data)/len(data)/5
+				if 'FEW10' in item and '100' not in item:
+					ewc_list[1] = sum(data)/len(data)/10
+				if 'FEW100' in item:
+					ewc_list[2] = sum(data)/len(data)/100
+		print(sim_list)
+		print(si_list)
+		print(mas_list)
+		print(ewc_list)
+		plt.bar(np.arange(3)        , sim_list, width, label='SIM') 
+		plt.bar(np.arange(3)+width  , mas_list, width, label='MAS') 
+		plt.bar(np.arange(3)+2*width, si_list , width, label='SI') 
+		plt.bar(np.arange(3)+3*width, ewc_list, width, label='EWC') 
+		plt.xticks([0.15,1.15,2.15], [r'$LCS_{5}$', r'$LCS_{10}$', r'$LCS_{100}$'])
 		plt.legend()
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_LCS.jpg")
 

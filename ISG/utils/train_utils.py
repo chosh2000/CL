@@ -109,7 +109,7 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			network.PTB.append(ptb_sum)
 			network.FWT.append(acc_init/acc)
 			network.Rii[task_num] = acc
-			for batch_num, batch_acc in fewshot.items()
+			for batch_num, batch_acc in fewshot.items():
 				if batch_num not in network.FEW:
 					network.FEW[batch_num] = []
 				network.FEW[batch_num].append((batch_acc-acc0)/acc)
