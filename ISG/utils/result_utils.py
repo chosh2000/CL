@@ -49,7 +49,7 @@ class observer():
 		self.ACC  = [] #[[ACC for 1st repetition], [ACC for 2nd repetition],...]
 		self.LCA  = []
 		self.FWT  = []
-		self.FEW  = []
+		self.FEW  = {}
 		self.BWT  = []
 		self.SAT  = []
 		self.PTB  = []
@@ -80,6 +80,8 @@ class observer():
 		np.savetxt(save_path+save_string+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
 		np.savetxt(save_path+save_string+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 		np.savetxt(save_path+save_string+"_FEW.csv", np.asarray(self.FEW), delimiter=",")
+		for batch_num, batch_acc in self.FEW.items():
+			np.savetxt(save_path+save_string+"_FEW"+str(batch_num)+".csv", np.asarray(batch_acc), delimiter=",")
 
 	def legend_name(self,item):
 		if "SIM1" in item and "rand1" not in item:
@@ -104,8 +106,10 @@ class observer():
 	def plot_results(self):
 		# Find n'th latest directory by modification date
 		# result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
-		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
+		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
 		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
+		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR2/"
+
 		print("PATH:    ", result_path)
 		arr = os.listdir(result_path)
 		c = {"SIM": 'r', "MAS": 'g', "SI": 'b', "EWC": 'y', "SGD":"k", "RAND":"c", "JT":'k--'}
@@ -161,11 +165,11 @@ class observer():
 		# plt.show()
 
 
-		#FWT_f
+		#FWT_f_10
 		plt.figure()
 		item_list=[]
 		for item in arr:
-			if 'FEW' in item and "ANN" not in item:
+			if 'FEW10' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
@@ -179,17 +183,28 @@ class observer():
 
 		#LCS
 		plt.figure()
-		item_list=[]
 		lcs_list = []
+		i5 = 0
+		i10 = 0
+		i100 = 0
 		for item in arr:
-			if 'FEW' in item and "ANN" not in item:
+			if 'FEW5' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
-				item_list.append(self.legend_name(item))
+				lcs = sum(data)/len(data)/5
+				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
+				i5 += 0.2
+			if 'FEW10' in item and "ANN" not in item and 'FEW100' not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
 				lcs = sum(data)/len(data)/10
-				lcs_list.append(lcs)
+				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
+				i5 += 0.2
+			if 'FEW100' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				lcs = sum(data)/len(data)/100
+				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
+				i5 += 0.2
 
-		plt.bar(np.arange(len(item_list)), lcs_list, 1) 
-		plt.xticks(np.arange(len(item_list)), item_list)
+		plt.xticks([0,1,2], [r'$LCS_{5}$', r'$LCS_{10}$', r'$LCS_{100}$'])
 		plt.legend()
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_LCS.jpg")
 
@@ -226,46 +241,64 @@ class observer():
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_ptb.jpg")
 
 
-		#EWC
+		#SAT
 		plt.figure()
 		item_list=[]
-		#below is used to create a discontinued y-axis for outlier
-		f, (ax, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':[1,2]})
-
-		ax.set_ylim(250, 2300)
-		ax2.set_ylim(0, 40)
-		ax.spines['bottom'].set_visible(False)
-		ax2.spines['top'].set_visible(False)
-		ax.xaxis.tick_top()
-		ax.tick_params(labeltop=False)
-		ax2.xaxis.tick_bottom()
-		d = .015  # how big to make the diagonal lines in axes coordinates
-		# arguments to pass to plot, just so we don't keep repeating them
-		kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
-		ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
-		ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
-		kwargs.update(transform=ax2.transAxes)  # switch to the bottom axes
-		ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
-		ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
-
 		for item in arr:
 			if 'SAT' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
-				ax.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
-				ax2.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
+				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
 
-				# plt.plot(np.arange(len(data)), data, c[item_list[-1]])
-
-		ax.set_title(r"SAT$(\downarrow)$")
-		legend_elements = [Line2D([0],[0],color='y', label='EWC'),
-							Line2D([0],[0],color='r', label='SIM'),
-							Line2D([0],[0],color='b', label='SI'),
-							Line2D([0],[0],color='g', label='MAS'),]
-		ax.legend(handles=legend_elements)
+		plt.title(r"SAT$(\downarrow)$")
+		plt.legend(item_list)
 		plt.xlabel("Task Sequence, t")
 		plt.ylabel("SAT")
-		f.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
+		plt.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
+
+
+
+
+		# #SAT
+		# plt.figure()
+		# item_list=[]
+		# #below is used to create a discontinued y-axis for outlier
+		# f, (ax, ax2) = plt.subplots(2, 1, sharex=True, gridspec_kw={'height_ratios':[1,2]})
+
+		# ax.set_ylim(250, 2300)
+		# ax2.set_ylim(0, 40)
+		# ax.spines['bottom'].set_visible(False)
+		# ax2.spines['top'].set_visible(False)
+		# ax.xaxis.tick_top()
+		# ax.tick_params(labeltop=False)
+		# ax2.xaxis.tick_bottom()
+		# d = .015  # how big to make the diagonal lines in axes coordinates
+		# # arguments to pass to plot, just so we don't keep repeating them
+		# kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
+		# ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
+		# ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
+		# kwargs.update(transform=ax2.transAxes)  # switch to the bottom axes
+		# ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
+		# ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
+
+		# for item in arr:
+		# 	if 'SAT' in item and "ANN" not in item:
+		# 		data = np.genfromtxt(result_path+item, delimiter=",")
+		# 		item_list.append(self.legend_name(item))
+		# 		ax.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
+		# 		ax2.plot(np.arange(len(data)), data, c[item_list[-1]], label=item_list[-1])
+
+		# 		# plt.plot(np.arange(len(data)), data, c[item_list[-1]])
+
+		# ax.set_title(r"SAT$(\downarrow)$")
+		# legend_elements = [Line2D([0],[0],color='y', label='EWC'),
+		# 					Line2D([0],[0],color='r', label='SIM'),
+		# 					Line2D([0],[0],color='b', label='SI'),
+		# 					Line2D([0],[0],color='g', label='MAS'),]
+		# ax.legend(handles=legend_elements)
+		# plt.xlabel("Task Sequence, t")
+		# plt.ylabel("SAT")
+		# f.savefig(result_path+"plot_"+self.args.dataset+"_sat.jpg")
 	
 
 def pMNIST_weight_usage_plot():
@@ -396,5 +429,5 @@ def sCIFAR_weight_usage_plot():
 	plt.savefig(save_path+"bar_sCIFAR_"+layer+"_Param_usage.jpg")
 
 
-pMNIST_weight_usage_plot()
+# pMNIST_weight_usage_plot()
 # sCIFAR_weight_usage_plot()
