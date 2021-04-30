@@ -67,10 +67,10 @@ def load_datasets(args, task_num):
 			train = False,
 			transform = transform)
 
-	#Dataloader
-	trainloader = torch.utils.data.DataLoader(trainset, batch_size = args.batch_size_train, shuffle = True, num_workers = 2)
-	testloader = torch.utils.data.DataLoader(testset, batch_size = args.batch_size_test, shuffle = False, num_workers = 2)
-	# maskloader = torch.utils.data.DataLoader(testset, batch_size = args.batch_size_fisher, shuffle = True, num_workers = 2)
+		#Dataloader
+		trainloader = torch.utils.data.DataLoader(trainset, batch_size = args.batch_size_train, shuffle = True, num_workers = 2)
+		testloader = torch.utils.data.DataLoader(testset, batch_size = args.batch_size_test, shuffle = False, num_workers = 2)
+		# maskloader = torch.utils.data.DataLoader(testset, batch_size = args.batch_size_fisher, shuffle = True, num_workers = 2)
 
 	return trainloader, testloader
 

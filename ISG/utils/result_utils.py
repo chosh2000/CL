@@ -107,8 +107,9 @@ class observer():
 		# Find n'th latest directory by modification date
 		# result_path = sorted(glob.glob(os.path.join(os.getcwd(), 'results', '*/')), key=os.path.getmtime)[-1]
 		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_pMNIST/"
-		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
-		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR2/"
+		result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR/"
+		self.args.dataset = 'sCIFAR100'
+		# result_path = "/home/sanghyun/Documents/CL/ISG/results/Plots_sCIFAR2/"
 
 		print("PATH:    ", result_path)
 		arr = os.listdir(result_path)
@@ -133,6 +134,7 @@ class observer():
 
 		#BWT
 		plt.figure()
+		plt.ylim(-0.2, 0.025)
 		item_list=[]
 		for item in arr:
 			if 'BWT' in item and "ANN" not in item:
