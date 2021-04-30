@@ -94,7 +94,7 @@ def SIM_train(args, ob, repeat):
     ob.SAT.append(network.SAT)
     ob.PTB.append(network.PTB)
     ob.IPK.append(network.IPK)
-    ob.FEW.append(network.FEW)
+    ob.FEW = network.FEW
 
 
 def get_args(argv):
@@ -158,8 +158,8 @@ if __name__ =="__main__":
     args = get_args(sys.argv[1:])
     ob = observer(args) #records all experimental results
 
-    for repeat in range(args.repeat):
-        SIM_train(args, ob, repeat)
-        ob.to_csv() #saves all csv files
+    # for repeat in range(args.repeat):
+    #     SIM_train(args, ob, repeat)
+    #     ob.to_csv() #saves all csv files
 
-    # ob.plot_results()
+    ob.plot_results()

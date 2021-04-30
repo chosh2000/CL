@@ -49,7 +49,7 @@ class observer():
 		self.ACC  = [] #[[ACC for 1st repetition], [ACC for 2nd repetition],...]
 		self.LCA  = []
 		self.FWT  = []
-		self.FEW  = []
+		self.FEW  = {}
 		self.BWT  = []
 		self.SAT  = []
 		self.PTB  = []
@@ -80,6 +80,8 @@ class observer():
 		np.savetxt(save_path+save_string+"_PTB.csv", np.asarray(self.PTB), delimiter=",")
 		np.savetxt(save_path+save_string+"_IPK.csv", np.asarray(self.IPK), delimiter=",")
 		np.savetxt(save_path+save_string+"_FEW.csv", np.asarray(self.FEW), delimiter=",")
+		for batch_num, batch_acc in self.FEW.items():
+			np.savetxt(save_path+save_string+"_FEW"+str(batch_num)+".csv", np.asarray(batch_acc), delimiter=",")
 
 	def legend_name(self,item):
 		if "SIM1" in item and "rand1" not in item:
@@ -163,11 +165,11 @@ class observer():
 		# plt.show()
 
 
-		#FWT_f
+		#FWT_f_10
 		plt.figure()
 		item_list=[]
 		for item in arr:
-			if 'FEW' in item and "ANN" not in item:
+			if 'FEW10' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
 				item_list.append(self.legend_name(item))
 				plt.plot(np.arange(len(data)), data, c[item_list[-1]])
@@ -181,17 +183,28 @@ class observer():
 
 		#LCS
 		plt.figure()
-		item_list=[]
 		lcs_list = []
+		i5 = 0
+		i10 = 0
+		i100 = 0
 		for item in arr:
-			if 'FEW' in item and "ANN" not in item:
+			if 'FEW5' in item and "ANN" not in item:
 				data = np.genfromtxt(result_path+item, delimiter=",")
-				item_list.append(self.legend_name(item))
+				lcs = sum(data)/len(data)/5
+				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
+				i5 += 0.2
+			if 'FEW10' in item and "ANN" not in item and 'FEW100' not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
 				lcs = sum(data)/len(data)/10
-				lcs_list.append(lcs)
+				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
+				i5 += 0.2
+			if 'FEW100' in item and "ANN" not in item:
+				data = np.genfromtxt(result_path+item, delimiter=",")
+				lcs = sum(data)/len(data)/100
+				plt.bar(0+i5, lcs, 0.2, label=self.legend_name(item)) 
+				i5 += 0.2
 
-		plt.bar(np.arange(len(item_list)), lcs_list, 1) 
-		plt.xticks(np.arange(len(item_list)), item_list)
+		plt.xticks([0,1,2], [r'$LCS_{5}$', r'$LCS_{10}$', r'$LCS_{100}$'])
 		plt.legend()
 		plt.savefig(result_path+"plot_"+self.args.dataset+"_LCS.jpg")
 

@@ -60,6 +60,8 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 
 
 	n_epochs = args.schedule[-1]
+	batch_count = 0
+	fewshot = {}
 	for epoch in range(n_epochs+1):
 		# network.log('Epoch:{0}'.format(epoch))
 		network.scheduler.step(epoch) #TODO: This might cause poor training in later tasks
@@ -107,7 +109,10 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 			network.PTB.append(ptb_sum)
 			network.FWT.append(acc_init/acc)
 			network.Rii[task_num] = acc
-			network.FEW.append((acc10-acc0)/acc)
+			for batch_num, batch_acc in fewshot.items()
+				if batch_num not in network.FEW:
+					network.FEW[batch_num] = []
+				network.FEW[batch_num].append((batch_acc-acc0)/acc)
 			# network.LCA.append((acc10-acc0)/acc) 
 
 		else:
@@ -122,12 +127,14 @@ def train(network, args, task_num, trainloader, testloader, maskloader=None):
 
 				network.update_model(data, target)
 
-				if epoch == 0 and batch_idx%5 == 0 and batch_idx < 31:
+				if batch_count in [0, 5, 10, 20, 50, 100]:
 					acc = network.test(task_num, testloader, epoch)
-					if batch_idx == 0:
+					if batch_count == 0:
 						acc0 = acc
-					elif batch_idx == 10:
-						acc10 = acc
+					else:
+						fewshot[batch_count] = acc
+
+				batch_count += 1
 			#Test at the end of each epoch
 			acc = network.test(task_num, testloader, epoch)
 
